@@ -1,4 +1,22 @@
-<p>test</p>
+<div class="col-sm-8 col-sm-offset-2">
+  <form [formGroup]="inscriptionForm" (ngSubmit)="onSubmitForm()">
+    <div class="form-group">
+      <label for="nom">Nom</label>
+      <input type="text" id="nom" class="form-control" formControlName="nom">
+    </div>
+    <div class="form-group">
+      <label for="prenom">Prénom</label>
+      <input type="text" id="prenom" class="form-control" formControlName="prenom">
+    </div>
+    <div class="form-group">
+      <label for="telephone">Téléphone</label>
+      <input type="text" id="telephone" class="form-control" formControlName="telephone">
+    </div>
+    <div class="form-group">
+      <label for="mail">E-mail</label>
+      <input type="email" id="mail" class="form-control" formControlName="mail">
+    </div>
+    <button type="submit" class="btn btn-primary">S'inscrire</button>
+  </form>
+</div>
 
-
-<app-inscription-form></app-inscription-form>
