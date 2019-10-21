@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './root/app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AccueilComponent } from './accueil/accueil.component';
+import { InscriptionFormComponent } from './inscription-form/inscription-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    AccueilComponent
+    AccueilComponent,
+    InscriptionFormComponent
   ],
   imports: [
     BrowserModule,
