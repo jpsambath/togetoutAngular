@@ -6,7 +6,8 @@ import { AppComponent } from './root/app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { InscriptionFormComponent } from './inscription-form/inscription-form.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import { LoginFormComponent} from "./login-form/login-form.component";
+import { ReactiveFormsModule } from "@angular/forms";
 import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
@@ -15,6 +16,7 @@ import { FooterComponent } from './footer/footer.component';
     NavbarComponent,
     AccueilComponent,
     InscriptionFormComponent,
+    LoginFormComponent,
     FooterComponent
   ],
   imports: [

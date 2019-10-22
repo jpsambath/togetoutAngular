@@ -1,3 +1,17 @@
+/* TWEAKS */
+
+.verticalalign{
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+img{
+
+}
+
+/* GESTION DES INPUT FORMS */
+
 .group 			  {
   position:relative;
   margin-bottom:20px;
@@ -78,4 +92,15 @@ input:focus ~ .highlight {
 @keyframes inputHighlighter {
   from { background:#5264AE; }
   to 	{ width:0; background:transparent; }
+}
+
+
+/* FOOTER */
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
 }
