@@ -1,4 +1,8 @@
 /* TWEAKS */
+html, body{
+  min-height: 100vh;
+  overflow: auto;
+}
 
 .verticalalign{
   display: flex;
