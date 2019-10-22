@@ -1,16 +1,17 @@
 /* TWEAKS */
-html, body{
-  min-height: 100vh;
-  overflow: auto;
+a{
+  color: #1c7430;
+  text-decoration: underline;
 }
 
+main{
+  vertical-align: middle;
+  padding-top: 7vh;
+}
 .verticalalign{
   display: flex;
   align-items: center;
   text-align: center;
-}
-
-img{
 
 }
 
