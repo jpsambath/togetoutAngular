@@ -37,6 +37,7 @@ export class InscriptionFormComponent implements OnInit {
       null
     );
     //this.participantService.ajouterParticipant(nouveauParticipant);
+    //json.encode(nouveauParticipant) envoyer
     this.router.navigate(['/accueil']);
 
   }
