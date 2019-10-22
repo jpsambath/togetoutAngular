@@ -1,13 +1,8 @@
 /* TWEAKS */
-a{
-  color: #1c7430;
-  text-decoration: underline;
-}
-
 main{
   vertical-align: middle;
-  padding-top: 7vh;
 }
+
 .verticalalign{
   display: flex;
   align-items: center;
@@ -47,7 +42,7 @@ label 				 {
   position:absolute;
   pointer-events:none;
   left:15px;
-  top:15px;
+  top:10px;
   transition:0.2s ease all;
   -moz-transition:0.2s ease all;
   -webkit-transition:0.2s ease all;
