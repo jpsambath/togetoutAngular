@@ -24,17 +24,34 @@ export class LoginFormComponent implements OnInit {
 
   onSubmitForm(){
     const formValue = this.loginForm.value;
-    const participant = new Participant(
-      formValue['login'],
-      null,
-      null,
-      null,
-      formValue['login'],
-      formValue['motDePasse'],
-      false,
-      true,
-      null
-    );
+    const mailRegex = new RegExp('^[a-z]+[\w\.\-]*@(?:[a-z\.\-_0-9]*\.)*([\w\.\-]+)\.[a-z]{2,}$', 'gmi') ;
+    if(formValue['login'].match(mailRegex)) {
+      const participant = new Participant(
+        null,
+        null,
+        null,
+        null,
+        formValue['login'],
+        formValue['motDePasse'],
+        false,
+        true,
+        null
+      );
+    }
+    else {
+      const participant = new Participant(
+        formValue['login'],
+        null,
+        null,
+        null,
+        null,
+        formValue['motDePasse'],
+        false,
+        true,
+        null
+      );
+    }
+
     //this.participantService.connecterParticipant(participant);
     //Si la connexion a fonctionné this.router.navigate(['/accueil']);
 
