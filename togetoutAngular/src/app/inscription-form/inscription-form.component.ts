@@ -28,10 +28,12 @@ export class InscriptionFormComponent implements OnInit {
   onSubmitForm(){
     const formValue = this.inscriptionForm.value;
     const nouveauParticipant = new Participant(
+      formValue['pseudo'],
       formValue['nom'],
       formValue['prenom'],
       formValue['telephone'],
       formValue['mail'],
+      formValue['motDePasse'],
       false,
       true,
       null
