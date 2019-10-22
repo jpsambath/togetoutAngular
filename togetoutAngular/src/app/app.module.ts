@@ -7,13 +7,15 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { InscriptionFormComponent } from './inscription-form/inscription-form.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     AccueilComponent,
-    InscriptionFormComponent
+    InscriptionFormComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
