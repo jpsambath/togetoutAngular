@@ -14,6 +14,7 @@ import {AuthService} from "./auth.service";
 import {SortieService} from "./sortie.service";
 import {AuthGuard} from "./auth.guard";
 import { HttpClientModule } from '@angular/common/http';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     AccueilComponent,
     InscriptionFormComponent,
     LoginFormComponent,
-    FooterComponent
+    FooterComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,

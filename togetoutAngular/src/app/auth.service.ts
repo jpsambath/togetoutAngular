@@ -35,22 +35,21 @@ export class AuthService {
     console.log(message);
   }
 
+
+
   public register(participant: Participant){
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
       })
     };
-
-    this.httpClient.post('http://10.12.200.7/togetout/public/api/register', participant, httpOptions).pipe(
+    console.log("ici le participant de register");
+    console.log(participant);
+    /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
+    this._reponse = this.httpClient.post('http://10.12.200.7/togetout/public/api/test/responseJSON', participant, httpOptions).pipe(
       catchError(this.handleError('register', participant))
-    ).subscribe((data)=>{
-
-      this._reponse = data['participants'];
-      console.log("ici authservice");
-      console.log(this._reponse);
-    });
-
+    );
+    return this._reponse;
     /* http://togetout.local/register/ + JSON.stringify(participant);*/
   }
 }

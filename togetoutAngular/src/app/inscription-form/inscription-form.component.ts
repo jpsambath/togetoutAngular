@@ -45,8 +45,15 @@ export class InscriptionFormComponent implements OnInit {
     );
     console.log(nouveauParticipant);
 
-    this.authService.register(nouveauParticipant);
-    this.router.navigate(['']);
+    const promesse = new Promise((resolve, reject) => {
+      this.authService.register(nouveauParticipant)
+      });
+
+    promesse.then(() => {
+      this.router.navigate([''])
+    }).catch(() => {
+      console.log("ca a pas marché!");
+    })
 
 
 
