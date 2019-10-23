@@ -1,3 +1,5 @@
+import {Site} from "./site";
+
 export class Participant {
 
   constructor(
@@ -8,6 +10,7 @@ export class Participant {
     public telephone?: string,
     public mail?: string,
     public motDePasse?: string,
+    public site?: Site,
     public administrateur?: boolean,
     public actif?: boolean,
     public id?: number
