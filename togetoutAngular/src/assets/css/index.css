@@ -1,4 +1,9 @@
 /* TWEAKS */
+
+body{
+  background-image: radial-gradient(circle at center, white 100px, green 99%);
+}
+
 main{
   vertical-align: middle;
 }

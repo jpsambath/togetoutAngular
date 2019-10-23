@@ -9,6 +9,11 @@ import { InscriptionFormComponent } from './inscription-form/inscription-form.co
 import { LoginFormComponent} from "./login-form/login-form.component";
 import { ReactiveFormsModule } from "@angular/forms";
 import { FooterComponent } from './footer/footer.component';
+import { RouterModule } from '@angular/router';
+import {AuthService} from "./auth.service";
+import {SortieService} from "./sortie.service";
+import {AuthGuard} from "./auth.guard";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,9 +27,10 @@ import { FooterComponent } from './footer/footer.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService, SortieService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

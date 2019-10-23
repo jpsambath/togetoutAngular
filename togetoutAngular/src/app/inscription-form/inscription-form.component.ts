@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Participant } from "../participant";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-inscription-form',
@@ -10,18 +11,18 @@ import {Router} from "@angular/router";
   styleUrls: ['./inscription-form.component.css']
 })
 export class InscriptionFormComponent implements OnInit {
-
+  private reponse;
   inscriptionForm : FormGroup;
 
-  constructor(private formBuilder: FormBuilder/*,private participantService: participantService*/, private router : Router){
+  constructor(private authService : AuthService, private formBuilder: FormBuilder/*,private participantService: participantService*/, private router : Router){
 
   }
   ngOnInit(){
     this.inscriptionForm = this.formBuilder.group({
+      pseudo : '',
       nom : '',
-      prenom : '',
-      telephone : '',
-      mail : ''
+      mail : '',
+      motDePasse: ''
     });
   }
 
@@ -30,17 +31,20 @@ export class InscriptionFormComponent implements OnInit {
     const nouveauParticipant = new Participant(
       formValue['pseudo'],
       formValue['nom'],
-      formValue['prenom'],
-      formValue['telephone'],
+      null,
+      null,
       formValue['mail'],
       formValue['motDePasse'],
       false,
       true,
       null
     );
-    //this.participantService.ajouterParticipant(nouveauParticipant);
-    //json.encode(nouveauParticipant) envoyer
-    this.router.navigate(['/accueil']);
+    console.log(nouveauParticipant);
+
+    this.authService.register(nouveauParticipant);
+    this.router.navigate(['']);
+
+
 
   }
 
