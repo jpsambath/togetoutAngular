@@ -35,6 +35,8 @@ export class AuthService {
     console.log(message);
   }
 
+
+
   public register(participant: Participant){
     const httpOptions = {
       headers: new HttpHeaders({
