@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SortieService} from "../sortie.service";
 import { AuthService} from "../auth.service";
+import {Participant} from "../participant";
 
 @Component({
   selector: 'app-accueil',
@@ -18,10 +19,12 @@ export class AccueilComponent implements OnInit {
       this.articles = data['articles'];
     });
 
-    this.reponses = this.authService.getReponse();
-    console.log("ici accueil");
-    console.log(this.authService.getReponse());
-    console.log(this.reponses);
+    this.authService.getReponse().subscribe((data)=>{
+      this.reponses = data;
+      console.log("ici accueil");
+      console.log(this.reponses);
+    });
+
   }
 
 }

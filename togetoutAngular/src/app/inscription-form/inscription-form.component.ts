@@ -43,9 +43,10 @@ export class InscriptionFormComponent implements OnInit {
 
     this.authService.register(nouveauParticipant);
     this.router.navigate(['']);
+  }
 
-
-
+  generateArray(obj){
+    return Object.keys(obj).map((key)=>{ return obj[key]});
   }
 
 }

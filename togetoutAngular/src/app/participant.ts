@@ -2,12 +2,12 @@ export class Participant {
 
   constructor(
 
-    public pseudo?: string,
+    public username?: string,
     public nom?: string,
     public prenom?: string,
     public telephone?: string,
-    public mail?: string,
-    public motDePasse?: string,
+    public email?: string,
+    public password?: string,
     public administrateur?: boolean,
     public actif?: boolean,
     public id?: number
