@@ -33,8 +33,12 @@ export class InscriptionFormComponent implements OnInit {
       formValue['nom'],
       null,
       null,
+      null,
       formValue['mail'],
       formValue['motDePasse'],
+      null,
+      null,
+      null,
       false,
       true,
       null
