@@ -51,8 +51,6 @@ export class InscriptionFormComponent implements OnInit {
       console.log("ca a pas marché!");
     })
 
-
-
   }
 
 }
