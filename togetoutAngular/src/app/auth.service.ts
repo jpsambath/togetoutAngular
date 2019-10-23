@@ -47,7 +47,7 @@ export class AuthService {
     this._reponse = this.httpClient.post('http://10.12.200.7/togetout/public/api/test/responseJSON', participant, httpOptions).pipe(
       catchError(this.handleError('register', participant))
     );
-
+    return this._reponse;
     /* http://togetout.local/register/ + JSON.stringify(participant);*/
   }
 }
