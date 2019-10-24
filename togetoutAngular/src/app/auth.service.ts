@@ -10,10 +10,18 @@ import {Observable, of} from "rxjs";
 })
 export class AuthService {
 
-  private reponse;
+  authenticated = false;
+  reponse;
 
   constructor(private httpClient: HttpClient) { }
 
+  getAuthenticated(): boolean {
+    return this.authenticated;
+  }
+
+  setAuthenticated(value: boolean) {
+    this.authenticated = value;
+  }
   getReponse() {
     return this.reponse;
   }

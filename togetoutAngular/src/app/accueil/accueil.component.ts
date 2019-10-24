@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SortieService} from "../sortie.service";
 import { AuthService} from "../auth.service";
-import {Participant} from "../model/participant";
+import {Participant} from "../participant";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-accueil',
@@ -12,12 +13,12 @@ export class AccueilComponent implements OnInit {
   private articles;
   private reponses;
 
-  constructor(private sortieService : SortieService, private authService : AuthService) { }
+  constructor(private sortieService : SortieService, private authService : AuthService, private router : Router) { }
 
   ngOnInit() {
-    this.sortieService.getNews().subscribe((data)=>{
-      this.articles = data['articles'];
-    });
+    if(!this.authService.authenticated){
+      this.router.navigate(['/login']);
+    }
 
     this.reponses = this.authService.getReponse();
     console.log('statut dans accueil');
