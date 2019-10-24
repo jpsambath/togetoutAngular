@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SortieService} from "../sortie.service";
 import { AuthService} from "../auth.service";
-import {Participant} from "../participant";
+import {Participant} from "../model/participant";
 import {Router} from "@angular/router";
 
 @Component({

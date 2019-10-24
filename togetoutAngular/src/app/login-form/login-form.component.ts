@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
-import {Participant} from "../participant";
+import {Participant} from "../model/participant";
 import { AuthService} from "../auth.service";
 
 @Component({
@@ -20,7 +20,7 @@ export class LoginFormComponent implements OnInit {
 
     this.loginForm = this.formBuilder.group({
       login : '',
-      motDePasse : ''
+      plainPassword : ''
     });
   }
 
@@ -34,7 +34,7 @@ export class LoginFormComponent implements OnInit {
         null,
         null,
         formValue['login'],
-        formValue['motDePasse'],
+        formValue['plainPassword'],
         null,
         null,
         null,
@@ -51,7 +51,7 @@ export class LoginFormComponent implements OnInit {
         null,
         null,
         null,
-        formValue['motDePasse'],
+        formValue['plainPassword'],
         null,
         null,
         null,
