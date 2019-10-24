@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Participant } from "../participant";
+import { Participant } from "../model/participant";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AuthService} from "../auth.service";
@@ -23,7 +23,7 @@ export class InscriptionFormComponent implements OnInit {
       pseudo : '',
       nom : '',
       mail : '',
-      password: ''
+      plainPassword: ''
     });
   }
 
@@ -36,7 +36,7 @@ export class InscriptionFormComponent implements OnInit {
       null,
       null,
       formValue['mail'],
-      formValue['password'],
+      formValue['plainPassword'],
       null,
       null,
       null,

@@ -12,7 +12,7 @@
         <label>Login</label>
       </div>
       <div class="group">
-        <input type="password" class="form-control" id="motDePasse" formControlName="motDePasse"  required>
+        <input type="password" class="form-control" id="plainPassword" formControlName="plainPassword"  required>
         <span class="highlight"></span>
         <label>Mot-de-passe</label>
       </div>
@@ -20,7 +20,7 @@
         <input type="checkbox" id="rememberMe" class="form-check-input" formControlName="rememberMe">
         <label class="form-check-label">Se souvenir de moi</label>
       </div>
-      <button type="submit" class="btn btn-primary">Se connecter</button>
+      <button type="submit" class="btn btn-togetout">Se connecter</button>
     </form>
   </div>
   <div class="col-2">
@@ -33,7 +33,7 @@
 
   </div>
   <div class="col-3 border rounded p-3 mb-3">
-    <p class="text-center">Vous n'avez pas de compte ? <a routerLink="/inscription">Inscrivez-vous !</a></p>
+    <p class="text-center">Vous n'avez pas de compte ? <a [routerLink]="['/inscription']">Inscrivez-vous !</a></p>
   </div>
   <div class="col-2">
   </div>

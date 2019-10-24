@@ -1,12 +1,13 @@
-<br><h3>Créer une sortie</h3>
+<br><h3 class="text-center">Créer une sortie</h3>
+<p class="text-center">Créez une activité pour vous et vos amis</p>
 
 <div class="row verticalalign">
   <div class="col-2">
   </div>
-  <div class="col-6 border rounded p-3 mb-3">
-    <h3 class="text-center">ToGetOut</h3>
-    <p class="text-center">Connectez-vous pour participer à des activités<br> et vous faire des nouveaux amis.</p>
+  <div class="col-8 border rounded p-3 mb-3">
     <form [formGroup]="sortieForm" (ngSubmit)="onSubmitForm()">
+      <div class="row">
+      <div class="col-6">
       <div class="group">
         <input type="text" class="form-control" id="nom" formControlName="nom"  required>
         <span class="highlight"></span>
@@ -15,25 +16,96 @@
       <div class="group">
         <input type="datetime-local" class="form-control" id="date" formControlName="date">
         <span class="highlight"></span>
-        <label>Nom de la sortie</label>
+        <label>Date de la sortie</label>
       </div>
       <div class="group">
         <input type="datetime-local" class="form-control" id="dateLimite" formControlName="dateLimite">
         <span class="highlight"></span>
-        <label>Nom de la sortie</label>
+        <label>Date limite d'inscription</label>
       </div>
       <div class="group">
-        <input type="number" class="form-control" id="nbInscriptionMax" formControlName="nbInscriptionMax">
+        <input type="number" min="0" class="form-control" id="nbInscriptionMax" formControlName="nbInscriptionMax">
         <span class="highlight"></span>
-        <label>Nom de la sortie</label>
+        <label>Nombre maximum de participants</label>
       </div>
-      <button type="submit" class="btn btn-primary">Se connecter</button>
+      <div class="group">
+        <input type="number" min="0" class="form-control" id="duree" formControlName="duree">
+        <span class="highlight"></span>
+        <label>Durée (en minutes)</label>
+      </div>
+      <div class="group">
+        <textarea placeholder="Description et infos" class="form-control" id="infosSortie" formControlName="infosSortie" style="height: 95px"></textarea>
+      </div>
+      </div>
+      <div class="col-6">
+        <div class="group">
+          <input type="text" class="form-control" id="site" formControlName="site"  disabled>
+          <span class="highlight"></span>
+          <label>Ville organisatrice</label>
+        </div>
+        <div class="group">
+          <div class="row">
+            <div class="col-10">
+              <select name="ville" id="ville" formControlName="ville" class="form-control">
+                <option value="">--Choisissez une ville--</option>
+              </select>
+            </div>
+            <div class="col-2 justify-content-center">
+              <button id="add-ville-CSS"></button>
+            </div>
+          </div>
+        </div>
+        <div class="group">
+          <div class="row">
+            <div class="col-10">
+          <select name="lieu" id="lieu" formControlName="lieu" class="form-control">
+            <option value="">--Choisissez un lieu--</option>
+          </select>
+            </div>
+            <div class="col-2 justify-content-center">
+          <button id="add-lieu-CSS"></button>
+            </div>
+          </div>
+        </div>
+        <div class="group">
+          <input type="text" class="form-control" id="rue" formControlName="rue"  disabled>
+          <span class="highlight"></span>
+          <label>Rue</label>
+        </div>
+        <div class="group">
+          <input type="text" class="form-control" id="codePostal" formControlName="codePostal"  disabled>
+          <span class="highlight"></span>
+          <label>Code postal</label>
+        </div>
+        <div class="group">
+          <input type="text" class="form-control" id="latitude" formControlName="latitude"  disabled>
+          <span class="highlight"></span>
+          <label>Latitude</label>
+        </div>
+        <div class="group">
+          <input type="text" class="form-control" id="longitude" formControlName="longitude"  disabled>
+          <span class="highlight"></span>
+          <label>Longitude</label>
+        </div>
+      </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-3"></div>
+        <div class="col-2">
+          <button class="btn btn-togetout" onclick="enregistrerSortie">Enregistrer</button>
+        </div><div class="col-2">
+        <button type="submit" class="btn btn-togetout">Publier la sortie</button>
+      </div><div class="col-2">
+        <button routerLink="/" class="btn btn-togetout">Annuler</button>
+      </div>
+        <div class="col-3"></div>
+      </div>
+
     </form>
   </div>
-  <div class="col-5">
-    <img src="../../assets/img/ToGetOut Home2.png" height="600" width="600"/>
-  </div>
-  <div class="col-2">
-  </div>
+
+
 
 </div>
+

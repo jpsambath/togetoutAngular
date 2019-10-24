@@ -20,4 +20,8 @@ export class SortieFormComponent implements OnInit {
     });
   }
 
+  onSubmitForm() {
+
+  }
+
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
-import {Participant} from "../participant";
+import {Participant} from "../model/participant";
 
 @Component({
   selector: 'app-login-form',
@@ -18,7 +18,8 @@ export class LoginFormComponent implements OnInit {
   ngOnInit(){
     this.loginForm = this.formBuilder.group({
       login : '',
-      motDePasse : ''
+      plainPassword : '',
+      rememberMe : false
     });
   }
 
@@ -32,7 +33,7 @@ export class LoginFormComponent implements OnInit {
         null,
         null,
         formValue['login'],
-        formValue['motDePasse'],
+        formValue['plainPassword'],
         null,
         null,
         null,
