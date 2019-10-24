@@ -50,6 +50,7 @@ export class InscriptionFormComponent implements OnInit {
     this.authService.register(nouveauParticipant).then(
       () => {
         console.log("ici redirection vers l'accueil = succès");
+        this.authService.setAuthenticated(true);
         this.router.navigate(['']);
       }
     ,
