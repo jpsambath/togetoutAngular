@@ -10,6 +10,7 @@ import { LoginFormComponent} from "./login-form/login-form.component";
 import { ReactiveFormsModule } from "@angular/forms";
 import { SortieFormComponent} from "./sortie-form/sortie-form.component";
 import { FooterComponent } from './footer/footer.component';
+import { MainComponent } from './main/main.component';
 import { RouterModule } from '@angular/router';
 import {AuthService} from "./auth.service";
 import {SortieService} from "./sortie.service";
@@ -17,6 +18,7 @@ import {AuthGuard} from "./auth.guard";
 import { HttpClientModule } from '@angular/common/http';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import * as $ from "jquery";
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import * as $ from "jquery";
     LoginFormComponent,
     FooterComponent,
     SidebarComponent,
-    SortieFormComponent
+    SortieFormComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
