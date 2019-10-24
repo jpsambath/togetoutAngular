@@ -11,6 +11,7 @@ import {AuthService} from "../auth.service";
   styleUrls: ['./inscription-form.component.css']
 })
 export class InscriptionFormComponent implements OnInit {
+  private statut;
   private reponse;
   inscriptionForm : FormGroup;
 
@@ -22,7 +23,7 @@ export class InscriptionFormComponent implements OnInit {
       pseudo : '',
       nom : '',
       mail : '',
-      motDePasse: ''
+      password: ''
     });
   }
 
@@ -35,7 +36,7 @@ export class InscriptionFormComponent implements OnInit {
       null,
       null,
       formValue['mail'],
-      formValue['motDePasse'],
+      formValue['password'],
       null,
       null,
       null,
@@ -43,17 +44,19 @@ export class InscriptionFormComponent implements OnInit {
       true,
       null
     );
+    console.log('Nouveau participant formé par le formulaire : ')
     console.log(nouveauParticipant);
 
-    const promesse = new Promise((resolve, reject) => {
-      this.authService.register(nouveauParticipant)
-      });
-
-    promesse.then(() => {
-      this.router.navigate([''])
-    }).catch(() => {
-      console.log("ca a pas marché!");
-    })
+    this.authService.register(nouveauParticipant).then(
+      () => {
+        console.log("ici redirection vers l'accueil = succès");
+        this.router.navigate(['']);
+      }
+    ,
+      () => {
+        console.log("ici redirection vers inscription = echec");
+        this.router.navigate(['/inscription']);
+    });
 
   }
 

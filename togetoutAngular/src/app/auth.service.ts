@@ -10,16 +10,16 @@ import {Observable, of} from "rxjs";
 })
 export class AuthService {
 
-  private _reponse;
+  private reponse;
 
   constructor(private httpClient: HttpClient) { }
 
   getReponse() {
-    return this._reponse;
+    return this.reponse;
   }
 
   setReponse(value) {
-    this._reponse = value;
+    this.reponse = value;
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
@@ -35,21 +35,29 @@ export class AuthService {
     console.log(message);
   }
 
-
-
   public register(participant: Participant){
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })
-    };
-    console.log("ici le participant de register");
-    console.log(participant);
-    /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
-    this._reponse = this.httpClient.post('http://10.12.200.7/togetout/public/api/test/responseJSON', participant, httpOptions).pipe(
-      catchError(this.handleError('register', participant))
-    );
-    return this._reponse;
-    /* http://togetout.local/register/ + JSON.stringify(participant);*/
+    return new Promise((resolve, reject) => {
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type':  'application/json'
+        })
+      };
+
+      /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
+      this.httpClient.post('http://10.12.200.7/togetout/public/api/test/responseJSON', participant, httpOptions).pipe(
+        catchError(this.handleError('register', participant))
+      ).subscribe((data)=>{
+        this.reponse = data['statut'];
+        console.log('reponse dans register lui même');
+        console.log(this.reponse);
+      });
+
+      if (this.reponse == 'ok') {
+        resolve(this.reponse);
+      } else {
+        reject(this.reponse);
+      }
+    })
+
   }
 }

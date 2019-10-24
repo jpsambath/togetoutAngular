@@ -8,6 +8,7 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { InscriptionFormComponent } from './inscription-form/inscription-form.component';
 import { LoginFormComponent} from "./login-form/login-form.component";
 import { ReactiveFormsModule } from "@angular/forms";
+import { SortieFormComponent} from "./sortie-form/sortie-form.component";
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import {AuthService} from "./auth.service";
@@ -15,6 +16,7 @@ import {SortieService} from "./sortie.service";
 import {AuthGuard} from "./auth.guard";
 import { HttpClientModule } from '@angular/common/http';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import * as $ from "jquery";
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     InscriptionFormComponent,
     LoginFormComponent,
     FooterComponent,
-    SidebarComponent
+    SidebarComponent,
+    SortieFormComponent
   ],
   imports: [
     BrowserModule,
