@@ -19,6 +19,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import * as $ from "jquery";
 import { CardComponent } from './card/card.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
+import { SearchComponent } from './search/search.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +34,9 @@ import { ViewProfileComponent } from './view-profile/view-profile.component';
     SidebarComponent,
     SortieFormComponent,
     CardComponent,
-    ViewProfileComponent
+    ViewProfileComponent,
+    SearchComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,

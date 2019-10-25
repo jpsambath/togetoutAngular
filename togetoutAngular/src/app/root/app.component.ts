@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { AuthService} from "../auth.service";
+import { ChatAdapter } from 'ng-chat';
+
 
 @Component({
   selector: 'app-root',
@@ -8,6 +10,7 @@ import { AuthService} from "../auth.service";
 })
 export class AppComponent implements OnInit{
   title = 'togetoutAngular';
+
   constructor(private authService:AuthService) { }
 
   ngOnInit() {
