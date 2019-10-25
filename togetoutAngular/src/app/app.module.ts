@@ -18,8 +18,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import * as $ from "jquery";
 import { CardComponent } from './card/card.component';
-import { VilleFormComponent } from './ville-form/ville-form.component';
-import { LieuFormComponent } from './lieu-form/lieu-form.component';
+import { ViewProfileComponent } from './view-profile/view-profile.component';
+import { SearchComponent } from './search/search.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import {VilleFormComponent} from "./ville-form/ville-form.component";
+import {LieuFormComponent} from "./lieu-form/lieu-form.component";
+
 
 @NgModule({
   declarations: [
@@ -32,8 +36,11 @@ import { LieuFormComponent } from './lieu-form/lieu-form.component';
     SidebarComponent,
     SortieFormComponent,
     CardComponent,
+    ViewProfileComponent,
+    SearchComponent,
+    EditProfileComponent,
     VilleFormComponent,
-    LieuFormComponent,
+    LieuFormComponent
   ],
   imports: [
     BrowserModule,
@@ -41,8 +48,7 @@ import { LieuFormComponent } from './lieu-form/lieu-form.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  entryComponents: [
-  VilleFormComponent,
+  entryComponents: [VilleFormComponent,
   LieuFormComponent
   ],
   providers: [AuthService, SortieService, AuthGuard],

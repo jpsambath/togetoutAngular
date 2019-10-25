@@ -33,16 +33,18 @@ export class InscriptionFormComponent implements OnInit {
       formValue['pseudo'],
       formValue['nom'],
       null,
-      null,
+      ['ROLE_USER'],
       null,
       formValue['mail'],
+      null,
       formValue['plainPassword'],
-      null,
-      null,
+      [],
+      [],
       null,
       false,
       true,
       null
+
     );
     console.log('Nouveau participant formé par le formulaire : ')
     console.log(nouveauParticipant);

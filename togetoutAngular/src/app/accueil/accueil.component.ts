@@ -20,6 +20,7 @@ export class AccueilComponent implements OnInit {
       this.router.navigate(['/login']);
     }*/
 
+
     this.reponses = this.authService.getReponse();
     console.log('statut dans accueil');
     console.log(this.reponses);

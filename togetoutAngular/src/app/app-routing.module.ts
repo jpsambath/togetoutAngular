@@ -4,6 +4,9 @@ import {AccueilComponent} from "./accueil/accueil.component";
 import {InscriptionFormComponent} from "./inscription-form/inscription-form.component";
 import {LoginFormComponent} from "./login-form/login-form.component";
 import {SortieFormComponent} from "./sortie-form/sortie-form.component";
+import {ViewProfileComponent} from "./view-profile/view-profile.component";
+import { SearchComponent } from './search/search.component';
+import {EditProfileComponent} from "./edit-profile/edit-profile.component";
 
 
 const routes: Routes = [
@@ -11,7 +14,11 @@ const routes: Routes = [
   {path: 'inscription', component: InscriptionFormComponent},
   {path: 'login', component: LoginFormComponent},
   {path: 'creer', component: SortieFormComponent},
+  {path: 'viewprofile', component: ViewProfileComponent},
+  {path: 'search', component : SearchComponent},
+  {path: 'editprofile', component : EditProfileComponent},
   {path: '**', redirectTo: ''}
+
 ];
 
 @NgModule({

@@ -55,6 +55,7 @@ export class AuthService {
       this.httpClient.post('http://10.12.200.7/togetout/public/api/test/responseJSON', participant, httpOptions).pipe(
         catchError(this.handleError('register', participant))
       ).subscribe((data)=>{
+        console.log(data);
         this.reponse = data['statut'];
         console.log('reponse dans register lui même');
         console.log(this.reponse);

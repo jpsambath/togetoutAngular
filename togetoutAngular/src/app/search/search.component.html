@@ -1,0 +1,175 @@
+<h3>Filtrer les sorties</h3>
+
+<form [formGroup]="searchForm" (ngSubmit)="onSubmitForm()">
+  <div class="input-group group">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Lieu</span>
+    </div>
+    <select class="custom-select form-control" id="inputGroupSelect01">
+      <option selected>Choose...</option>
+      <option value="1">Nantes</option>
+      <option value="2">Paris</option>
+      <option value="3">Hongkong</option>
+    </select>
+  </div>
+
+  <div class="input-group group">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Recherche</span>
+    </div>
+  <input type="text" class="form-control" placeholder="Recherche">
+  </div>
+
+
+  <div class="input-group group">
+    <p>Entre</p>
+    <div class="input-group-prepend">
+      <span class="input-group-text">Date Début</span>
+    </div>
+    <input type="text" class="form-control" placeholder="Recherche">
+
+    <p>et</p>
+    <div class="input-group-prepend">
+      <span class="input-group-text">Date Fin</span>
+    </div>
+    <input type="text" class="form-control" placeholder="Recherche">
+  </div>
+
+  <p>Inline checkboxes</p>
+  <div class="checkbox checkbox-inline">
+    <input type="checkbox" class="styled" id="inlineCheckbox1" value="option1">
+    <label for="inlineCheckbox1"> Inline One </label>
+  </div>
+  <div class="checkbox checkbox-success checkbox-inline">
+    <input type="checkbox" class="styled" id="inlineCheckbox2" value="option1" checked>
+    <label for="inlineCheckbox2"> Inline Two </label>
+  </div>
+  <div class="checkbox checkbox-inline">
+    <input type="checkbox" class="styled" id="inlineCheckbox3" value="option1">
+    <label for="inlineCheckbox3"> Inline Three </label>
+  </div>
+  <br/><br/>
+
+  <!-- Default unchecked -->
+  <div class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input" id="sortieOrganisateur">
+    <label class="custom-control-label" for="sortieOrganisateur">Default unchecked</label>
+  </div>
+  <!-- Default unchecked -->
+  <div class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input" id="sortieInscrit" checked>
+    <label class="custom-control-label" for="sortieInscrit">Default unchecked</label>
+  </div>
+  <!-- Default unchecked -->
+  <div class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input" id="sortiePasInscrit">
+    <label class="custom-control-label" for="sortiePasInscrit">Default unchecked</label>
+  </div>
+  <!-- Default unchecked -->
+  <div class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input" id="sortiePassees">
+    <label class="custom-control-label" for="sortiePassees">Default unchecked</label>
+  </div>
+
+
+
+
+</form>
+
+
+<table class="table">
+  <!-- Table head -->
+  <thead class="thead-dark">
+  <tr>
+    <th>#</th>
+    <th><i class="fas fa-leaf mr-2" aria-hidden="true"></i>Nom de la sortie</th>
+    <th><i class="fas fa-leaf mr-2" aria-hidden="true"></i>Date de la sortie</th>
+    <th><i class="fas fa-leaf mr-2" aria-hidden="true"></i>Clôture</th>
+    <th><i class="fas fa-leaf mr-2" aria-hidden="true"></i>Inscrits/Places</th>
+    <th><i class="fas fa-leaf mr-2" aria-hidden="true"></i>Etat</th>
+    <th><i class="fas fa-leaf mr-2" aria-hidden="true"></i>Inscrit</th>
+    <th><i class="fas fa-leaf mr-2" aria-hidden="true"></i>Organisateur</th>
+    <th><i class="fas fa-leaf mr-2" aria-hidden="true"></i>Action</th>
+  </tr>
+  </thead>
+  <!-- Table head -->
+
+  <!-- Table body -->
+  <tbody>
+  <tr>
+    <th scope="row">1</th>
+    <td><i class="far fa-gem mr-2 grey-text" aria-hidden="true"></i>Mathilde fait la cuisine</td>
+    <td><i class="fas fa-download mr-2 grey-text" aria-hidden="true"></i>12/01/2019 23h59</td>
+    <td><i class="fas fa-book mr-2 grey-text" aria-hidden="true"></i>13/01/2019</td>
+    <td><i class="fas fa-graduation-cap mr-2 grey-text" aria-hidden="true"></i>6/9</td>
+    <td><i class="fas fa-gift mr-2 grey-text" aria-hidden="true"></i>Ouverte</td>
+    <td><i class="fas fa-image mr-2 grey-text" aria-hidden="true"></i>Oui</td>
+    <td><i class="fas fa-graduation-cap mr-2 grey-text" aria-hidden="true"></i>Mathilde P.</td>
+    <td>
+      <i class="fas fa-eye"></i>
+      <i class="fas fa-toggle-on"></i>
+      <i class="fas fa-toggle-off"></i>
+      <i class="fas fa-trash-alt"></i>
+      <i class="fas fa-edit"></i>
+      <i class="fas fa-upload"></i>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">2</th>
+    <td><i class="far fa-gem mr-2 grey-text" aria-hidden="true"></i>Mathilde passe l'aspirateur</td>
+    <td><i class="fas fa-download mr-2 grey-text" aria-hidden="true"></i>12/01/2019 23h59</td>
+    <td><i class="fas fa-book mr-2 grey-text" aria-hidden="true"></i>13/01/2019</td>
+    <td><i class="fas fa-graduation-cap mr-2 grey-text" aria-hidden="true"></i>6/9</td>
+    <td><i class="fas fa-gift mr-2 grey-text" aria-hidden="true"></i>Ouverte</td>
+    <td><i class="fas fa-image mr-2 grey-text" aria-hidden="true"></i>Oui</td>
+    <td><i class="fas fa-graduation-cap mr-2 grey-text" aria-hidden="true"></i>Mathilde P.</td>
+    <td>
+      <i class="fas fa-eye"></i>
+      <i class="fas fa-toggle-on"></i>
+      <i class="fas fa-toggle-off"></i>
+      <i class="fas fa-trash-alt"></i>
+      <i class="fas fa-edit"></i>
+      <i class="fas fa-upload"></i>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">2</th>
+    <td><i class="far fa-gem mr-2 grey-text" aria-hidden="true"></i>Mathilde épluche les tomates</td>
+    <td><i class="fas fa-download mr-2 grey-text" aria-hidden="true"></i>12/01/2019 23h59</td>
+    <td><i class="fas fa-book mr-2 grey-text" aria-hidden="true"></i>13/01/2019</td>
+    <td><i class="fas fa-graduation-cap mr-2 grey-text" aria-hidden="true"></i>6/9</td>
+    <td><i class="fas fa-gift mr-2 grey-text" aria-hidden="true"></i>Ouverte</td>
+    <td><i class="fas fa-image mr-2 grey-text" aria-hidden="true"></i>Oui</td>
+    <td><i class="fas fa-graduation-cap mr-2 grey-text" aria-hidden="true"></i>Mathilde P.</td>
+    <td>
+      <i class="fas fa-eye"></i>
+      <i class="fas fa-toggle-on"></i>
+      <i class="fas fa-toggle-off"></i>
+      <i class="fas fa-trash-alt"></i>
+      <i class="fas fa-edit"></i>
+      <i class="fas fa-upload"></i>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">2</th>
+    <td><i class="far fa-gem mr-2 grey-text" aria-hidden="true"></i>Mathilde étend le linge</td>
+    <td><i class="fas fa-download mr-2 grey-text" aria-hidden="true"></i>12/01/2019 23h59</td>
+    <td><i class="fas fa-book mr-2 grey-text" aria-hidden="true"></i>13/01/2019</td>
+    <td><i class="fas fa-graduation-cap mr-2 grey-text" aria-hidden="true"></i>6/9</td>
+    <td><i class="fas fa-gift mr-2 grey-text" aria-hidden="true"></i>Ouverte</td>
+    <td><i class="fas fa-image mr-2 grey-text" aria-hidden="true"></i>Oui</td>
+    <td><i class="fas fa-graduation-cap mr-2 grey-text" aria-hidden="true"></i>Mathilde P.</td>
+    <td>
+      <i class="fas fa-eye"></i>
+      <i class="fas fa-toggle-on"></i>
+      <i class="fas fa-toggle-off"></i>
+      <i class="fas fa-trash-alt"></i>
+      <i class="fas fa-edit"></i>
+      <i class="fas fa-upload"></i>
+    </td>
+  </tr>
+
+  </tbody>
+  <!-- Table body -->
+</table>
+<!-- Table  -->

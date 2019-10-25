@@ -11,6 +11,7 @@ export class Participant {
     public roles?: string[],
     public telephone?: string,
     public email?: string,
+    public password?:string,
     public plainPassword?: string,
     public sorties?: Sortie[],
     public sortieCreer?: Sortie[],
