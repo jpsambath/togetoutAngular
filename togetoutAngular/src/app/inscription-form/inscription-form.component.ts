@@ -33,9 +33,10 @@ export class InscriptionFormComponent implements OnInit {
       formValue['pseudo'],
       formValue['nom'],
       null,
-      null,
+      ['ROLE_USER'],
       null,
       formValue['mail'],
+      'liuqsdsflkjhdf',
       formValue['plainPassword'],
       null,
       null,
@@ -43,6 +44,7 @@ export class InscriptionFormComponent implements OnInit {
       false,
       true,
       null
+
     );
     console.log('Nouveau participant formé par le formulaire : ')
     console.log(nouveauParticipant);

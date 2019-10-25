@@ -10,7 +10,7 @@ import {Observable, of} from "rxjs";
 })
 export class AuthService {
 
-  authenticated = false;
+  authenticated = true;
   reponse;
 
   constructor(private httpClient: HttpClient) { }
@@ -52,9 +52,10 @@ export class AuthService {
       };
 
       /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
-      this.httpClient.post('http://10.12.200.7/togetout/public/api/test/responseJSON', participant, httpOptions).pipe(
+      this.httpClient.post('http://10.12.200.7/togetout/public/api/register', participant, httpOptions).pipe(
         catchError(this.handleError('register', participant))
       ).subscribe((data)=>{
+        console.log(data);
         this.reponse = data['statut'];
         console.log('reponse dans register lui même');
         console.log(this.reponse);
