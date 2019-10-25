@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
+import {Etat} from "../model/etat";
+import {Sortie} from "../model/sortie";
+import {VilleFormComponent} from "../ville-form/ville-form.component";
+import {LieuFormComponent} from "../lieu-form/lieu-form.component";
 
 @Component({
   selector: 'app-sortie-form',
@@ -10,8 +14,14 @@ import {Router} from "@angular/router";
 export class SortieFormComponent implements OnInit {
 
   sortieForm : FormGroup;
+  ville = VilleFormComponent ;
+  lieu = LieuFormComponent ;
+  private villeAffichee = false ;
+  private villeNonAffichee = !this.villeAffichee ;
+  private lieuAffiche= false ;
+  private lieuNonAffiche= !this.lieuAffiche ;
 
-  constructor(private formBuilder: FormBuilder/*,private participantService: participantService*/, private router : Router) { }
+  constructor(private formBuilder: FormBuilder/*,private participantService: participantService*/, private router : Router, public viewContainerRef: ViewContainerRef) { }
 
   ngOnInit() {
     this.sortieForm = this.formBuilder.group({
@@ -22,17 +32,51 @@ export class SortieFormComponent implements OnInit {
       duree : 0,
       infosSortie : '',
       site : null,
-      ville : null,
-      lieu : null,
+      ville : '',
+      lieu : '',
       rue : '',
       codePostal : '',
       latitude : '',
       longitude : ''
     });
+
   }
 
-  onSubmitForm() {
+  onSubmitForm(buttonID: string) {
+    const formValue = this.sortieForm.value;
+    let etat ;
+    if(buttonID === 'enregistrer') {
+      etat = new Etat('Créée', null) ;
+    }
+    else {
+      etat = new Etat('Ouverte', null) ;
+    }
+    const nouvelleSortie = new Sortie(
+      formValue['nom'],
+      null,
+      formValue['date'],
+      formValue['duree'],
+      formValue['dateLimite'],
+      formValue['nbInscriptionMax'],
+      formValue['infosSortie'],
+      null,
+      etat,
+      null,
+      [],
+      null
+    );
+    console.log('Nouvelle sortie créée par le formulaire : ')
+    console.log(nouvelleSortie);
+  }
 
+  villeFormAppend(divId : string) {
+    this.villeAffichee = !this.villeAffichee ;
+    this.villeNonAffichee = !this.villeNonAffichee ;
+  }
+
+  lieuFormAppend(buttonId : string) {
+    this.lieuAffiche = !this.lieuAffiche ;
+    this.lieuNonAffiche = !this.lieuNonAffiche ;
   }
 
 }

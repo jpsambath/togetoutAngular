@@ -18,6 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import * as $ from "jquery";
 import { CardComponent } from './card/card.component';
+import { VilleFormComponent } from './ville-form/ville-form.component';
+import { LieuFormComponent } from './lieu-form/lieu-form.component';
 
 @NgModule({
   declarations: [
@@ -29,13 +31,19 @@ import { CardComponent } from './card/card.component';
     FooterComponent,
     SidebarComponent,
     SortieFormComponent,
-    CardComponent
+    CardComponent,
+    VilleFormComponent,
+    LieuFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule
+  ],
+  entryComponents: [
+  VilleFormComponent,
+  LieuFormComponent
   ],
   providers: [AuthService, SortieService, AuthGuard],
   bootstrap: [AppComponent]

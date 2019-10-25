@@ -1,0 +1,28 @@
+<div class="row verticalalign">
+  <div class="col-12 border rounded p-3 mb-3">
+    <form [formGroup]="villeForm" (ngSubmit)="ngOnSubmit()">
+      <br>
+      <div class="row">
+        <div class="col-5">
+          <div class="group">
+            <input type="text" class="form-control" id="nom" formControlName="nom"  required>
+            <span class="highlight"></span>
+            <label>Nom de la ville</label>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="group">
+            <input type="text" class="form-control" id="codePostal" formControlName="codePostal" required>
+            <span class="highlight"></span>
+            <label>Code postal</label>
+          </div>
+        </div>
+        <div class="col-3">
+          <button type="submit" class="btn btn-togetout" id="enregistrer">Enregistrer</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
