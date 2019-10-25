@@ -16,9 +16,9 @@ export class AccueilComponent implements OnInit {
   constructor(private sortieService : SortieService, private authService : AuthService, private router : Router) { }
 
   ngOnInit() {
-    if(!this.authService.authenticated){
+    /*if(!this.authService.authenticated){
       this.router.navigate(['/login']);
-    }
+    }*/
 
     this.reponses = this.authService.getReponse();
     console.log('statut dans accueil');

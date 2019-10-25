@@ -15,8 +15,19 @@ export class SortieFormComponent implements OnInit {
 
   ngOnInit() {
     this.sortieForm = this.formBuilder.group({
-      login : '',
-      motDePasse : ''
+      nom : '',
+      date : '',
+      dateLimite : '',
+      nbInscriptionMax : 0,
+      duree : 0,
+      infosSortie : '',
+      site : null,
+      ville : null,
+      lieu : null,
+      rue : '',
+      codePostal : '',
+      latitude : '',
+      longitude : ''
     });
   }
 
