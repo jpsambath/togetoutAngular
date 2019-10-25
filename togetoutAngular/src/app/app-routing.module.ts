@@ -11,6 +11,7 @@ const routes: Routes = [
   {path: 'inscription', component: InscriptionFormComponent},
   {path: 'login', component: LoginFormComponent},
   {path: 'creer', component: SortieFormComponent},
+  {path: 'viewprofile', component: SortieFormComponent},
   {path: '**', redirectTo: ''}
 ];
 

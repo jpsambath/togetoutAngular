@@ -464,8 +464,7 @@ body {
 .page-wrapper .page-content {
   display: inline-block;
   width: 100%;
-  padding-left: 0px;
-  padding-top: 20px;
+  padding-top: 80px;
   padding-bottom : 40px;
 }
 

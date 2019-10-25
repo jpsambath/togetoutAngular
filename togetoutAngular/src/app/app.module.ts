@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import * as $ from "jquery";
 import { CardComponent } from './card/card.component';
+import { ViewProfileComponent } from './view-profile/view-profile.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CardComponent } from './card/card.component';
     FooterComponent,
     SidebarComponent,
     SortieFormComponent,
-    CardComponent
+    CardComponent,
+    ViewProfileComponent
   ],
   imports: [
     BrowserModule,
