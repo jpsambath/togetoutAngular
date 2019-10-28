@@ -4,6 +4,7 @@ import { AuthService} from "../auth.service";
 import {Participant} from "../model/participant";
 import {Router} from "@angular/router";
 
+
 @Component({
   selector: 'app-accueil',
   templateUrl: './accueil.component.html',
@@ -16,19 +17,17 @@ export class AccueilComponent implements OnInit {
   constructor(private sortieService : SortieService, private authService : AuthService, private router : Router) { }
 
   ngOnInit() {
-    /*if(!this.authService.authenticated){
-      this.router.navigate(['/login']);
-    }*/
+    console.log("1. Initialisation Accueil");
 
-    this.reponses = this.authService.getReponse();
-    console.log('statut dans accueil');
-    console.log(this.reponses);
+    this.sortieService.getSortieInfo().then(
+      () => {
+        console.log("Récupération Sorties Réussie");
+      }
+      ,
+      () => {
+        console.log("Récupération Sorties Ratée");
+      });
 
-    /*this.authService.getReponse().subscribe((data)=>{
-        this.reponses = data;
-        console.log("ici accueil");
-        console.log(this.reponses);
-    });*/
 
   }
 
