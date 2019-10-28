@@ -8,24 +8,29 @@
 
     <p class="text-center" *ngIf="this.authService.reponse">{{this.authService.reponse['messageOk']}}</p> <!-- Message succes inscription -->
     <p class="text-center" *ngIf="this.authService.reponseErreur">{{this.authService.reponseErreur}}</p> <!-- Message erreur login -->
-
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmitForm()">
-      <div class="group">
-        <input type="text" class="form-control" id="login" formControlName="login"  required>
-        <span class="highlight"></span>
-        <label>Login</label>
-      </div>
-      <div class="group">
-        <input type="password" class="form-control" id="plainPassword" formControlName="plainPassword"  required>
-        <span class="highlight"></span>
-        <label>Mot-de-passe</label>
-      </div>
-      <div class="form-check">
-        <input type="checkbox" id="rememberMe" class="form-check-input" formControlName="rememberMe">
-        <label class="form-check-label">Se souvenir de moi</label>
-      </div>
-      <button type="submit" class="btn btn-togetout" [disabled]="loginForm.invalid">Se connecter</button>
-    </form>
+    <div class="container-fluid">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmitForm()">
+        <div class="group">
+          <input type="text" class="form-control" id="login" formControlName="login"  required>
+          <span class="highlight"></span>
+          <label>Login</label>
+        </div>
+        <div class="group">
+          <input type="password" class="form-control" id="plainPassword" formControlName="plainPassword"  required>
+          <span class="highlight"></span>
+          <label>Mot-de-passe</label>
+        </div>
+        <div class="row">
+          <div class="form-check col-4">
+            <input type="checkbox" id="rememberMe" class="form-check-input" formControlName="rememberMe">
+            <label class="form-check-label">Se souvenir de moi</label>
+          </div>
+          <div class="col-8">
+            <button type="submit" class="btn btn-togetout" [disabled]="loginForm.invalid">Se connecter</button>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
   <div class="col-2">
   </div>
