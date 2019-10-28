@@ -8,6 +8,7 @@ import {ViewProfileComponent} from "./view-profile/view-profile.component";
 import { SearchComponent } from './search/search.component';
 import {EditProfileComponent} from "./edit-profile/edit-profile.component";
 import {EditSortieComponent} from "./edit-sortie/edit-sortie.component";
+import {AnnulerSortieComponent} from "./annuler-sortie/annuler-sortie.component";
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'search', component : SearchComponent},
   {path: 'editprofile', component : EditProfileComponent},
   {path: 'editsortie', component : EditSortieComponent},
+  {path: 'anuleesortie', component : AnnulerSortieComponent},
   {path: '**', redirectTo: ''}
 
 ];
