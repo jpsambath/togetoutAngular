@@ -5,7 +5,7 @@
   <div class="col-2">
   </div>
   <div class="col-8 border rounded p-3 mb-3">
-    <form [formGroup]="sortieForm" (ngSubmit)="onSubmitForm()">
+    <form [formGroup]="sortieForm">
       <div class="row">
       <div class="col-6">
       <div class="group">
@@ -93,9 +93,9 @@
       <div class="row">
         <div class="col-3"></div>
         <div class="col-2">
-          <button class="btn btn-togetout" onclick="enregistrerSortie">Enregistrer</button>
+          <button class="btn btn-togetout" (click)="onSubmitForm('enregistrer')">Enregistrer</button>
         </div><div class="col-2">
-        <button type="submit" class="btn btn-togetout">Publier la sortie</button>
+        <button type="submit" class="btn btn-togetout" (click)="onSubmitForm('publier')">Publier la sortie</button>
       </div><div class="col-2">
         <button routerLink="/" class="btn btn-togetout">Annuler</button>
       </div>

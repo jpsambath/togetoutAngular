@@ -20,7 +20,7 @@ export class InscriptionFormComponent implements OnInit {
   }
   ngOnInit(){
     this.inscriptionForm = this.formBuilder.group({
-      pseudo : '',
+      username : '',
       nom : '',
       mail : '',
       plainPassword: ''
@@ -30,7 +30,7 @@ export class InscriptionFormComponent implements OnInit {
   onSubmitForm(){
     const formValue = this.inscriptionForm.value;
     const nouveauParticipant = new Participant(
-      formValue['pseudo'],
+      formValue['username'],
       formValue['nom'],
       null,
       ['ROLE_USER'],
@@ -42,8 +42,7 @@ export class InscriptionFormComponent implements OnInit {
       [],
       null,
       false,
-      true,
-      null
+      true
 
     );
     console.log('Nouveau participant formé par le formulaire : ')

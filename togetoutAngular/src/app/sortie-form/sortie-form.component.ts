@@ -62,8 +62,7 @@ export class SortieFormComponent implements OnInit {
       null,
       etat,
       null,
-      [],
-      null
+      []
     );
     console.log('Nouvelle sortie créée par le formulaire : ')
     console.log(nouvelleSortie);
