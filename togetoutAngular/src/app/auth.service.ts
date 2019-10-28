@@ -67,6 +67,11 @@ export class AuthService {
         reject(this.reponse);
       }
     })
+  }
+
+  public editProfile(participant: Participant){
 
   }
+
+
 }

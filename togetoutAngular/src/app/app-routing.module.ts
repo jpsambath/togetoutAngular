@@ -7,6 +7,7 @@ import {SortieFormComponent} from "./sortie-form/sortie-form.component";
 import {ViewProfileComponent} from "./view-profile/view-profile.component";
 import { SearchComponent } from './search/search.component';
 import {EditProfileComponent} from "./edit-profile/edit-profile.component";
+import {EditSortieComponent} from "./edit-sortie/edit-sortie.component";
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'viewprofile', component: ViewProfileComponent},
   {path: 'search', component : SearchComponent},
   {path: 'editprofile', component : EditProfileComponent},
+  {path: 'editsortie', component : EditSortieComponent},
   {path: '**', redirectTo: ''}
 
 ];
