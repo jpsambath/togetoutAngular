@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Participant} from "../model/participant";
+import { Router } from "@angular/router";
+import { AuthService } from "../auth.service";
 
 @Component({
   selector: 'app-edit-profile',
@@ -11,7 +13,7 @@ export class EditProfileComponent implements OnInit {
 
   editForm : FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,private router : Router,private authService : AuthService) { }
 
   ngOnInit() {
     this.editForm = this.formBuilder.group({
@@ -45,21 +47,16 @@ export class EditProfileComponent implements OnInit {
       null
     );
 
+    this.authService.editProfile(participant).then(
+      () => {
+        console.log("ici redirection vers l'accueil = succès");
+        this.authService.setAuthenticated(true);
+        this.router.navigate(['']);
+      }
+      ,
+      () => {
+        console.log("ici redirection vers editProfile = echec");
+        this.router.navigate(['/edit-profile']);
+      });
   }
-  /*
-    public username?: string,
-    public nom?: string,
-    public prenom?: string,
-    public roles?: string[],
-    public telephone?: string,
-    public email?: string,
-    public password?:string,
-    public plainPassword?: string,
-    public sorties?: Sortie[],
-    public sortieCreer?: Sortie[],
-    public site?: Site,
-    public administrateur?: boolean,
-    public actif?: boolean,
-    public id?: number
-   */
 }

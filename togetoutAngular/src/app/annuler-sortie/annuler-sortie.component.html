@@ -1,0 +1,45 @@
+<br><h2 class="text-center">Annuler une sortie</h2>
+
+<div class="row verticalalign">
+  <div class="col-2">
+  </div>
+  <div class="col-8 border rounded p-3 mb-3">
+    <form [formGroup]="sortieAnnuler" (ngSubmit)="onSubmitForm()">
+      <div class="row">
+        <div class="group">
+          <input type="text" class="form-control" id="nom" formControlName="nom"  readonly>
+          <span class="highlight"></span>
+          <label>Nom de la sortie</label>
+        </div>
+        <div class="group">
+          <input type="datetime-local" class="form-control" id="date" formControlName="date" readonly >
+          <span class="highlight"></span>
+          <label>Date de la sortie</label>
+        </div>
+        <div class="group">
+          <input type="texte" class="form-control" id="site" formControlName="site" readonly >
+          <span class="highlight"></span>
+          <label>Ville organistrice : </label>
+        </div>
+        <div class="group">
+          <input type="texte" class="form-control" id="lieu" formControlName="lieu" readonly >
+          <span class="highlight"></span>
+          <label>Lieu : </label>
+        </div>
+      </div>
+      <div class="group">
+        <textarea placeholder="Motif" class="form-control" id="motif" formControlName="motif" style="height: 95px" required></textarea>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-2">
+          <button type="button" (click)="onSubmitForm()" class="btn btn-togetout" id="enregistrer">Enregistrer</button>
+        </div><div class="col-2">
+        <button type="button" routerLink="/" class="btn btn-togetout">Annuler</button>
+      </div>
+        <div class="col-2"></div>
+      </div>
+    </form>
+  </div>
+</div>
