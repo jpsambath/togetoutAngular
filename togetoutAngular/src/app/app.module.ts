@@ -23,6 +23,7 @@ import { SearchComponent } from './search/search.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import {VilleFormComponent} from "./ville-form/ville-form.component";
 import {LieuFormComponent} from "./lieu-form/lieu-form.component";
+import { EditSortieComponent } from './edit-sortie/edit-sortie.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import {LieuFormComponent} from "./lieu-form/lieu-form.component";
     SearchComponent,
     EditProfileComponent,
     VilleFormComponent,
-    LieuFormComponent
+    LieuFormComponent,
+    EditSortieComponent
   ],
   imports: [
     BrowserModule,
