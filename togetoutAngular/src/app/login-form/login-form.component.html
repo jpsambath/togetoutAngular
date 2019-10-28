@@ -24,7 +24,7 @@
         <input type="checkbox" id="rememberMe" class="form-check-input" formControlName="rememberMe">
         <label class="form-check-label">Se souvenir de moi</label>
       </div>
-      <button type="submit" class="btn btn-togetout">Se connecter</button>
+      <button type="submit" class="btn btn-togetout" [disabled]="loginForm.invalid">Se connecter</button>
     </form>
   </div>
   <div class="col-2">
