@@ -24,6 +24,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import {VilleFormComponent} from "./ville-form/ville-form.component";
 import {LieuFormComponent} from "./lieu-form/lieu-form.component";
 import { EditSortieComponent } from './edit-sortie/edit-sortie.component';
+import { AnnulerSortieComponent } from './annuler-sortie/annuler-sortie.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { EditSortieComponent } from './edit-sortie/edit-sortie.component';
     EditProfileComponent,
     VilleFormComponent,
     LieuFormComponent,
-    EditSortieComponent
+    EditSortieComponent,
+    AnnulerSortieComponent
   ],
   imports: [
     BrowserModule,

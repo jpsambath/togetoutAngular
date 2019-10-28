@@ -69,9 +69,6 @@ export class AuthService {
 
   public register(participant: Participant){
     return new Promise((resolve, reject) => {
-
-
-
       /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
       this.httpClient.post('http://10.12.200.7/togetout/public/api/register', participant, this.header).pipe(
         catchError(this.handleError('register', participant))
@@ -141,8 +138,28 @@ export class AuthService {
   }
 
   public editProfile(participant: Participant){
+    return new Promise((resolve, reject) => {
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type':  'application/json'
+        })
+      };
 
+      /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
+      this.httpClient.post('http://10.12.200.7/togetout/public/api/test/responseJSON', participant, httpOptions).pipe(
+        catchError(this.handleError('editProfile', participant))
+      ).subscribe((data)=>{
+        console.log(data);
+        this.reponse = data['statut'];
+        console.log('reponse dans register lui même');
+        console.log(this.reponse);
+      });
+
+      if (this.reponse == 'ok') {
+        resolve(this.reponse);
+      } else {
+        reject(this.reponse);
+      }
+    })
   }
-
-
 }
