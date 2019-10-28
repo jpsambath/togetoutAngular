@@ -16,8 +16,13 @@
       </li>
     </ul>
     <div class="form-inline my-2 my-lg-0">
-      <a routerLink="/login"><button class="btn btn-togetout mx-2">Connexion</button></a>
-      <a routerLink="/inscription"><button class="btn btn-togetout mx-2">Inscription</button></a>
+      <div *ngIf="authService.authenticated; else notAuthenticated">
+        {{ this.authService.reponseSucces }}
+      </div>
+      <ng-template #notAuthenticated>
+        <a routerLink="/login"><button class="btn btn-togetout mx-2">Connexion</button></a>
+        <a routerLink="/inscription"><button class="btn btn-togetout mx-2">Inscription</button></a>
+      </ng-template>
     </div>
   </div>
 </nav>

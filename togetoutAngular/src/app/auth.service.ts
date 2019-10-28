@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Participant} from "./model/participant";
 import {catchError} from "rxjs/operators";
 import {Observable, of} from "rxjs";
+import * as jwt_decode from "jwt-decode";
 
 
 @Injectable({
@@ -10,10 +11,24 @@ import {Observable, of} from "rxjs";
 })
 export class AuthService {
 
-  authenticated = true;
-  reponse;
+  authenticated = false;
 
-  constructor(private httpClient: HttpClient) { }
+  reponse;
+  reponseDecodee;
+
+  reponseErreur;
+  reponseSucces;
+
+  header;
+
+  utilisateurCourant;
+
+  constructor(private httpClient: HttpClient) {
+    this.header = new HttpHeaders({
+      'Content-Type':  'application/json',
+      'Access-Control-Allow-Origin' : '*'
+    });
+  }
 
   getAuthenticated(): boolean {
     return this.authenticated;
@@ -43,16 +58,22 @@ export class AuthService {
     console.log(message);
   }
 
+  public getDecodeAccessToken(token:string) : any{
+    try{
+      return jwt_decode(token);
+    }catch (Error) {
+      return null;
+    }
+  }
+
+
   public register(participant: Participant){
     return new Promise((resolve, reject) => {
-      const httpOptions = {
-        headers: new HttpHeaders({
-          'Content-Type':  'application/json'
-        })
-      };
+
+
 
       /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
-      this.httpClient.post('http://10.12.200.7/togetout/public/api/register', participant, httpOptions).pipe(
+      this.httpClient.post('http://10.12.200.7/togetout/public/api/register', participant, this.header).pipe(
         catchError(this.handleError('register', participant))
       ).subscribe((data)=>{
 
@@ -70,26 +91,47 @@ export class AuthService {
     })
   }
 
-
   public login(participant: Participant){
     return new Promise((resolve, reject) => {
-      const httpOptions = {
-        headers: new HttpHeaders({
-          'Content-Type':  'application/json'
-        })
-      };
 
       /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
-      this.httpClient.post('http://10.12.200.7/togetout/public/api/login_check', participant, httpOptions).pipe(
+      this.httpClient.post('http://10.12.200.7/togetout/public/api/login_check', participant, this.header).pipe(
         catchError(this.handleError('login', participant))
       ).subscribe((data)=>{
 
         console.log(data);
         this.reponse = data;
-
         console.log(this.reponse['token']);
 
         if (this.reponse['token'] != null) {
+          this.reponseDecodee = this.getDecodeAccessToken(this.reponse['token']);
+
+          this.reponseSucces = "Bonjour " + this.reponseDecodee.username + "! Vous êtes maintenant connecté";
+          resolve(this.reponse);
+        } else {
+          this.reponseErreur = "Zut! Quelque chose d'inapproprié est survenu. Recommencez!"
+          reject(this.reponse);
+        }
+      });
+    })
+  }
+
+  public getUserInfo(token:string){
+    return new Promise((resolve, reject) => {
+      this.header = new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Access-Control-Allow-Origin' : '*',
+        'Authorization': 'Bearer ' + this.reponse['token']
+      });
+
+      /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
+      this.httpClient.post('http://10.12.200.7/togetout/public/api/getuserinfo', token, this.header).pipe(
+        catchError(this.handleError('getUserInfo', token))
+      ).subscribe((data)=>{
+
+        this.utilisateurCourant = data;
+
+        if (this.utilisateurCourant != null) {
           resolve(this.reponse);
         } else {
           reject(this.reponse);
@@ -97,7 +139,6 @@ export class AuthService {
       });
     })
   }
-
 
   public editProfile(participant: Participant){
 

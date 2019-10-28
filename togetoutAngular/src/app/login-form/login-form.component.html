@@ -6,7 +6,8 @@
     <h3 class="text-center">ToGetOut</h3>
     <p class="text-center">Connectez-vous pour participer à des activités<br> et vous faire des nouveaux amis.</p>
 
-    <p class="text-center" *ngIf="this.authService.reponse">{{this.authService.reponse['messageOk']}}</p>
+    <p class="text-center" *ngIf="this.authService.reponse">{{this.authService.reponse['messageOk']}}</p> <!-- Message succes inscription -->
+    <p class="text-center" *ngIf="this.authService.reponseErreur">{{this.authService.reponseErreur}}</p> <!-- Message erreur login -->
 
     <form [formGroup]="loginForm" (ngSubmit)="onSubmitForm()">
       <div class="group">
