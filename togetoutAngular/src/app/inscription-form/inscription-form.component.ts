@@ -36,7 +36,7 @@ export class InscriptionFormComponent implements OnInit {
       ['ROLE_USER'],
       null,
       formValue['mail'],
-      '',
+      null,
       formValue['plainPassword'],
       [],
       [],
@@ -45,18 +45,15 @@ export class InscriptionFormComponent implements OnInit {
       true
 
     );
-    console.log('Nouveau participant formé par le formulaire : ')
-    console.log(nouveauParticipant);
 
     this.authService.register(nouveauParticipant).then(
       () => {
-        console.log("ici redirection vers l'accueil = succès");
-        //this.authService.setAuthenticated(true);
+        console.log("Inscription Réussie");
         this.router.navigate(['/login']);
       }
     ,
       () => {
-        console.log("ici redirection vers inscription = echec");
+        console.log("Inscription Ratée");
         this.router.navigate(['/inscription']);
     });
 

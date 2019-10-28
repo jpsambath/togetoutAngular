@@ -12,6 +12,7 @@ import { AuthService} from "../auth.service";
 export class LoginFormComponent implements OnInit {
 
   loginForm : FormGroup;
+  participant : Participant;
 
   constructor(private formBuilder: FormBuilder/*,private participantService: participantService*/, private router : Router, private authService:AuthService){
 
@@ -28,15 +29,15 @@ export class LoginFormComponent implements OnInit {
     const formValue = this.loginForm.value;
     const mailRegex = new RegExp('^[a-z]+[\w\.\-]*@(?:[a-z\.\-_0-9]*\.)*([\w\.\-]+)\.[a-z]{2,}$', 'gmi') ;
     if(formValue['login'].match(mailRegex)) {
-      const participant = new Participant(
+      this.participant = new Participant(
         null,
         null,
         null,
         [],
         null,
         formValue['login'],
-        null,
         formValue['plainPassword'],
+        null,
         [],
         [],
         null,
@@ -45,15 +46,15 @@ export class LoginFormComponent implements OnInit {
       );
     }
     else {
-      const participant = new Participant(
+      this.participant = new Participant(
         formValue['login'],
         null,
         null,
         [],
         null,
         null,
-        null,
         formValue['plainPassword'],
+        null,
         [],
         [],
         null,
@@ -61,6 +62,18 @@ export class LoginFormComponent implements OnInit {
         true
       );
     }
+
+    this.authService.login(this.participant).then(
+      () => {
+        console.log("Connexion Réussie");
+        this.authService.setAuthenticated(true);
+        this.router.navigate(['/']);
+      }
+      ,
+      () => {
+        console.log("Connexion Ratée");
+        this.router.navigate(['/login']);
+      });
 
     //this.participantService.connecterParticipant(participant);
     //Si la connexion a fonctionné this.router.navigate(['/accueil']);
