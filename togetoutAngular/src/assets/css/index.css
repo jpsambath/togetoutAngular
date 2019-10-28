@@ -25,18 +25,18 @@ input 				{
   width:300px;
 
 }
-input:focus 		{
+textarea, input:focus 		{
   outline:none;
   padding:10px 10px 2px 15px;
 }
 
-input:not(:placeholder-shown) {
+textarea:not(:placeholder-shown),input:not(:placeholder-shown) {
   outline:none;
   padding:10px 10px 2px 15px;
 }
 
 /* LABEL ======================================= */
-label 				 {
+label{
   color:#999;
   font-size:14px;
   font-weight:normal;
@@ -50,7 +50,7 @@ label 				 {
 }
 
 /* active state */
-input:focus ~ label, input:valid ~ label 		{
+input:focus ~ label, input:valid ~ label, textarea:valid ~ label {
   top:-0px;
   font-size:12px;
   color:#5264AE;
@@ -59,7 +59,7 @@ input:focus ~ label, input:valid ~ label 		{
 
 
 /* active state */
-input:focus ~ .bar:before, input:focus ~ .bar:after {
+input:focus ~ .bar:before, input:focus ~ .bar:after, textarea:focus ~ .bar:before, textarea:focus ~ .bar:after {
   width:50%;
 }
 

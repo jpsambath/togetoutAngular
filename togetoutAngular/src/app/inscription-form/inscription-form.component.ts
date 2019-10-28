@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Participant } from "../model/participant";
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {Router} from "@angular/router";
-import {AuthService} from "../auth.service";
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { Router } from "@angular/router";
+import { AuthService } from "../auth.service";
 
 @Component({
   selector: 'app-inscription-form',
