@@ -11,7 +11,7 @@ import * as jwt_decode from "jwt-decode";
 })
 export class AuthService {
 
-  authenticated = true;
+  authenticated = false;
   reponse;
 
   constructor(private httpClient: HttpClient) { }
