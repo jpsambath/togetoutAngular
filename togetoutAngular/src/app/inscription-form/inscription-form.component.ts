@@ -45,14 +45,11 @@ export class InscriptionFormComponent implements OnInit {
       true
 
     );
-    console.log('Nouveau participant formé par le formulaire : ')
-    console.log(nouveauParticipant);
 
     this.authService.register(nouveauParticipant).then(
       () => {
         console.log("Inscription Réussie");
-        this.authService.setAuthenticated(true);
-        this.router.navigate(['']);
+        this.router.navigate(['/login']);
       }
     ,
       () => {
