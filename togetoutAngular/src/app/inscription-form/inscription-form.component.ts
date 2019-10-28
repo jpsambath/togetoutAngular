@@ -51,13 +51,13 @@ export class InscriptionFormComponent implements OnInit {
 
     this.authService.register(nouveauParticipant).then(
       () => {
-        console.log("ici redirection vers l'accueil = succès");
+        console.log("Inscription Réussie");
         this.authService.setAuthenticated(true);
         this.router.navigate(['']);
       }
     ,
       () => {
-        console.log("ici redirection vers inscription = echec");
+        console.log("Inscription Ratée");
         this.router.navigate(['/inscription']);
     });
 
