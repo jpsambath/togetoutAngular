@@ -57,7 +57,7 @@ export class SortieService {
         if (data['statut'] == "ok") {
           resolve("On a les infos sorties");
         } else {
-          resolve("On a pas les infos sorties");
+          reject("On a pas les infos sorties");
         }
       });
     })

@@ -47,7 +47,7 @@ export class AnnulerSortieComponent implements OnInit {
       [],
       null
     );
-
+/*
     this.SortieService.annuleeSortie(sortieAnnulee).then(
       () => {
         console.log("ici redirection vers l'accueil = succès");
@@ -58,6 +58,6 @@ export class AnnulerSortieComponent implements OnInit {
       () => {
         console.log("ici redirection vers annuler-sortie = echec");
         this.router.navigate(['/annuler-sortie']);
-      });
+      });*/
   }
 }
