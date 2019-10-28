@@ -36,7 +36,7 @@ export class InscriptionFormComponent implements OnInit {
       ['ROLE_USER'],
       null,
       formValue['mail'],
-      null,
+      "",
       formValue['plainPassword'],
       [],
       [],

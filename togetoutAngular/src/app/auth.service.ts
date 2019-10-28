@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Participant} from "./model/participant";
 import {catchError} from "rxjs/operators";
 import {Observable, of} from "rxjs";
+import * as jwt_decode from "jwt-decode";
 
 
 @Injectable({
@@ -52,7 +53,7 @@ export class AuthService {
       };
 
       /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
-      this.httpClient.post('http://10.12.200.7/togetout/public/api/register', participant, httpOptions).pipe(
+      this.httpClient.post('http://localhost/togetout/public/api/register', participant, httpOptions).pipe(
         catchError(this.handleError('register', participant))
       ).subscribe((data)=>{
 
@@ -80,7 +81,7 @@ export class AuthService {
       };
 
       /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
-      this.httpClient.post('http://10.12.200.7/togetout/public/api/login_check', participant, httpOptions).pipe(
+      this.httpClient.post('http://localhost/togetout/public/api/login_check', participant, httpOptions).pipe(
         catchError(this.handleError('login', participant))
       ).subscribe((data)=>{
 
@@ -88,6 +89,8 @@ export class AuthService {
         this.reponse = data;
 
         console.log(this.reponse['token']);
+
+        console.log(this.getDecodedAccessToken(this.reponse['token']));
 
         if (this.reponse['token'] != null) {
           resolve(this.reponse);
@@ -103,5 +106,13 @@ export class AuthService {
 
   }
 
+  public getDecodedAccessToken(token: string): any {
+    try{
+      return jwt_decode(token);
+    }
+    catch(Error){
+      return null;
+    }
+  }
 
 }
