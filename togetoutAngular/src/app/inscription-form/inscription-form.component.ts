@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Participant } from "../model/participant";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { Router } from "@angular/router";
 import { AuthService } from "../auth.service";
 
@@ -20,10 +20,10 @@ export class InscriptionFormComponent implements OnInit {
   }
   ngOnInit(){
     this.inscriptionForm = this.formBuilder.group({
-      username : '',
-      nom : '',
-      mail : '',
-      plainPassword: ''
+      username : ['', Validators.required],
+      nom : ['', Validators.required],
+      mail : ['', [Validators.required, Validators.email]],
+      plainPassword: ['', Validators.required]
     });
   }
 
