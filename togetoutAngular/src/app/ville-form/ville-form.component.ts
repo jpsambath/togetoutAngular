@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Ville} from "../model/ville";
 
@@ -16,12 +16,12 @@ export class VilleFormComponent implements OnInit {
 
   ngOnInit() {
     this.villeForm = this.formBuilder.group({
-      nom : '',
-      codePostal : ''
+      nom : ['', Validators.required],
+      codePostal : ['', Validators.required]
     });
   }
 
-  ngOnSubmit() {
+  onSubmitForm() {
     const formValue = this.villeForm.value;
     const nouvelleVille = new Ville(
       formValue['nom'],

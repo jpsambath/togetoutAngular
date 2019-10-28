@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Etat} from "../model/etat";
 import {Sortie} from "../model/sortie";
@@ -25,8 +25,8 @@ export class SortieFormComponent implements OnInit {
 
   ngOnInit() {
     this.sortieForm = this.formBuilder.group({
-      nom : '',
-      date : '',
+      nom : ['', Validators.required],
+      date : ['', Validators.required],
       dateLimite : '',
       nbInscriptionMax : 0,
       duree : 0,

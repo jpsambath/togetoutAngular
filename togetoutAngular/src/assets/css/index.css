@@ -18,7 +18,7 @@ main{
   margin-bottom:20px;
 }
 
-input 				{
+input:not(.togetout-checkbox) 				{
   font-size:18px;
   padding:10px 10px 2px 15px;
   display:block;
@@ -900,4 +900,23 @@ span.tags
   left: 50%;
   margin-left: -10px;
   z-index: 10;
+}
+
+.custom-control-input {
+  z-index: 0 ;
+
+}
+
+label.custom-control-label {
+  position: relative;
+  padding-right: 1.5rem;
+}
+
+
+
+.custom-control-label {
+  padding-top: 3px;
+  padding-bottom: 2px;
+  padding-right: 4px;
+  margin-top: 1px;
 }
