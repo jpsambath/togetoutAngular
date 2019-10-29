@@ -10,9 +10,9 @@ export class Sortie {
 
     public nom?: string,
     public organisateur?: Participant,
-    public dateHeureDebut?: String,
+    public dateHeureDebut?: string,
     public duree?: String,
-    public dateLimiteInscription?: String,
+    public dateLimiteInscription?: string,
     public nbInscriptionMax?: number,
     public infosSortie?: string,
     public lieu?: Lieu,

@@ -6,6 +6,7 @@ import {Sortie} from "../model/sortie";
 import {VilleFormComponent} from "../ville-form/ville-form.component";
 import {LieuFormComponent} from "../lieu-form/lieu-form.component";
 import { SortieService } from "../sortie.service";
+import {MessageService} from "../message.service";
 
 @Component({
   selector: 'app-edit-sortie',
@@ -21,7 +22,7 @@ export class EditSortieComponent implements OnInit {
   private lieuAffiche= false ;
   private lieuNonAffiche= !this.lieuAffiche ;
 
-  constructor(private formBuilder: FormBuilder, private router : Router, public viewContainerRef: ViewContainerRef,private SortieService : SortieService) { }
+  constructor(private messageService:MessageService, private formBuilder: FormBuilder, private router : Router, public viewContainerRef: ViewContainerRef,private SortieService : SortieService) { }
 
   ngOnInit() {
     this.newSortieForm = this.formBuilder.group({

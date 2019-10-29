@@ -3,8 +3,8 @@
     <br><h3 class="text-center">Créer une sortie</h3>
     <p class="text-center">Créez une activité pour vous et vos amis</p>
 
-    <p class="text-center" *ngIf="this.sortieService.reponse">{{this.sortieService.reponse['messageOk']}}</p>
-    <p class="text-center" *ngIf="this.sortieService.reponse">{{this.sortieService.reponse['messageErreur']}}</p>
+    <span class="alert alert-success text-center" *ngIf="this.messageService.messageSucces">{{ this.messageService.messageSucces }}</span>
+    <span class="alert alert-warning text-center" *ngIf="this.messageService.messageErreur">{{ this.messageService.messageErreur }}</span>
     <div class="row verticalalign">
       <div class="offset-lg-2 col-lg-8 offset-md-1 col-md-10 col-sm-12 col-12 border rounded p-3 mb-3">
         <form [formGroup]="sortieForm">
