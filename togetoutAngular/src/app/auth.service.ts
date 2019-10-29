@@ -12,7 +12,7 @@ import {Router} from "@angular/router";
 })
 export class AuthService {
 
-  authenticated = false;
+  authenticated = true;
 
   reponse;
   reponseDecodee;
