@@ -6,9 +6,9 @@
     <h3 class="text-center">ToGetOut</h3>
     <p class="text-center">Connectez-vous pour participer à des activités<br> et vous faire des nouveaux amis.</p>
 
-    <span class="alert alert-success text-center" *ngIf="this.authService.reponse">{{this.authService.reponse['messageOk']}}</span> <!-- Message succes inscription -->
-    <span class="alert alert-warning text-center" *ngIf="this.authService.reponseErreur">{{this.authService.reponseErreur}}</span> <!-- Message erreur login -->
-    <span class="alert alert-warning text-center" *ngIf="this.authService.reponseSucces">{{this.authService.reponseSucces}}</span> <!-- Message succes logout -->
+    <span class="alert alert-success text-center" *ngIf="this.messageService.messageSucces">{{ this.messageService.messageSucces }}</span>
+    <span class="alert alert-warning text-center" *ngIf="this.messageService.messageErreur">{{ this.messageService.messageErreur }}</span>
+
     <div class="container-fluid">
       <form [formGroup]="loginForm" (ngSubmit)="onSubmitForm()">
         <div class="group">

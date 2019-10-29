@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Participant} from "../model/participant";
 import { Router } from "@angular/router";
 import { AuthService } from "../auth.service";
+import {MessageService} from "../message.service";
 
 @Component({
   selector: 'app-edit-profile',
@@ -13,7 +14,7 @@ export class EditProfileComponent implements OnInit {
 
   editForm : FormGroup;
 
-  constructor(private formBuilder: FormBuilder,private router : Router,private authService : AuthService) { }
+  constructor(private messageService:MessageService, private formBuilder: FormBuilder,private router : Router,private authService : AuthService) { }
 
   ngOnInit() {
     this.editForm = this.formBuilder.group({

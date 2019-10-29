@@ -5,6 +5,7 @@ import {catchError} from "rxjs/operators";
 import { AuthService} from "./auth.service";
 import {Observable, of} from "rxjs";
 import {Sortie} from "./model/sortie";
+import {MessageService} from "./message.service";
 
 @Injectable({
   providedIn: 'root'
@@ -12,17 +13,16 @@ import {Sortie} from "./model/sortie";
 export class SortieService {
   private API_KEY = '85ea3c4488f34792a52161e3bb056a5a';
   header;
+
   sortiesInscrits;
   sortiesOrganisateurs;
   sortiesSemaineActuelle;
   sortiesSemaineProchaine;
 
-  reponse;
-  //reponseOk;
-  //reponseErreur;
+  resultat;
 
 
-  constructor(private httpClient: HttpClient, private authService:AuthService) {
+  constructor(private messageService:MessageService, private httpClient: HttpClient, private authService:AuthService) {
     this.header = new HttpHeaders({
         'Content-Type':  'application/json'
       });
@@ -46,12 +46,12 @@ export class SortieService {
       this.header = new HttpHeaders({
         'Content-Type':  'application/json',
         //'Access-Control-Allow-Origin' : '*',
-        'Authorization': 'Bearer ' + this.authService.reponse['token']
+        'Authorization': 'Bearer ' + this.authService.token
       });
 
       /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
       this.httpClient.post('http://localhost/togetout/public/api/getSortieInfo', "getSortieInfo", { "headers" :this.header}).pipe(
-        catchError(this.handleError('getUserInfo', this.authService.reponse['token']))
+        catchError(this.handleError('getUserInfo', this.authService.token))
       ).subscribe((data)=>{
 
         this.sortiesInscrits = data['sortiesInscrits'];
@@ -73,7 +73,7 @@ export class SortieService {
       this.header = new HttpHeaders({
         'Content-Type':  'application/json',
         //'Access-Control-Allow-Origin' : '*',
-        'Authorization': 'Bearer ' + this.authService.reponse['token']
+        'Authorization': 'Bearer ' + this.authService.token
       });
 
       /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
@@ -81,14 +81,14 @@ export class SortieService {
         catchError(this.handleError('creerSortie', sortie))
       ).subscribe((data)=>{
 
-        this.reponse = data;
+        this.resultat = data;
 
-        if (this.reponse['statut'] == 'ok') {
-          //this.reponseOk = this.reponse['messageOk'];
-          resolve(this.reponse);
+        if (this.resultat['statut'] == 'ok') {
+          this.messageService.messageSucces = "Sortie créée avec succès";
+          resolve("creerSortie ok");
         } else {
-          //this.reponseErreur = this.reponse['messageErreur'];
-          reject(this.reponse);
+          this.messageService.messageErreur = "Sortie non créée";
+          reject("creerSortie ko");
         }
       });
     })

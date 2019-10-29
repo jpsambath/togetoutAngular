@@ -3,8 +3,8 @@
     <br><h3 class="text-center">Créer une sortie</h3>
     <p class="text-center">Créez une activité pour vous et vos amis</p>
 
-    <p class="text-center" *ngIf="this.sortieService.reponse">{{this.sortieService.reponse['messageOk']}}</p>
-    <p class="text-center" *ngIf="this.sortieService.reponse">{{this.sortieService.reponse['messageErreur']}}</p>
+    <span class="alert alert-success text-center" *ngIf="this.messageService.messageSucces">{{ this.messageService.messageSucces }}</span>
+    <span class="alert alert-warning text-center" *ngIf="this.messageService.messageErreur">{{ this.messageService.messageErreur }}</span>
     <div class="row verticalalign">
       <div class="col-2">
       </div>
@@ -17,16 +17,26 @@
             <span class="highlight"></span>
             <label>Nom de la sortie</label>
           </div>
-          <!--<div class="group">
-            <input type="date" value="{{ dateDuJour | date  }}" class="form-control" id="date" formControlName="date">
+          <div class="group">
+            <input type="date" value="{{ dateDuJour | date: 'dd/MM/yyyy' }}" class="form-control" id="date" formControlName="date">
             <span class="highlight"></span>
             <label>Date de la sortie</label>
-          </div>-->
+          </div>
           <div class="group">
-            <input type="datetime-local" class="form-control" id="dateLimite" formControlName="dateLimite">
+            <input type="time" class="form-control" id="heure" formControlName="heure">
+            <span class="highlight"></span>
+            <label>Heure de début</label>
+          </div>
+          <div class="group">
+            <input type="date" class="form-control" id="dateLimite" formControlName="dateLimite">
             <span class="highlight"></span>
             <label>Date limite d'inscription</label>
           </div>
+            <div class="group">
+              <input type="time" class="form-control" id="heureLimite" formControlName="heureLimite">
+              <span class="highlight"></span>
+              <label>Heure limite d'inscription</label>
+            </div>
           <div class="group">
             <input type="number" min="0" class="form-control" id="nbInscriptionMax" formControlName="nbInscriptionMax">
             <span class="highlight"></span>

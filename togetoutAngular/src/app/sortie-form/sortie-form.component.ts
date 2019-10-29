@@ -12,6 +12,8 @@ import {SortieService} from "../sortie.service";
 import {Site} from "../model/site";
 import {Participant} from "../model/participant";
 import {Ville} from "../model/ville";
+import {AuthService} from "../auth.service";
+import {MessageService} from "../message.service";
 
 
 @Component({
@@ -24,23 +26,27 @@ export class SortieFormComponent implements OnInit {
   sortieForm : FormGroup;
   ville = VilleFormComponent ;
   lieu = LieuFormComponent ;
-  //dateDuJour = Date.now() ;
+  dateDuJour = Date.now() ;
+  user ;
   private villeAffichee = false ;
   private villeNonAffichee = !this.villeAffichee ;
   private lieuAffiche= false ;
   private lieuNonAffiche= !this.lieuAffiche ;
 
-  constructor(private formBuilder: FormBuilder, private router : Router, public viewContainerRef: ViewContainerRef, private lieuService:LieuService, private villeService:VilleService, private sortieService:SortieService) { }
+  constructor(private messageService:MessageService, private formBuilder: FormBuilder, private router : Router, public viewContainerRef: ViewContainerRef, private lieuService:LieuService, private villeService:VilleService, private sortieService:SortieService, private authService: AuthService) { }
 
   ngOnInit() {
 
     this.lieuService.getLieux().then();
     this.villeService.getVilles().then();
+    this.user = this.authService.getUserInfo() ;
 
     this.sortieForm = this.formBuilder.group({
       nom : ['', Validators.required],
       date : ['', Validators.required],
+      heure : '',
       dateLimite : '',
+      heureLimite : 0,
       nbInscriptionMax : 0,
       duree : 0,
       infosSortie : '',
@@ -59,23 +65,26 @@ export class SortieFormComponent implements OnInit {
     const formValue = this.sortieForm.value;
     let etat ;
     if(buttonID === 'enregistrer') {
-      etat = new Etat('Créée', null) ;
+      etat = new Etat('Créée', 1) ;
     }
     else {
-      etat = new Etat('Ouverte', null) ;
+      etat = new Etat('Ouverte', 2) ;
     }
+    let dateSortie = new Date(formValue['date'] + ' ' + formValue['heure']) ;
+    let dateLimite = new Date(formValue['dateLimite'] + ' ' + formValue['heureLimite']) ;
+
     const nouvelleSortie = new Sortie(
       formValue['nom'],
       null,
-      formValue['date'],
+      formValue['date'] + ' ' + formValue['heure'],
       formValue['duree'],
-      formValue['dateLimite'],
+      formValue['dateLimite'] + ' ' + formValue['heureLimite'],
       formValue['nbInscriptionMax'],
       formValue['infosSortie'],
       new Lieu("paris centre", "", 4, 4, new Ville("Paris", 44000, 1), 1),
-      new Etat(null, 1),
-      new Site("ENI"),
-      []
+      etat,
+      null,
+      [this.authService.user.id]
     );
     console.log("*---------------JSON POUR LOIC---------------------");
     console.log(JSON.stringify(nouvelleSortie));

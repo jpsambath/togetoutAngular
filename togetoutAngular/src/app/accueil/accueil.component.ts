@@ -4,6 +4,7 @@ import { AuthService} from "../auth.service";
 import {Participant} from "../model/participant";
 import {Router} from "@angular/router";
 import {Sortie} from "../model/sortie";
+import {MessageService} from "../message.service";
 
 
 @Component({
@@ -18,10 +19,11 @@ export class AccueilComponent implements OnInit {
   listeSortiesSemaineActuelle: Sortie[] ;
   listeSortiesSemaineSuivante: Sortie[] ;
 
-  constructor(private sortieService : SortieService, private authService : AuthService, private router : Router) { }
+  constructor(private messageService:MessageService, private sortieService : SortieService, private authService : AuthService, private router : Router) { }
 
   ngOnInit() {
     console.log("1. Initialisation Accueil");
+
 
     this.sortieService.getSortieInfo().then(
       () => {

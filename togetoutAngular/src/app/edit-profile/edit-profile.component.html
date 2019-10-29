@@ -1,5 +1,8 @@
 <main class="page-content">
   <div class="container-fluid">
+    <span class="alert alert-success text-center" *ngIf="this.messageService.messageSucces">{{ this.messageService.messageSucces }}</span>
+    <span class="alert alert-warning text-center" *ngIf="this.messageService.messageErreur">{{ this.messageService.messageErreur }}</span>
+
     <h2>Edit Profile</h2>
     <hr>
     <div class="row">

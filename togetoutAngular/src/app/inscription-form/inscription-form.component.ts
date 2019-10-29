@@ -4,6 +4,7 @@ import { Participant } from "../model/participant";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { Router } from "@angular/router";
 import { AuthService } from "../auth.service";
+import {MessageService} from "../message.service";
 
 @Component({
   selector: 'app-inscription-form',
@@ -15,7 +16,7 @@ export class InscriptionFormComponent implements OnInit {
   private reponse;
   inscriptionForm : FormGroup;
 
-  constructor(private authService : AuthService, private formBuilder: FormBuilder/*,private participantService: participantService*/, private router : Router){
+  constructor(private messageService:MessageService,private authService : AuthService, private formBuilder: FormBuilder/*,private participantService: participantService*/, private router : Router){
 
   }
   ngOnInit(){
