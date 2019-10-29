@@ -67,8 +67,17 @@ export class LoginFormComponent implements OnInit {
     this.authService.login(this.participant).then(
       () => {
         console.log("Connexion Réussie");
-        this.authService.setAuthenticated(true);
-        this.router.navigate(['/']);
+        this.authService.getUserInfo().then(
+          () => {
+            this.authService.setAuthenticated(true);
+            this.router.navigate(['/']);
+          }
+          ,
+          () => {
+            console.log("Connexion Ratée");
+            this.router.navigate(['/login']);
+          });
+
       }
       ,
       () => {

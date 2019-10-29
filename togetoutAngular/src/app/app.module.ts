@@ -25,7 +25,7 @@ import {VilleFormComponent} from "./ville-form/ville-form.component";
 import {LieuFormComponent} from "./lieu-form/lieu-form.component";
 import { EditSortieComponent } from './edit-sortie/edit-sortie.component';
 import { AnnulerSortieComponent } from './annuler-sortie/annuler-sortie.component';
-import { AfficherSortieComponent } from './afficher-sortie/afficher-sortie.component';
+//import { AfficherSortieComponent } from './afficher-sortie/afficher-sortie.component';
 
 
 @NgModule({
@@ -46,7 +46,7 @@ import { AfficherSortieComponent } from './afficher-sortie/afficher-sortie.compo
     LieuFormComponent,
     EditSortieComponent,
     AnnulerSortieComponent,
-    AfficherSortieComponent
+ //   AfficherSortieComponent
   ],
   imports: [
     BrowserModule,

@@ -19,15 +19,14 @@ export class AuthService {
   reponseErreur;
   reponseSucces;
 
-  header;
+  header = new HttpHeaders({
+    'Content-Type':  'application/json'
+  });
 
   utilisateurCourant;
 
   constructor(private httpClient: HttpClient) {
-    this.header = new HttpHeaders({
-      'Content-Type':  'application/json',
-      'Access-Control-Allow-Origin' : '*'
-    });
+
   }
 
   getAuthenticated(): boolean {
@@ -70,7 +69,7 @@ export class AuthService {
   public register(participant: Participant){
     return new Promise((resolve, reject) => {
       /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
-      this.httpClient.post('http://10.12.200.7/togetout/public/api/register', participant, this.header).pipe(
+      this.httpClient.post('http://localhost/togetout/public/api/register', participant, { "headers" :this.header}).pipe(
         catchError(this.handleError('register', participant))
       ).subscribe((data)=>{
 
@@ -92,7 +91,7 @@ export class AuthService {
     return new Promise((resolve, reject) => {
 
       /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
-      this.httpClient.post('http://10.12.200.7/togetout/public/api/login_check', participant, this.header).pipe(
+      this.httpClient.post('http://localhost/togetout/public/api/login_check', participant, { "headers" :this.header}).pipe(
         catchError(this.handleError('login', participant))
       ).subscribe((data)=>{
 
@@ -113,20 +112,22 @@ export class AuthService {
     })
   }
 
-  public getUserInfo(token:string){
+  public getUserInfo(){
     return new Promise((resolve, reject) => {
       this.header = new HttpHeaders({
         'Content-Type':  'application/json',
-        'Access-Control-Allow-Origin' : '*',
+        //'Access-Control-Allow-Origin' : '*',
         'Authorization': 'Bearer ' + this.reponse['token']
       });
 
       /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
-      this.httpClient.post('http://10.12.200.7/togetout/public/api/getuserinfo', token, this.header).pipe(
-        catchError(this.handleError('getUserInfo', token))
+      this.httpClient.post('http://localhost/togetout/public/api/getUserInfo', "", { "headers" :this.header}).pipe(
+        catchError(this.handleError('getUserInfo', this.reponse['token']))
       ).subscribe((data)=>{
 
-        this.utilisateurCourant = data;
+        this.utilisateurCourant = data['participant']['0'];
+
+        console.log(this.utilisateurCourant);
 
         if (this.utilisateurCourant != null) {
           resolve(this.reponse);

@@ -67,7 +67,7 @@ export class EditSortieComponent implements OnInit {
 
     console.log('Nouvelle sortie créée par le formulaire : ')
     console.log(nouvelleSortie);
-
+/*
     this.SortieService.editSortie(nouvelleSortie).then(
       () => {
         console.log("ici redirection vers l'accueil = succès");
@@ -78,7 +78,7 @@ export class EditSortieComponent implements OnInit {
       () => {
         console.log("ici redirection vers editsortie = echec");
         this.router.navigate(['/edit-sortie']);
-      });
+      });*/
   }
 
   villeFormAppend(divId : string) {

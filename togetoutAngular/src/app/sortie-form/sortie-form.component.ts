@@ -5,6 +5,9 @@ import {Etat} from "../model/etat";
 import {Sortie} from "../model/sortie";
 import {VilleFormComponent} from "../ville-form/ville-form.component";
 import {LieuFormComponent} from "../lieu-form/lieu-form.component";
+import { VilleService} from "../ville.service";
+import {LieuService} from "../lieu.service";
+
 
 @Component({
   selector: 'app-sortie-form',
@@ -21,9 +24,13 @@ export class SortieFormComponent implements OnInit {
   private lieuAffiche= false ;
   private lieuNonAffiche= !this.lieuAffiche ;
 
-  constructor(private formBuilder: FormBuilder/*,private participantService: participantService*/, private router : Router, public viewContainerRef: ViewContainerRef) { }
+  constructor(private formBuilder: FormBuilder, private router : Router, public viewContainerRef: ViewContainerRef, private lieuService:LieuService, private villeService:VilleService ) { }
 
   ngOnInit() {
+
+    this.lieuService.getLieux().then();
+    this.villeService.getVilles().then();
+
     this.sortieForm = this.formBuilder.group({
       nom : ['', Validators.required],
       date : ['', Validators.required],

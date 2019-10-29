@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Participant} from "./model/participant";
 import {catchError} from "rxjs/operators";
-import {Sortie} from "./model/sortie";
+import { AuthService} from "./auth.service";
 import {Observable, of} from "rxjs";
 
 @Injectable({
@@ -10,32 +10,17 @@ import {Observable, of} from "rxjs";
 })
 export class SortieService {
   private API_KEY = '85ea3c4488f34792a52161e3bb056a5a';
-  private header;
-  authenticated = false;
-  reponse;
-  reponseErreur;
-  reponseSucces;
+  header;
+  sortiesInscrits;
+  sortiesOrganisateurs;
+  sortiesSemaineActuelle;
+  sortiesSemaineProchaine;
 
-  constructor(private httpClient: HttpClient) {
+
+  constructor(private httpClient: HttpClient, private authService:AuthService) {
     this.header = new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Access-Control-Allow-Origin' : '*'
+        'Content-Type':  'application/json'
       });
-  }
-
-  getAuthenticated(): boolean {
-    return this.authenticated;
-  }
-
-  setAuthenticated(value: boolean) {
-    this.authenticated = value;
-  }
-  getReponse() {
-    return this.reponse;
-  }
-
-  setReponse(value) {
-    this.reponse = value;
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
@@ -51,58 +36,31 @@ export class SortieService {
     console.log(message);
   }
 
-
-  public editSortie(newSortie: Sortie){
+  public getSortieInfo(){
     return new Promise((resolve, reject) => {
-      const httpOptions = {
-        headers: new HttpHeaders({
-          'Content-Type':  'application/json'
-        })
-      };
-
-      /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
-      this.httpClient.post('http://10.12.200.7/togetout/public/api/test/responseJSON', newSortie, httpOptions).pipe(
-        catchError(this.handleError('editSortie', newSortie))
-      ).subscribe((data)=>{
-        console.log(data);
-        this.reponse = data['statut'];
-        console.log('reponse dans editSortie lui même');
-        console.log(this.reponse);
+      this.header = new HttpHeaders({
+        'Content-Type':  'application/json',
+        //'Access-Control-Allow-Origin' : '*',
+        'Authorization': 'Bearer ' + this.authService.reponse['token']
       });
 
-      if (this.reponse == 'ok') {
-        resolve(this.reponse);
-      } else {
-        reject(this.reponse);
-      }
-    })
-  }
-
-  public annuleeSortie(sortieAnnulee: Sortie){
-    return new Promise((resolve, reject) => {
-      const httpOptions = {
-        headers: new HttpHeaders({
-          'Content-Type':  'application/json'
-        })
-      };
-
       /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
-      this.httpClient.post('http://10.12.200.7/togetout/public/api/test/responseJSON', sortieAnnulee, httpOptions).pipe(
-        catchError(this.handleError('editSortie', sortieAnnulee))
+      this.httpClient.post('http://localhost/togetout/public/api/getSortieInfo', "getSortieInfo", { "headers" :this.header}).pipe(
+        catchError(this.handleError('getUserInfo', this.authService.reponse['token']))
       ).subscribe((data)=>{
-        console.log(data);
-        this.reponse = data['statut'];
-        console.log('reponse dans annulerSortie lui même');
-        console.log(this.reponse);
-      });
 
-      if (this.reponse == 'ok') {
-        resolve(this.reponse);
-      } else {
-        reject(this.reponse);
-      }
+        this.sortiesInscrits = data['sortiesInscrits'];
+        this.sortiesOrganisateurs = data['sortiesOrganisateurs'];
+        this.sortiesSemaineActuelle = data['sortiesSemaineActuel'];
+        this.sortiesSemaineProchaine = data['sortiesSemaineProchaine'];
+
+        if (data['statut'] == "ok") {
+          resolve("On a les infos sorties");
+        } else {
+          reject("On a pas les infos sorties");
+        }
+      });
     })
   }
-
 
 }
