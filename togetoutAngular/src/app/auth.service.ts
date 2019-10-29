@@ -12,7 +12,7 @@ import {Router} from "@angular/router";
 })
 export class AuthService {
 
-  authenticated = true;
+  authenticated = false;
 
   reponse;
   reponseDecodee;
@@ -103,6 +103,8 @@ export class AuthService {
         if (this.reponse['token'] != null) {
           this.reponseDecodee = this.getDecodeAccessToken(this.reponse['token']);
 
+          localStorage.setItem("token", this.reponse['token']);
+
           this.reponseSucces = "Bonjour " + this.reponseDecodee.username + "! Vous êtes maintenant connecté";
           resolve(this.reponse);
         } else {
@@ -116,7 +118,8 @@ export class AuthService {
   public logout(participant: Participant){
     this.authenticated = false;
     this.reponse['token'] = "";
-    //Vider le storage ici.
+    localStorage.removeItem("token");
+    localStorage.removeItem("expiration");
     this.reponseSucces = "Vous avez été déconnecté! A bientôt!";
     this.router.navigate(["/login"]);
   }

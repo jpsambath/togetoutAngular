@@ -70,9 +70,6 @@ export class LoginFormComponent implements OnInit {
         this.authService.getUserInfo().then(
           () => {
             this.authService.setAuthenticated(true);
-            localStorage.setItem("token", this.authService.reponse['token'])
-            console.log("Mon Token dans localstorage");
-            console.log(localStorage.getItem("token"));
             this.router.navigate(['/']);
           }
           ,

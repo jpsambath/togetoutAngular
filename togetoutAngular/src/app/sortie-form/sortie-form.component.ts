@@ -24,6 +24,7 @@ export class SortieFormComponent implements OnInit {
   sortieForm : FormGroup;
   ville = VilleFormComponent ;
   lieu = LieuFormComponent ;
+  //dateDuJour = Date.now() ;
   private villeAffichee = false ;
   private villeNonAffichee = !this.villeAffichee ;
   private lieuAffiche= false ;
