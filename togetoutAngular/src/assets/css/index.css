@@ -22,7 +22,6 @@ input:not(.togetout-checkbox) 				{
   font-size:18px;
   padding:10px 10px 2px 15px;
   display:block;
-  width:300px;
 
 }
 textarea, input:focus 		{
@@ -602,7 +601,7 @@ body {
 
 }
 
-.btn-togetout:hover {
+.btn-togetout:enabled:hover {
   background-color: #16c7ff !important;
   color: #ffffff;
   -webkit-box-shadow: 0px 2px 10px rgba(22, 199, 255, 0.5);
@@ -801,6 +800,61 @@ body {
   bottom: 1rem;
   right: 1rem;
   font-size: 0.9em;
+}
+
+.sortiesInscrites .card .additional .more-info {
+  color: #ffffff ;
+}
+
+.sortiesOrganisees .card .user-card {
+  background-color: rgb(195, 250, 255);
+}
+
+.sortiesOrganisees .card .additional {
+  background-color: rgb(195, 250, 255);
+}
+
+.sortiesOrganisees .card .additional .more-info {
+  color: #1e1e1e;
+}
+
+.sortiesOrganisees .card .additional .user-card .level,
+.sortiesOrganisees .card .additional .user-card .points {
+  color: #1e1e1e;
+}
+
+.sortiesEnHuit .card .user-card {
+  background-color: #b4a4ce;
+}
+
+.sortiesEnHuit .card .additional {
+  background-color: #b4a4ce;
+}
+
+.sortiesEnHuit .card .additional .more-info {
+  color: #1e1e1e;
+}
+
+.sortiesEnHuit .card .additional .user-card .level,
+.sortiesEnHuit .card .additional .user-card .points {
+  color: #1e1e1e;
+}
+
+.sortiesEnQuinze .card .user-card {
+  background-color: #ff8f7f;
+}
+
+.sortiesEnQuinze .card .additional {
+  background-color: #ff8f7f;
+}
+
+.sortiesEnQuinze .card .additional .more-info {
+  color: #1e1e1e;
+}
+
+.sortiesEnQuinze .card .additional .user-card .level,
+.sortiesEnQuinze .card .additional .user-card .points {
+  color: #1e1e1e;
 }
 
 #add-ville-CSS {
