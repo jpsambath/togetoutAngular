@@ -4,6 +4,7 @@ import {Participant} from "./model/participant";
 import {catchError} from "rxjs/operators";
 import { AuthService} from "./auth.service";
 import {Observable, of} from "rxjs";
+import {Sortie} from "./model/sortie";
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,10 @@ export class SortieService {
   sortiesOrganisateurs;
   sortiesSemaineActuelle;
   sortiesSemaineProchaine;
+
+  reponse;
+  //reponseOk;
+  //reponseErreur;
 
 
   constructor(private httpClient: HttpClient, private authService:AuthService) {
@@ -58,6 +63,32 @@ export class SortieService {
           resolve("On a les infos sorties");
         } else {
           reject("On a pas les infos sorties");
+        }
+      });
+    })
+  }
+
+  public creerSortie(sortie: Sortie){
+    return new Promise((resolve, reject) => {
+      this.header = new HttpHeaders({
+        'Content-Type':  'application/json',
+        //'Access-Control-Allow-Origin' : '*',
+        'Authorization': 'Bearer ' + this.authService.reponse['token']
+      });
+
+      /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
+      this.httpClient.post('http://localhost/togetout/public/api/creerSortie', sortie, { "headers" :this.header}).pipe(
+        catchError(this.handleError('creerSortie', sortie))
+      ).subscribe((data)=>{
+
+        this.reponse = data;
+
+        if (this.reponse['statut'] == 'ok') {
+          //this.reponseOk = this.reponse['messageOk'];
+          resolve(this.reponse);
+        } else {
+          //this.reponseErreur = this.reponse['messageErreur'];
+          reject(this.reponse);
         }
       });
     })

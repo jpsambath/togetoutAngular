@@ -4,6 +4,7 @@ import {Participant} from "./model/participant";
 import {catchError} from "rxjs/operators";
 import {Observable, of} from "rxjs";
 import * as jwt_decode from "jwt-decode";
+import {Router} from "@angular/router";
 
 
 @Injectable({
@@ -25,7 +26,7 @@ export class AuthService {
 
   utilisateurCourant;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private router: Router) {
 
   }
 
@@ -111,6 +112,16 @@ export class AuthService {
       });
     })
   }
+
+  public logout(participant: Participant){
+    this.authenticated = false;
+    this.reponse['token'] = "";
+    //Vider le storage ici.
+    this.reponseSucces = "Vous avez été déconnecté! A bientôt!";
+    this.router.navigate(["/login"]);
+  }
+
+
 
   public getUserInfo(){
     return new Promise((resolve, reject) => {

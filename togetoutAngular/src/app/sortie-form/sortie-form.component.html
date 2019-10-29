@@ -1,6 +1,8 @@
 <br><h3 class="text-center">Créer une sortie</h3>
 <p class="text-center">Créez une activité pour vous et vos amis</p>
 
+<p class="text-center" *ngIf="this.sortieService.reponse">{{this.sortieService.reponse['messageOk']}}</p>
+<p class="text-center" *ngIf="this.sortieService.reponse">{{this.sortieService.reponse['messageErreur']}}</p>
 <div class="row verticalalign">
   <div class="col-2">
   </div>
@@ -29,7 +31,7 @@
         <label>Nombre maximum de participants</label>
       </div>
       <div class="group">
-        <input type="number" min="0" class="form-control" id="duree" formControlName="duree">
+        <input type="time" min="0" class="form-control" id="duree" formControlName="duree">
         <span class="highlight"></span>
         <label>Durée (en minutes)</label>
       </div>
@@ -46,8 +48,9 @@
         <div class="group">
           <div class="row">
             <div class="col-10">
-              <select name="ville" id="ville" formControlName="ville" class="form-control">
-                <option *ngFor="let ville of this.villeService.villes" value='{{ ville.id }}'>{{ ville.libelle }}</option>
+              <select name="ville" id="ville" formControlName="ville" class="form-control" (change)="changeLieu()">
+                <option value="" disabled selected hidden>Choisissez votre ville</option>
+                <option *ngFor="let ville of this.villeService.villes" value='{{ ville.id }}'>{{ ville.nom }}</option>
               </select>
             </div>
             <div class="col-2 justify-content-center">
@@ -62,7 +65,8 @@
           <div class="row">
             <div class="col-10">
           <select name="lieu" id="lieu" formControlName="lieu" class="form-control">
-            <option *ngFor="let lieu of this.lieuService.lieux" value='{{ lieu.id }}'>{{ lieu.libelle }}</option>
+            <option value="" disabled selected hidden>Choisissez votre lieu</option>
+            <option *ngFor="let lieu of this.lieuService.lieuxSelectionne" value='{{ lieu.id }}'>{{ lieu.nom }}</option>
           </select>
             </div>
             <div class="col-2 justify-content-center">

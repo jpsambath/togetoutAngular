@@ -7,6 +7,11 @@ import {VilleFormComponent} from "../ville-form/ville-form.component";
 import {LieuFormComponent} from "../lieu-form/lieu-form.component";
 import { VilleService} from "../ville.service";
 import {LieuService} from "../lieu.service";
+import {Lieu} from "../model/lieu";
+import {SortieService} from "../sortie.service";
+import {Site} from "../model/site";
+import {Participant} from "../model/participant";
+import {Ville} from "../model/ville";
 
 
 @Component({
@@ -24,7 +29,7 @@ export class SortieFormComponent implements OnInit {
   private lieuAffiche= false ;
   private lieuNonAffiche= !this.lieuAffiche ;
 
-  constructor(private formBuilder: FormBuilder, private router : Router, public viewContainerRef: ViewContainerRef, private lieuService:LieuService, private villeService:VilleService ) { }
+  constructor(private formBuilder: FormBuilder, private router : Router, public viewContainerRef: ViewContainerRef, private lieuService:LieuService, private villeService:VilleService, private sortieService:SortieService) { }
 
   ngOnInit() {
 
@@ -66,13 +71,46 @@ export class SortieFormComponent implements OnInit {
       formValue['dateLimite'],
       formValue['nbInscriptionMax'],
       formValue['infosSortie'],
-      null,
-      etat,
-      null,
+      new Lieu("paris centre", "", 4, 4, new Ville("Paris", 44000, 1), 1),
+      new Etat(null, 1),
+      new Site("ENI"),
       []
     );
+    console.log("*---------------JSON POUR LOIC---------------------");
+    console.log(JSON.stringify(nouvelleSortie));
+
+    this.sortieService.creerSortie(nouvelleSortie).then(
+      () => {
+        console.log("Sortie Créée avec Succès");
+      }
+      ,
+      () => {
+        console.log("Inscription Ratée");
+      });
+
+
+
     console.log('Nouvelle sortie créée par le formulaire : ')
     console.log(nouvelleSortie);
+  }
+
+  changeLieu(){
+    let villeSelectionnee = (document.getElementById("ville")) as HTMLSelectElement;
+    let idVilleSelectionne = (villeSelectionnee.options[villeSelectionnee.selectedIndex]).value;
+
+    this.lieuService.lieuxSelectionne = [];
+
+    this.lieuService.lieux.forEach((lieu) =>{
+      if(lieu["ville"]["id"] == idVilleSelectionne)
+        this.lieuService.lieuxSelectionne.push(lieu);
+      })
+    /*console.log("----------------- Lieu Selectionne -------------------");
+    console.log(this.lieuService.lieuxSelectionne);*/
+/*
+    console.log("Quelle ville est sélectionnée?");
+    console.log((villeSelectionnee.options[villeSelectionnee.selectedIndex]).value);
+    console.log((villeSelectionnee.options[villeSelectionnee.selectedIndex]).textContent);
+*/
   }
 
   villeFormAppend(divId : string) {

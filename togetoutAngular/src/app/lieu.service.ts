@@ -11,6 +11,7 @@ export class LieuService {
 
   header;
   lieux;
+  lieuxSelectionne = [];
   constructor(private httpClient: HttpClient, private authService:AuthService) { }
 
   private handleError<T>(operation = 'operation', result?: T) {

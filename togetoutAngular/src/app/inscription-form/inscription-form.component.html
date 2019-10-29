@@ -9,7 +9,8 @@
     <h3 class="text-center">ToGetOut</h3>
     <p class="text-center">Inscrivez-vous pour participer à des activités<br> et vous faire des nouveaux amis.</p>
 
-    <p class="text-center" *ngIf="this.authService.reponse">{{this.authService.reponse['messageErreur']}}</p>
+    <span class="alert alert-warning text-center" *ngIf="this.authService.reponse">{{this.authService.reponse['messageErreur']}}</span>
+    <span class="alert alert-success text-center" *ngIf="this.authService.reponse">{{this.authService.reponse['messageSucces']}}</span>
 
     <form [formGroup]="inscriptionForm" (ngSubmit)="onSubmitForm()">
 
