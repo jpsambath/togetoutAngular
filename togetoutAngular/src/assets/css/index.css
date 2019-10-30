@@ -18,13 +18,19 @@ main{
   margin-bottom:20px;
 }
 
+.togetout-checkbox{
+
+  margin-left:-6px;
+  margin-top:6px;
+}
+
 input:not(.togetout-checkbox) 				{
   font-size:18px;
   padding:10px 10px 2px 15px;
   display:block;
 
 }
-textarea, input:focus 		{
+textarea, input:focus:not(.togetout-checkbox)  		{
   outline:none;
   padding:10px 10px 2px 15px;
 }
