@@ -27,6 +27,7 @@ import { AnnulerSortieComponent } from './annuler-sortie/annuler-sortie.componen
 import {AuthGuardService} from "./auth-guard.service";
 import {DecoGuardService} from "./deco-guard.service";
 import { AfficherSortieComponent } from './afficher-sortie/afficher-sortie.component';
+import { AfficherProfilComponent } from './afficher-profil/afficher-profil.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { AfficherSortieComponent } from './afficher-sortie/afficher-sortie.compo
     LieuFormComponent,
     EditSortieComponent,
     AnnulerSortieComponent,
-    AfficherSortieComponent
+    AfficherSortieComponent,
+    AfficherProfilComponent
   ],
   imports: [
     BrowserModule,
