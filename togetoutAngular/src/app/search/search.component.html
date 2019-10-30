@@ -1,39 +1,51 @@
 <h3>Filtrer les sorties</h3>
 
 <form [formGroup]="searchForm" (ngSubmit)="onSubmitForm()">
-  <div class="input-group group">
-    <div class="input-group-prepend">
-      <span class="input-group-text">Lieu</span>
+
+
+    <div class="col-lg-7 col-md-5 col-sm-12 col-8">
+      <div class="input-group group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Lieu</span>
+        </div>
+        <select class="custom-select form-control" id="inputGroupSelect01">
+          <option selected>Choose...</option>
+          <option value="1">Nantes</option>
+          <option value="2">Paris</option>s
+          <option value="3">Hongkong</option>
+        </select>
+      </div>
     </div>
-    <select class="custom-select form-control" id="inputGroupSelect01">
-      <option selected>Choose...</option>
-      <option value="1">Nantes</option>
-      <option value="2">Paris</option>
-      <option value="3">Hongkong</option>
-    </select>
+
+
+  <div class = "row">
+    <div class="col-lg-7 col-md-5 col-sm-12 offset-lg-4 col-8">
+        <div class="input-group group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Recherche</span>
+          </div>
+          <input type="text" class="form-control" placeholder="Recherche" style="width: 200px">
+        </div>
+      </div>
   </div>
 
-  <div class="input-group group">
-    <div class="input-group-prepend">
-      <span class="input-group-text">Recherche</span>
-    </div>
-  <input type="text" class="form-control" placeholder="Recherche">
-  </div>
+   <div class="row">
+     <div class="col-lg-7 col-md-5 col-sm-12 offset-4 col-8">
+        <p>Entre</p>
+        <div class="input-group-prepend">
+          <span class="input-group-text">Date Début</span>
+          <input type="text" class="form-control" placeholder="Recherche">
+        </div>
+     </div>
 
-
-  <div class="input-group group">
-    <p>Entre</p>
-    <div class="input-group-prepend">
-      <span class="input-group-text">Date Début</span>
+     <div class="col-lg-7 col-md-5 col-sm-12 offset-4 col-8">
+        <p>et</p>
+        <div class="input-group-prepend">
+          <span class="input-group-text">Date Fin</span>
+          <input type="text" class="form-control" placeholder="Recherche">
+        </div>
+     </div>
     </div>
-    <input type="text" class="form-control" placeholder="Recherche">
-
-    <p>et</p>
-    <div class="input-group-prepend">
-      <span class="input-group-text">Date Fin</span>
-    </div>
-    <input type="text" class="form-control" placeholder="Recherche">
-  </div>
 <!--
   <p>Inline checkboxes</p>
   <div class="checkbox checkbox-inline">
