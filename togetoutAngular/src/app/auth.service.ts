@@ -77,7 +77,6 @@ export class AuthService {
         catchError(this.handleError('register', participant))
       ).subscribe((data)=>{
 
-        console.log(data);
         this.reponse = data;
 
         console.log(this.reponse['statut']);
@@ -128,8 +127,9 @@ export class AuthService {
       this.httpClient.post('http://10.12.200.7/togetout/public/api/getuserinfo', token, this.header).pipe(
         catchError(this.handleError('getUserInfo', token))
       ).subscribe((data)=>{
-
-        this.utilisateurCourant = data;
+        console.log("Est ce que tu me retournes de la data?");
+        console.log(data);
+        this.utilisateurCourant = data['participant'];
 
         if (this.utilisateurCourant != null) {
           resolve(this.reponse);

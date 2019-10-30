@@ -16,19 +16,12 @@ export class AccueilComponent implements OnInit {
   constructor(private sortieService : SortieService, private authService : AuthService, private router : Router) { }
 
   ngOnInit() {
-    /*if(!this.authService.authenticated){
-      this.router.navigate(['/login']);
-    }*/
-
-    this.reponses = this.authService.getReponse();
-    console.log('statut dans accueil');
-    console.log(this.reponses);
-
-    /*this.authService.getReponse().subscribe((data)=>{
-        this.reponses = data;
-        console.log("ici accueil");
-        console.log(this.reponses);
-    });*/
+    if(!this.authService.getAuthenticated())
+      this.router.navigate(["/inscription"]);
+    else
+    {
+    this.authService.getUserInfo(this.authService.reponse['token']);
+    }
 
   }
 

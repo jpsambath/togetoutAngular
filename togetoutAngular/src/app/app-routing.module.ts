@@ -11,7 +11,7 @@ import {EditSortieComponent} from "./edit-sortie/edit-sortie.component";
 
 
 const routes: Routes = [
-  {path: '', component: AccueilComponent},
+  {path: '', component: InscriptionFormComponent},
   {path: 'inscription', component: InscriptionFormComponent},
   {path: 'login', component: LoginFormComponent},
   {path: 'creer', component: SortieFormComponent},
