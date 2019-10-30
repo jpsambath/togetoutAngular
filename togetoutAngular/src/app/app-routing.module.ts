@@ -12,6 +12,7 @@ import {AnnulerSortieComponent} from "./annuler-sortie/annuler-sortie.component"
 import {AuthGuardService} from "./auth-guard.service";
 import {DecoGuardService} from "./deco-guard.service";
 import {AfficherSortieComponent} from "./afficher-sortie/afficher-sortie.component";
+import {AfficherProfilComponent} from "./afficher-profil/afficher-profil.component";
 //import {AfficherSortieComponent} from "./afficher-sortie/afficher-sortie.component";
 
 
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path: 'editsortie', canActivate: [AuthGuardService], component : EditSortieComponent},
   {path: 'anuleesortie', canActivate: [AuthGuardService], component : AnnulerSortieComponent},
   {path: 'detailSortie', canActivate: [AuthGuardService], component : AfficherSortieComponent},
+  {path: 'afficheProfil', component: AfficherProfilComponent},
   {path: '**', canActivate: [AuthGuardService], redirectTo: ''}
 
 ];

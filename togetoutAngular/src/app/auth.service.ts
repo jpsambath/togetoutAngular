@@ -9,7 +9,7 @@ import {MessageService} from "./message.service";
 import {Message} from "ng-chat";
 import * as MesConstantes from './model/global'
 
-import Profile = module;
+
 
 
 
