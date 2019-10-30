@@ -28,6 +28,7 @@ import {AuthGuardService} from "./auth-guard.service";
 import {DecoGuardService} from "./deco-guard.service";
 import { AfficherSortieComponent } from './afficher-sortie/afficher-sortie.component';
 import {DatePipe} from "@angular/common";
+import {Global} from "./model/global";
 
 
 @NgModule({
