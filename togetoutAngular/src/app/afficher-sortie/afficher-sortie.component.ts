@@ -46,6 +46,9 @@ export class AfficherSortieComponent implements OnInit {
 
   public afficherProfil(participant: Participant) {
     this.authService.setProfilAffiche(participant) ;
-    this.router.navigate(["/afficheProfil"]) ;
+    if(participant.id == this.authService.user.id)
+      this.router.navigate(["/editProfile"]) ;
+    else
+      this.router.navigate(["/afficheProfil"]) ;
   }
 }
