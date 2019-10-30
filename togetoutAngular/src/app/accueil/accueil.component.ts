@@ -17,7 +17,7 @@ export class AccueilComponent implements OnInit {
   listeSortiesInscrits: Sortie[] ;
   listeSortiesOrganisateurs: Sortie[] ;
   listeSortiesSemaineActuelle: Sortie[] ;
-  listeSortiesSemaineSuivante: Sortie[] ;
+  listeSortiesSemaineProchaine: Sortie[] ;
 
   constructor(private messageService:MessageService, private sortieService : SortieService, private authService : AuthService, private router : Router) { }
 
@@ -34,12 +34,12 @@ export class AccueilComponent implements OnInit {
         this.listeSortiesInscrits = this.sortieService.sortiesInscrits ;
         this.listeSortiesOrganisateurs = this.sortieService.sortiesOrganisateurs ;
         this.listeSortiesSemaineActuelle = this.sortieService.sortiesSemaineActuelle ;
-        this.listeSortiesSemaineSuivante = this.sortieService.sortiesSemaineProchaine ;
+        this.listeSortiesSemaineProchaine = this.sortieService.sortiesSemaineProchaine ;
 
         console.log(this.listeSortiesInscrits);
         console.log(this.listeSortiesOrganisateurs);
         console.log(this.sortieService.sortiesSemaineActuelle);
-        console.log(this.listeSortiesSemaineSuivante);
+        console.log(this.listeSortiesSemaineProchaine);
 
       }
       ,
