@@ -19,7 +19,7 @@ export class AfficherSortieComponent implements OnInit {
   ville = VilleFormComponent ;
   lieu = LieuFormComponent ;
   sortie: Sortie ;
-  constructor(private messageService:MessageService, private formBuilder: FormBuilder, private router : Router, public viewContainerRef: ViewContainerRef,private sortieService : SortieService, public datepipe: DatePipe) { }
+  constructor(private messageService:MessageService, private formBuilder: FormBuilder, private router : Router, public viewContainerRef: ViewContainerRef,private sortieService:SortieService, public datepipe: DatePipe) { }
 
   ngOnInit() {
     console.log("Initialisation de la page de détails.")
