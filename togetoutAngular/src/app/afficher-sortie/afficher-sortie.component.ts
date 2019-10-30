@@ -8,6 +8,7 @@ import {MessageService} from "../message.service";
 import {Sortie} from "../model/sortie";
 import {DatePipe, formatDate} from "@angular/common";
 import {Participant} from "../model/participant";
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-afficher-sortie',
@@ -20,7 +21,7 @@ export class AfficherSortieComponent implements OnInit {
   ville = VilleFormComponent ;
   lieu = LieuFormComponent ;
   sortie: Sortie ;
-  constructor(private messageService:MessageService, private formBuilder: FormBuilder, private router : Router, public viewContainerRef: ViewContainerRef,private sortieService : SortieService, public datepipe: DatePipe) { }
+  constructor(private messageService:MessageService, private formBuilder: FormBuilder, private authService: AuthService, private router : Router, public viewContainerRef: ViewContainerRef,private sortieService : SortieService, public datepipe: DatePipe) { }
 
   ngOnInit() {
     console.log("Initialisation de la page de détails.")
@@ -44,7 +45,7 @@ export class AfficherSortieComponent implements OnInit {
   }
 
   public afficherProfil(participant: Participant) {
-    //this.authService.setProfilAffiche(this.sortie) ;
-    this.router.navigate(["/editSortie"]) ;
+    this.authService.setProfilAffiche(participant) ;
+    this.router.navigate(["/afficheProfil"]) ;
   }
 }
