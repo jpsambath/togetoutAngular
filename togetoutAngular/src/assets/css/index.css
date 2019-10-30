@@ -990,3 +990,7 @@ label.custom-control-label {
   padding-right: 4px;
   margin-top: 1px;
 }
+
+.details {
+  background-color: lightgray ;
+}

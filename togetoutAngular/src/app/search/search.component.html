@@ -29,46 +29,40 @@
     <div class="input-group-prepend">
       <span class="input-group-text">Entre</span>
     </div>
-    <input type="text" formControlName="dateDebut" class="form-control" placeholder="Date de Début">
+    <input type="text" formControlName="dateDebut" class="form-control mr-2" placeholder="Date de Début">
 
 
     <div class="input-group-prepend ml-2">
       <span class="input-group-text">Et</span>
     </div>
-    <input type="text" formControlName="dateFin" class="form-control ml-2" placeholder="Date de Fin">
+    <input type="text" formControlName="dateFin" class="form-control" placeholder="Date de Fin">
   </div>
 
   <div class="input-group group">
     <div class="custom-control custom-checkbox mb-3">
       <input type="checkbox" class="togetout-checkbox custom-control-input" id="sortieOrganisateur">
-      <label class="custom-control-label" for="sortieOrganisateur">Default unchecked</label>
+      <label class="custom-control-label" for="sortieOrganisateur">Sorties dont je suis l'organisateur</label>
     </div>
 
     <div class="custom-control custom-checkbox mb-3">
       <input type="checkbox" class="custom-control-input" id="sortieInscrit" checked>
-      <label class="custom-control-label" for="sortieInscrit">Default unchecked</label>
+      <label class="custom-control-label" for="sortieInscrit">Sorties auxquelles je suis inscrit</label>
     </div>
 
     <div class="custom-control custom-checkbox mb-3">
       <input type="checkbox" class="custom-control-input" id="sortiePasInscrit">
-      <label class="custom-control-label" for="sortiePasInscrit">Default unchecked</label>
+      <label class="custom-control-label" for="sortiePasInscrit">Sorties auxquelles je ne suis pas inscrit</label>
     </div>
 
     <div class="custom-control custom-checkbox mb-3">
       <input type="checkbox" class="custom-control-input" id="sortiePassees">
-      <label class="custom-control-label" for="sortiePassees">Default unchecked</label>
+      <label class="custom-control-label" for="sortiePassees">Sorties passées</label>
     </div>
   </div>
-  <!-- Default unchecked -->
 
-  <!-- Default unchecked -->
-
-  <!-- Default unchecked -->
-
-
-
-
-
+  <div class="input-group group float-right">
+  <button type="submit" class="btn btn-togetout offset-10" [disabled]="searchForm.invalid">Filtrer les sorties</button>
+  </div>
 
 </form>
 

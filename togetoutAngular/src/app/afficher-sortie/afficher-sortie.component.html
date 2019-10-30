@@ -10,68 +10,69 @@
           <div class="row">
             <div class="col-6">
               <div class="group">
-                <input type="text" class="form-control" id="nom" formControlName="nom"  value="{{ sortie.nom }}" readonly>
+                <input type="text" class="form-control details" id="nom" formControlName="nom">
                 <span class="highlight"></span>
                 <label>Nom de la sortie</label>
               </div>
               <div class="group">
-                <input type="text" class="form-control" id="date" formControlName="date"  value="{{ sortie.dateHeureDebut | date: 'dd/MM/yyyy - HH:mm' }}" readonly >
+                <input type="text" class="form-control details" id="date" formControlName="date">
                 <span class="highlight"></span>
                 <label>Date de la sortie</label>
               </div>
               <div class="group">
-                <input type="text" class="form-control" id="dateLimite" formControlName="dateLimite" value="{{ sortie.dateLimiteInscription | date: 'dd/MM/yyyy - HH:mm' }}" readonly>
+                <input type="text" class="form-control details" id="dateLimite" formControlName="dateLimite">
                 <span class="highlight"></span>
                 <label>Date limite d'inscription</label>
               </div>
               <div class="group">
-                <input type="number" min="0" class="form-control" id="nbInscriptionMax" formControlName="nbInscriptionMax" value="{{ sortie.nbInscriptionMax }}" readonly >
+                <input type="number" min="0" class="form-control details" id="nbInscriptionMax" formControlName="nbInscriptionMax">
                 <span class="highlight"></span>
                 <label>Nombre maximum de participants</label>
               </div>
               <div class="group">
-                <input type="text" class="form-control" id="duree" formControlName="duree" value="{{ sortie.duree | date: 'HH:mm' }}" readonly>
+                <input type="text" class="form-control details" id="duree" formControlName="duree">
                 <span class="highlight"></span>
                 <label>Durée (en minutes)</label>
               </div>
               <div class="group">
-                <textarea placeholder="Description et infos" class="form-control" id="infosSortie" formControlName="infosSortie" style="height: 95px" value="{{ sortie.infosSortie }}"  readonly ></textarea>
+                <textarea placeholder="Description et infos" class="form-control details" id="infosSortie" formControlName="infosSortie" style="height: 95px"></textarea>
               </div>
             </div>
             <div class="col-6">
               <div class="group">
-                <input type="text" class="form-control" id="site" formControlName="site" value="{{ sortie.site.nom }}" readonly>
+                <input type="text" class="form-control details" id="site" formControlName="site">
                 <span class="highlight"></span>
                 <label>Ville organisatrice</label>
               </div>
               <div class="group">
-                <input type="text" class="form-control" id="lieu" formControlName="lieu" value="{{ sortie.lieu.nom }}" readonly>
+                <input type="text" class="form-control details" id="lieu" formControlName="lieu">
                 <span class="highlight"></span>
                 <label>Ville organisatrice</label>
               </div>
               <div class="group">
-                <input type="text" class="form-control" id="rue" formControlName="rue" value="{{ sortie.lieu.rue }}" readonly>
+                <input type="text" class="form-control details" id="rue" formControlName="rue">
                 <span class="highlight"></span>
                 <label>Rue</label>
               </div>
               <div class="group">
-                <input type="text" class="form-control" id="codePostal" formControlName="codePostal" value="{{ sortie.lieu.ville.codePostal }}" readonly>
+                <input type="text" class="form-control details" id="codePostal" formControlName="codePostal">
                 <span class="highlight"></span>
                 <label>Code postal</label>
               </div>
               <div class="group">
-                <input type="text" class="form-control" id="latitude" formControlName="latitude" value="{{ sortie.lieu.latitude }}" readonly>
+                <input type="text" class="form-control details" id="latitude" formControlName="latitude">
                 <span class="highlight"></span>
                 <label>Latitude</label>
               </div>
               <div class="group">
-                <input type="text" class="form-control" id="longitude" formControlName="longitude" value="{{ sortie.lieu.longitude }}" readonly>
+                <input type="text" class="form-control details" id="longitude" formControlName="longitude">
                 <span class="highlight"></span>
                 <label>Longitude</label>
               </div>
             </div>
           </div>
           <br>
+          <h2>Participants</h2>
           <table id="listeParticipant" class="table">
             <thead class="thead-dark">
               <tr>
