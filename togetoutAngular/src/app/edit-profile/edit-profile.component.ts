@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Participant} from "../model/participant";
+import { Router } from "@angular/router";
+import { AuthService } from "../auth.service";
+import {MessageService} from "../message.service";
 
 @Component({
   selector: 'app-edit-profile',
@@ -10,10 +13,23 @@ import {Participant} from "../model/participant";
 export class EditProfileComponent implements OnInit {
 
   editForm : FormGroup;
+  username: string;
+  prenom: string ;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private messageService:MessageService, private formBuilder: FormBuilder,private router : Router,private authService : AuthService) { }
 
   ngOnInit() {
+    this.authService.getUserInfo().then(
+      () => {
+        console.log("Récupération Sorties Réussie");
+
+      }
+      ,
+      () => {
+        console.log("Récupération Sorties Ratée");
+      });
+
+
     this.editForm = this.formBuilder.group({
       username : ['', Validators.required],
       prenom : ['', Validators.required],
@@ -45,21 +61,16 @@ export class EditProfileComponent implements OnInit {
       null
     );
 
+    this.authService.editProfile(participant).then(
+      () => {
+        console.log("ici redirection vers l'accueil = succès");
+        this.authService.setAuthenticated(true);
+        this.router.navigate(['']);
+      }
+      ,
+      () => {
+        console.log("ici redirection vers editProfile = echec");
+        this.router.navigate(['/edit-profile']);
+      });
   }
-  /*
-    public username?: string,
-    public nom?: string,
-    public prenom?: string,
-    public roles?: string[],
-    public telephone?: string,
-    public email?: string,
-    public password?:string,
-    public plainPassword?: string,
-    public sorties?: Sortie[],
-    public sortieCreer?: Sortie[],
-    public site?: Site,
-    public administrateur?: boolean,
-    public actif?: boolean,
-    public id?: number
-   */
 }

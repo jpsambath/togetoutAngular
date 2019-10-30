@@ -13,7 +13,6 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { AuthService} from "./auth.service";
 import { SortieService} from "./sortie.service";
-import { AuthGuard} from "./auth.guard";
 import { HttpClientModule } from '@angular/common/http';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import * as $ from "jquery";
@@ -24,6 +23,11 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import {VilleFormComponent} from "./ville-form/ville-form.component";
 import {LieuFormComponent} from "./lieu-form/lieu-form.component";
 import { EditSortieComponent } from './edit-sortie/edit-sortie.component';
+import { AnnulerSortieComponent } from './annuler-sortie/annuler-sortie.component';
+import {AuthGuardService} from "./auth-guard.service";
+import {DecoGuardService} from "./deco-guard.service";
+import { AfficherSortieComponent } from './afficher-sortie/afficher-sortie.component';
+import {DatePipe} from "@angular/common";
 
 
 @NgModule({
@@ -42,7 +46,9 @@ import { EditSortieComponent } from './edit-sortie/edit-sortie.component';
     EditProfileComponent,
     VilleFormComponent,
     LieuFormComponent,
-    EditSortieComponent
+    EditSortieComponent,
+    AnnulerSortieComponent,
+    AfficherSortieComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +59,7 @@ import { EditSortieComponent } from './edit-sortie/edit-sortie.component';
   entryComponents: [VilleFormComponent,
   LieuFormComponent
   ],
-  providers: [AuthService, SortieService, AuthGuard],
+  providers: [AuthService, SortieService, AuthGuardService, DecoGuardService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

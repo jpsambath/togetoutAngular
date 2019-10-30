@@ -22,7 +22,6 @@ input:not(.togetout-checkbox) 				{
   font-size:18px;
   padding:10px 10px 2px 15px;
   display:block;
-  width:300px;
 
 }
 textarea, input:focus 		{
@@ -34,6 +33,23 @@ textarea:not(:placeholder-shown),input:not(:placeholder-shown) {
   outline:none;
   padding:10px 10px 2px 15px;
 }
+
+.parent-div input[type=file] {
+  left: 0;
+  top: 0;
+  opacity: 0;
+  position: absolute;
+  font-size: 90px;
+}
+
+.btn-upload {  /* bouton des input de type file */
+  border-radius: 10px;
+  background: #6b7482;
+  color: #ffffff;
+  height : 35px;
+  font-size:0.9rem;
+}
+
 
 /* LABEL ======================================= */
 label{
@@ -602,7 +618,7 @@ body {
 
 }
 
-.btn-togetout:hover {
+.btn-togetout:enabled:hover {
   background-color: #16c7ff !important;
   color: #ffffff;
   -webkit-box-shadow: 0px 2px 10px rgba(22, 199, 255, 0.5);
@@ -633,8 +649,7 @@ body {
 .card {
   width: 450px;
   height: 250px;
-  background-color: #fff;
-  background: linear-gradient(#f8f8f8, #fff);
+  background: #fff linear-gradient(#f8f8f8, #fff);
   box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
   border-radius: 6px;
   overflow: hidden;
@@ -801,6 +816,61 @@ body {
   bottom: 1rem;
   right: 1rem;
   font-size: 0.9em;
+}
+
+.sortiesInscrites .card .additional .more-info {
+  color: #ffffff ;
+}
+
+.sortiesOrganisees .card .user-card {
+  background-color: rgb(195, 250, 255);
+}
+
+.sortiesOrganisees .card .additional {
+  background-color: rgb(195, 250, 255);
+}
+
+.sortiesOrganisees .card .additional .more-info {
+  color: #1e1e1e;
+}
+
+.sortiesOrganisees .card .additional .user-card .level,
+.sortiesOrganisees .card .additional .user-card .points {
+  color: #1e1e1e;
+}
+
+.sortiesEnHuit .card .user-card {
+  background-color: #b4a4ce;
+}
+
+.sortiesEnHuit .card .additional {
+  background-color: #b4a4ce;
+}
+
+.sortiesEnHuit .card .additional .more-info {
+  color: #1e1e1e;
+}
+
+.sortiesEnHuit .card .additional .user-card .level,
+.sortiesEnHuit .card .additional .user-card .points {
+  color: #1e1e1e;
+}
+
+.sortiesEnQuinze .card .user-card {
+  background-color: #ff8f7f;
+}
+
+.sortiesEnQuinze .card .additional {
+  background-color: #ff8f7f;
+}
+
+.sortiesEnQuinze .card .additional .more-info {
+  color: #1e1e1e;
+}
+
+.sortiesEnQuinze .card .additional .user-card .level,
+.sortiesEnQuinze .card .additional .user-card .points {
+  color: #1e1e1e;
 }
 
 #add-ville-CSS {

@@ -5,6 +5,8 @@ import {Etat} from "../model/etat";
 import {Sortie} from "../model/sortie";
 import {VilleFormComponent} from "../ville-form/ville-form.component";
 import {LieuFormComponent} from "../lieu-form/lieu-form.component";
+import { SortieService } from "../sortie.service";
+import {MessageService} from "../message.service";
 
 @Component({
   selector: 'app-edit-sortie',
@@ -20,7 +22,7 @@ export class EditSortieComponent implements OnInit {
   private lieuAffiche= false ;
   private lieuNonAffiche= !this.lieuAffiche ;
 
-  constructor(private formBuilder: FormBuilder, private router : Router, public viewContainerRef: ViewContainerRef) { }
+  constructor(private messageService:MessageService, private formBuilder: FormBuilder, private router : Router, public viewContainerRef: ViewContainerRef,private SortieService : SortieService) { }
 
   ngOnInit() {
     this.newSortieForm = this.formBuilder.group({
@@ -63,8 +65,21 @@ export class EditSortieComponent implements OnInit {
       [],
       null
     );
-    //console.log('Nouvelle sortie créée par le formulaire : ')
-    //console.log(nouvelleSortie);
+
+    console.log('Nouvelle sortie créée par le formulaire : ')
+    console.log(nouvelleSortie);
+/*
+    this.SortieService.editSortie(nouvelleSortie).then(
+      () => {
+        console.log("ici redirection vers l'accueil = succès");
+        this.SortieService.setAuthenticated(true);
+        this.router.navigate(['']);
+      }
+      ,
+      () => {
+        console.log("ici redirection vers editsortie = echec");
+        this.router.navigate(['/edit-sortie']);
+      });*/
   }
 
   villeFormAppend(divId : string) {
