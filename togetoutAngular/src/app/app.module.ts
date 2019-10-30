@@ -27,6 +27,7 @@ import { AnnulerSortieComponent } from './annuler-sortie/annuler-sortie.componen
 import {AuthGuardService} from "./auth-guard.service";
 import {DecoGuardService} from "./deco-guard.service";
 import { AfficherSortieComponent } from './afficher-sortie/afficher-sortie.component';
+import {DatePipe} from "@angular/common";
 
 
 @NgModule({
@@ -58,7 +59,7 @@ import { AfficherSortieComponent } from './afficher-sortie/afficher-sortie.compo
   entryComponents: [VilleFormComponent,
   LieuFormComponent
   ],
-  providers: [AuthService, SortieService, AuthGuardService, DecoGuardService],
+  providers: [AuthService, SortieService, AuthGuardService, DecoGuardService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
