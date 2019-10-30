@@ -64,7 +64,7 @@ export class AuthService {
   public register(participant: Participant){
     return new Promise((resolve, reject) => {
       /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
-      this.httpClient.post('http://localhost/togetout/public/api/register', participant, { "headers" :this.header}).pipe(
+      this.httpClient.post('http://10.12.200.10/togetout/public/api/register', participant, { "headers" :this.header}).pipe(
         catchError(this.handleError('register', participant))
       ).subscribe((data)=>{
 
@@ -85,7 +85,7 @@ export class AuthService {
     return new Promise((resolve, reject) => {
 
       /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
-      this.httpClient.post('http://localhost/togetout/public/api/login_check', participant, { "headers" :this.header}).pipe(
+      this.httpClient.post('http://10.12.200.10/togetout/public/api/login_check', participant, { "headers" :this.header}).pipe(
         catchError(this.handleError('login', participant))
       ).subscribe((data)=>{
 
@@ -131,7 +131,7 @@ export class AuthService {
         'Authorization': 'Bearer ' + this.token
       });
 
-      this.httpClient.post('http://localhost/togetout/public/api/getUserInfo', "", { "headers" :this.header}).pipe(
+      this.httpClient.post('http://10.12.200.10/togetout/public/api/getUserInfo', "", { "headers" :this.header}).pipe(
         catchError(this.handleError('getUserInfo', this.token))
       ).subscribe((data)=>{
 
@@ -161,7 +161,7 @@ export class AuthService {
       };
 
       /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
-      this.httpClient.post('http://10.12.200.7/togetout/public/api/test/responseJSON', participant, httpOptions).pipe(
+      this.httpClient.post('http://10.12.200.10/togetout/public/api/test/responseJSON', participant, httpOptions).pipe(
         catchError(this.handleError('editProfile', participant))
       ).subscribe((data)=>{
         console.log(data);

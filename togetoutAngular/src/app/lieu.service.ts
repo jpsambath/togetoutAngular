@@ -38,7 +38,7 @@ export class LieuService {
       });
 
       /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
-      this.httpClient.post('http://localhost/togetout/public/api/getLieux', "getLieux", { "headers" :this.header}).pipe(
+      this.httpClient.post('http://10.12.200.10/togetout/public/api/getLieux', "getLieux", { "headers" :this.header}).pipe(
         catchError(this.handleError('getVille', this.authService.token))
       ).subscribe((data)=>{
 
