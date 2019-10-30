@@ -81,11 +81,11 @@
                 <th>Prénom</th>
               </tr>
             </thead>
-            <tr *ngFor="let participant of sortie.participants">
+            <a routerLink=""><tr *ngFor="let participant of sortie.participants">
               <td>{{ participant.username }}</td>
               <td>{{ participant.nom }}</td>
               <td>{{ participant.prenom }}</td>
-            </tr>
+            </tr></a>
           </table>
         </form>
       </div>
