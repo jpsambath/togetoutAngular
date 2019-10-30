@@ -1,10 +1,12 @@
-import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {Component, Input, OnInit, ViewContainerRef} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import { SortieService } from "../sortie.service";
 import {VilleFormComponent} from "../ville-form/ville-form.component";
 import {LieuFormComponent} from "../lieu-form/lieu-form.component";
 import {MessageService} from "../message.service";
+import {Sortie} from "../model/sortie";
+import {DatePipe, formatDate} from "@angular/common";
 
 @Component({
   selector: 'app-afficher-sortie',
@@ -16,23 +18,27 @@ export class AfficherSortieComponent implements OnInit {
   afficherSortie : FormGroup;
   ville = VilleFormComponent ;
   lieu = LieuFormComponent ;
-  constructor(private messageService:MessageService, private formBuilder: FormBuilder, private router : Router, public viewContainerRef: ViewContainerRef,private SortieService : SortieService) { }
+  sortie: Sortie ;
+  constructor(private messageService:MessageService, private formBuilder: FormBuilder, private router : Router, public viewContainerRef: ViewContainerRef,private sortieService : SortieService, public datepipe: DatePipe) { }
 
   ngOnInit() {
+    console.log("Initialisation de la page de détails.")
+    this.sortie = this.sortieService.getSortieAffichee() ;
+    console.log(this.sortie) ;
     this.afficherSortie = this.formBuilder.group({
-      nom : ['', Validators.required],
-      date : ['', Validators.required],
-      dateLimite : '',
-      nbInscriptionMax : 0,
-      duree : 0,
-      infosSortie : '',
-      site : null,
-      ville : '',
-      lieu : '',
-      rue : '',
-      codePostal : '',
-      latitude : '',
-      longitude : ''
+      nom : [this.sortie.nom, Validators.required],
+      date : [this.datepipe.transform(this.sortie.dateHeureDebut, 'dd/MM/yyyy - HH:mm'), Validators.required],
+      dateLimite : this.datepipe.transform(this.sortie.dateLimiteInscription, 'dd/MM/yyyy - HH:mm'),
+      nbInscriptionMax : this.sortie.nbInscriptionMax,
+      duree : this.datepipe.transform(this.sortie.dateLimiteInscription, 'HH:mm'),
+      infosSortie : this.sortie.infosSortie,
+      site : this.sortie.site.nom,
+      ville : this.sortie.lieu.ville.nom,
+      lieu : this.sortie.lieu.nom,
+      rue : this.sortie.lieu.rue,
+      codePostal : this.sortie.lieu.ville.codePostal,
+      latitude : this.sortie.lieu.latitude,
+      longitude : this.sortie.lieu.longitude
     });
   }
 }

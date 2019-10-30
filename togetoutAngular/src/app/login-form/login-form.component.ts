@@ -19,9 +19,6 @@ export class LoginFormComponent implements OnInit {
 
   }
   ngOnInit(){
-    console.log("token :" + localStorage.getItem('token'));
-    if(localStorage.getItem('token') != null)
-      localStorage.removeItem('token');
 
     this.loginForm = this.formBuilder.group({
       login : ['', Validators.required],

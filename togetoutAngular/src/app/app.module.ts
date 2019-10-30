@@ -25,7 +25,8 @@ import {LieuFormComponent} from "./lieu-form/lieu-form.component";
 import { EditSortieComponent } from './edit-sortie/edit-sortie.component';
 import { AnnulerSortieComponent } from './annuler-sortie/annuler-sortie.component';
 import {AuthGuardService} from "./auth-guard.service";
-//import { AfficherSortieComponent } from './afficher-sortie/afficher-sortie.component';
+import {DecoGuardService} from "./deco-guard.service";
+import { AfficherSortieComponent } from './afficher-sortie/afficher-sortie.component';
 
 
 @NgModule({
@@ -46,7 +47,7 @@ import {AuthGuardService} from "./auth-guard.service";
     LieuFormComponent,
     EditSortieComponent,
     AnnulerSortieComponent,
- //   AfficherSortieComponent
+    AfficherSortieComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +58,7 @@ import {AuthGuardService} from "./auth-guard.service";
   entryComponents: [VilleFormComponent,
   LieuFormComponent
   ],
-  providers: [AuthService, SortieService, AuthGuardService],
+  providers: [AuthService, SortieService, AuthGuardService, DecoGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -14,17 +14,22 @@ export class AuthGuardService implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     console.log("AuthService authenticated : "+this.authService.authenticated) ;
     console.log("Token en local storage ? " + localStorage.getItem('token') != null ? localStorage.getItem('token') : "null") ;
-    if(this.authService.authenticated) {
-      return true;
-    } else {
+
       if(localStorage.getItem('token')!= null) {
-        this.authService.authenticated = true ;
-        this.authService.getUserInfo() ;
-        return true ;
+        this.authService.authenticated = true;
+        this.authService.token = localStorage.getItem('token');
+        this.authService.getUserInfo().then(
+          ()=>{
+            return true;
+          },
+          ()=>{
+            return false;
+          });
+        return true;
       }
       else {
         this.router.navigate(['/login']);
-      }
+
     }
   }
 

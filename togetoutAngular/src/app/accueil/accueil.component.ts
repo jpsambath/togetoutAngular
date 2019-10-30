@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { SortieService} from "../sortie.service";
 import { AuthService} from "../auth.service";
 import {Participant} from "../model/participant";
@@ -14,8 +14,8 @@ import {MessageService} from "../message.service";
 })
 export class AccueilComponent implements OnInit {
   private reponses;
-  listeSortiesInscrit: Sortie[] ;
-  listeSortiesOrganisateur: Sortie[] ;
+  listeSortiesInscrits: Sortie[] ;
+  listeSortiesOrganisateurs: Sortie[] ;
   listeSortiesSemaineActuelle: Sortie[] ;
   listeSortiesSemaineSuivante: Sortie[] ;
 
@@ -25,9 +25,15 @@ export class AccueilComponent implements OnInit {
     console.log("1. Initialisation Accueil");
 
 
+
     this.sortieService.getSortieInfo().then(
       () => {
         console.log("Récupération Sorties Réussie");
+        this.listeSortiesInscrits = this.sortieService.sortiesInscrits ;
+        this.listeSortiesOrganisateurs = this.sortieService.sortiesOrganisateurs ;
+        this.listeSortiesSemaineActuelle = this.sortieService.sortiesSemaineActuelle ;
+        this.listeSortiesSemaineSuivante = this.sortieService.sortiesSemaineProchaine ;
+
       }
       ,
       () => {
@@ -37,4 +43,13 @@ export class AccueilComponent implements OnInit {
 
   }
 
+  ngOnDestroy(){
+
+  }
+
+  ngAfterContentInit(){
+
+  }
+
 }
+

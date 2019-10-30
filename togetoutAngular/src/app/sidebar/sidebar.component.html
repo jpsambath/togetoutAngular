@@ -16,8 +16,8 @@
                alt="User picture">
         </div>
         <div class="user-info">
-          <span class="user-name">{{this.authService.user.prenom}}
-            <strong>{{this.authService.user.nom }}</strong>
+          <span class="user-name" *ngIf="authService.user.prenom">{{authService.user.prenom}}
+            <strong *ngIf="authService.user.nom">{{this.authService.user.nom }}</strong>
           </span>
 
           <span class="user-role">Utilisatrice</span>
