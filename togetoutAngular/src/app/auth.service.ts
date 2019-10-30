@@ -14,7 +14,7 @@ import {Message} from "ng-chat";
 })
 export class AuthService {
 
-  authenticated = false;
+  authenticated = true;
   token;
   user;
 
