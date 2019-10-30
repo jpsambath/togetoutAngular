@@ -1,0 +1,93 @@
+<main class="page-content">
+  <div class="container-fluid">
+    <div class="row text-center">
+      <div class="col-12">
+        <h2>Afficher profil</h2>
+        <br>
+        <span class="alert alert-success text-center" *ngIf="this.messageService.messageSucces">{{ this.messageService.messageSucces }}</span>
+        <span class="alert alert-warning text-center" *ngIf="this.messageService.messageErreur">{{ this.messageService.messageErreur }}</span>
+      </div>
+    </div>
+    <hr>
+    <div class="row"  style="align-items: center; text-align:center">
+      <!-- left column -->
+      <div class="col-lg-5 col-md-12 col-sm-12 col-12 border rounded p-3 mb-3">
+        <div class="rowr">
+          <div class="col-12">*
+            charger la photo en fonction ID selectionné
+            <img src="/assets/img/{{profil.avatar}}" class="avatar img-circle" alt="avatar">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 parent-div ">
+
+            <input type="file" name="upfile">
+          </div>
+        </div>
+        <br>
+      </div>
+
+      <!-- edit form column -->
+      <div class="offset-lg-1 col-lg-5 col-md-12 col-sm-12 col-12 border rounded p-3 mb-3">
+        <div class="alert alert-info alert-dismissable">
+          <a class="panel-close close" data-dismiss="alert">×</a>
+          <i class="fa fa-coffee"></i>
+          This is an <strong>.alert</strong>. Use this to show important messages to the user.
+        </div>
+        <h3>Informations Personnelles : </h3>
+        <form [formGroup]="editForm" (ngSubmit)="onSubmitForm()">
+          <div class="group">
+            <input type="text" class="form-control details" id="username" formControlName="username" value="" required>
+            <span class="highlight"></span>
+            <label>Pseudonyme</label>
+          </div>
+
+          <div class="group">
+            <input type="text" class="form-control details" id="prenom" formControlName="prenom" required>
+            <span class="highlight"></span>
+            <label>Prénom</label>
+          </div>
+
+          <div class="group">
+            <input type="text" class="form-control details" id="nom" formControlName="nom" required>
+            <span class="highlight"></span>
+            <label>Nom</label>
+          </div>
+
+          <div class="group">
+            <input type="text" class="form-control details" id="telephone" formControlName="telephone"  required>
+            <span class="highlight"></span>
+            <label>Téléphone</label>
+          </div>
+
+          <div class="group">
+            <input type="text" class="form-control details" id="email" formControlName="email"  required>
+            <span class="highlight"></span>
+            <label>Email</label>
+          </div>
+
+          <div class="group">
+            <input type="text" class="form-control details" id="password" formControlName="password"  required>
+            <span class="highlight"></span>
+            <label>Mot de passe</label>
+          </div>
+
+          <div class="group">
+            <input type="text" class="form-control details" id="passwordconfirm" required>
+            <span class="highlight"></span>
+            <label>Email</label>
+          </div>
+
+          <div class="group">
+            <input type="text" class="form-control details" id="villeRattachement" formControlName="villeRattachement"  required>
+            <span class="highlight"></span>
+            <label>Ville de rattachement</label>
+          </div>
+
+          <br>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+
