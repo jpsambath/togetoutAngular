@@ -18,8 +18,8 @@ export class Participant {
     public site?: Site,
     public administrateur?: boolean,
     public actif?: boolean,
-    public id?: number
-
+    public id?: number,
+    public avatar?: string
   ) {  }
 
 }

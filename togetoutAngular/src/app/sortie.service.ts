@@ -118,8 +118,6 @@ export class SortieService {
         this.sortiesSemaineProchaine = data['sortiesSemaineProchaine'];
 
 
-
-
         console.log(data);
 
         if (data['statut'] == "ok") {
