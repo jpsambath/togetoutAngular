@@ -1,8 +1,8 @@
 <main class="page-content">
   <div class="container-fluid">
 
-    <span class="alert alert-success text-center" *ngIf="this.messageService.messageSucces">{{ this.messageService.messageSucces }}</span>
-    <span class="alert alert-warning text-center" *ngIf="this.messageService.messageErreur">{{ this.messageService.messageErreur }}</span>
+    <p class="alert alert-success text-center" *ngIf="this.messageService.messageSucces" (click)="clearMessageSucces()">{{ this.messageService.messageSucces }}</p>
+    <p class="alert alert-warning text-center" *ngIf="this.messageService.messageErreur" (click)="clearMessageErreur()">{{ this.messageService.messageErreur }}</p>
 
     <br><h2 class="text-center">Annuler une sortie</h2>
 

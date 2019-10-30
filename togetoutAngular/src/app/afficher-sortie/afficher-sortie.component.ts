@@ -51,4 +51,12 @@ export class AfficherSortieComponent implements OnInit {
     else
       this.router.navigate(["/afficheProfil"]) ;
   }
+
+  clearMessageSucces(){
+    this.messageService.messageSucces = '' ;
+  }
+
+  clearMessageErreur(){
+    this.messageService.messageErreur = '' ;
+  }
 }

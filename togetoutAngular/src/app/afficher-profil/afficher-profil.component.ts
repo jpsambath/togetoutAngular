@@ -42,6 +42,12 @@ export class AfficherProfilComponent implements OnInit {
     })
   }
 
+  clearMessageSucces(){
+    this.messageService.messageSucces = '' ;
+  }
 
+  clearMessageErreur(){
+    this.messageService.messageErreur = '' ;
+  }
 
 }

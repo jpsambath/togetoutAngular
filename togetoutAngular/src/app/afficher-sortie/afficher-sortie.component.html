@@ -2,6 +2,8 @@
   <div class="container-fluid">
     <br><h2 class="text-center">Afficher une sortie</h2>
 
+    <p class="alert alert-success text-center" *ngIf="this.messageService.messageSucces" (click)="clearMessageSucces()">{{ this.messageService.messageSucces }}</p>
+    <p class="alert alert-warning text-center" *ngIf="this.messageService.messageErreur" (click)="clearMessageErreur()">{{ this.messageService.messageErreur }}</p>
     <div class="row verticalalign">
       <div class="col-2">
       </div>

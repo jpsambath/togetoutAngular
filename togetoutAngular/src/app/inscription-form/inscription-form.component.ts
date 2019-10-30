@@ -60,4 +60,12 @@ export class InscriptionFormComponent implements OnInit {
 
   }
 
+  clearMessageSucces(){
+    this.messageService.messageSucces = '' ;
+  }
+
+  clearMessageErreur(){
+    this.messageService.messageErreur = '' ;
+  }
+
 }

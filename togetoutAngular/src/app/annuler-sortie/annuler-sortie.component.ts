@@ -61,4 +61,12 @@ export class AnnulerSortieComponent implements OnInit {
         this.router.navigate(['/annuler-sortie']);
       });*/
   }
+
+  clearMessageSucces(){
+    this.messageService.messageSucces = '' ;
+  }
+
+  clearMessageErreur(){
+    this.messageService.messageErreur = '' ;
+  }
 }

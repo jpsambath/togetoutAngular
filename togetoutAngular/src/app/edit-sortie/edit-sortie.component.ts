@@ -94,4 +94,13 @@ export class EditSortieComponent implements OnInit {
     this.lieuAffiche = !this.lieuAffiche ;
     this.lieuNonAffiche = !this.lieuNonAffiche ;
   }
+
+  clearMessageSucces(){
+    this.messageService.messageSucces = '' ;
+  }
+
+  clearMessageErreur(){
+    this.messageService.messageErreur = '' ;
+  }
+
 }

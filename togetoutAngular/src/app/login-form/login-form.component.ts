@@ -76,8 +76,18 @@ export class LoginFormComponent implements OnInit {
         this.router.navigate(['/login']);
       });
 
+
+
     //this.participantService.connecterParticipant(participant);
     //Si la connexion a fonctionné this.router.navigate(['/accueil']);
 
+  }
+
+  clearMessageSucces(){
+    this.messageService.messageSucces = '' ;
+  }
+
+  clearMessageErreur(){
+    this.messageService.messageErreur = '' ;
   }
 }

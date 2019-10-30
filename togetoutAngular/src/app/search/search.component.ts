@@ -44,4 +44,12 @@ export class SearchComponent implements OnInit {
 
   }
 
+  clearMessageSucces(){
+    this.messageService.messageSucces = '' ;
+  }
+
+  clearMessageErreur(){
+    this.messageService.messageErreur = '' ;
+  }
+
 }
