@@ -34,6 +34,23 @@ textarea:not(:placeholder-shown),input:not(:placeholder-shown) {
   padding:10px 10px 2px 15px;
 }
 
+.parent-div input[type=file] {
+  left: 0;
+  top: 0;
+  opacity: 0;
+  position: absolute;
+  font-size: 90px;
+}
+
+.btn-upload {  /* bouton des input de type file */
+  border-radius: 10px;
+  background: #6b7482;
+  color: #ffffff;
+  height : 35px;
+  font-size:0.9rem;
+}
+
+
 /* LABEL ======================================= */
 label{
   color:#999;
@@ -632,8 +649,7 @@ body {
 .card {
   width: 450px;
   height: 250px;
-  background-color: #fff;
-  background: linear-gradient(#f8f8f8, #fff);
+  background: #fff linear-gradient(#f8f8f8, #fff);
   box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
   border-radius: 6px;
   overflow: hidden;

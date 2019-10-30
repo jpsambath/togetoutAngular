@@ -10,15 +10,15 @@ export class Sortie {
 
     public nom?: string,
     public organisateur?: Participant,
-    public dateHeureDebut?: Date,
-    public duree?: number,
-    public dateLimiteInscription?: Date,
+    public dateHeureDebut?: string,
+    public duree?: string,
+    public dateLimiteInscription?: string,
     public nbInscriptionMax?: number,
     public infosSortie?: string,
     public lieu?: Lieu,
     public etat?: Etat,
-    site?: Site,
-    participants?: Participant[],
+    public site?: Site,
+    public participants?: Participant[],
     public id?: number
 
   ) {  }

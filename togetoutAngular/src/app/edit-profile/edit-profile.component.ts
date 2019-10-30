@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Participant} from "../model/participant";
 import { Router } from "@angular/router";
 import { AuthService } from "../auth.service";
+import {MessageService} from "../message.service";
 
 @Component({
   selector: 'app-edit-profile',
@@ -12,10 +13,23 @@ import { AuthService } from "../auth.service";
 export class EditProfileComponent implements OnInit {
 
   editForm : FormGroup;
+  username: string;
+  prenom: string ;
 
-  constructor(private formBuilder: FormBuilder,private router : Router,private authService : AuthService) { }
+  constructor(private messageService:MessageService, private formBuilder: FormBuilder,private router : Router,private authService : AuthService) { }
 
   ngOnInit() {
+    this.authService.getUserInfo().then(
+      () => {
+        console.log("Récupération Sorties Réussie");
+
+      }
+      ,
+      () => {
+        console.log("Récupération Sorties Ratée");
+      });
+
+
     this.editForm = this.formBuilder.group({
       username : ['', Validators.required],
       prenom : ['', Validators.required],

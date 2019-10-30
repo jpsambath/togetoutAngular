@@ -7,6 +7,7 @@ import {AuthService} from "../auth.service";
 import {Sortie} from "../model/sortie";
 import {Etat} from "../model/etat";
 import { SortieService } from "../sortie.service";
+import {MessageService} from "../message.service";
 
 @Component({
   selector: 'app-annuler-sortie',
@@ -18,7 +19,7 @@ export class AnnulerSortieComponent implements OnInit {
   sortieAnnuler : FormGroup;
   ville = VilleFormComponent ;
   lieu = LieuFormComponent ;
-  constructor(private formBuilder: FormBuilder, private router : Router, public viewContainerRef: ViewContainerRef,private SortieService : SortieService) { }
+  constructor(private messageService:MessageService, private formBuilder: FormBuilder, private router : Router, public viewContainerRef: ViewContainerRef,private SortieService : SortieService) { }
 
   ngOnInit() {
     this.sortieAnnuler = this.formBuilder.group({

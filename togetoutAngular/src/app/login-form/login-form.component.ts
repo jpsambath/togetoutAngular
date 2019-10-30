@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Participant} from "../model/participant";
 import { AuthService} from "../auth.service";
+import {MessageService} from "../message.service";
 
 @Component({
   selector: 'app-login-form',
@@ -14,7 +15,7 @@ export class LoginFormComponent implements OnInit {
   loginForm : FormGroup;
   participant : Participant;
 
-  constructor(private formBuilder: FormBuilder/*,private participantService: participantService*/, private router : Router, private authService:AuthService){
+  constructor(private messageService:MessageService, private formBuilder: FormBuilder/*,private participantService: participantService*/, private router : Router, private authService:AuthService){
 
   }
   ngOnInit(){
@@ -67,17 +68,7 @@ export class LoginFormComponent implements OnInit {
     this.authService.login(this.participant).then(
       () => {
         console.log("Connexion Réussie");
-        this.authService.getUserInfo().then(
-          () => {
-            this.authService.setAuthenticated(true);
-            this.router.navigate(['/']);
-          }
-          ,
-          () => {
-            console.log("Connexion Ratée");
-            this.router.navigate(['/login']);
-          });
-
+        this.router.navigate(['/']);
       }
       ,
       () => {

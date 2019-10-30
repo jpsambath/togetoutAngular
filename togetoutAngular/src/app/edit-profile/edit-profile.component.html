@@ -1,103 +1,98 @@
-<h2>Edit Profile</h2>
-<hr>
-<div class="row">
-  <!-- left column -->
-  <div class="col-md-3">
-    <div class="text-center">
-      <img src="/assets/img/profil.jpg" class="avatar img-circle" alt="avatar">
-      <small>Changer votre photo de profil</small>
+<main class="page-content">
+  <div class="container-fluid">
+    <div class="row text-center">
+      <div class="col-12">
+        <h2>Modifier profil</h2>
+        <br>
+        <span class="alert alert-success text-center" *ngIf="this.messageService.messageSucces">{{ this.messageService.messageSucces }}</span>
+        <span class="alert alert-warning text-center" *ngIf="this.messageService.messageErreur">{{ this.messageService.messageErreur }}</span>
+      </div>
+    </div>
+    <hr>
+    <div class="row"  style="align-items: center; text-align:center">
+      <!-- left column -->
+      <div class="offset-lg-1 col-lg-4 col-md-12 col-sm-12 col-12 border rounded p-3 mb-3">
+          <div class="rowr">
+            <div class="col-12">
+              <img src="/assets/img/profil.jpg" class="avatar img-circle" alt="avatar">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 parent-div ">
+              <button class="btn-upload">Changer de photo de profil</button>
+              <input type="file" name="upfile">
+            </div>
+          </div>
+        <br>
+      </div>
 
-      <input type="file" class="form-control">
+      <!-- edit form column -->
+      <div class="offset-lg-1 col-lg-5 col-md-12 col-sm-12 col-12 border rounded p-3 mb-3">
+        <div class="alert alert-info alert-dismissable">
+          <a class="panel-close close" data-dismiss="alert">×</a>
+          <i class="fa fa-coffee"></i>
+          This is an <strong>.alert</strong>. Use this to show important messages to the user.
+        </div>
+        <h3>Informations Personnelles : </h3>
+        <form [formGroup]="editForm" (ngSubmit)="onSubmitForm()">
+          <div class="group">
+            <input type="text" class="form-control" id="username" formControlName="username" required>
+            <span class="highlight"></span>
+            <label>Pseudonyme</label>
+          </div>
+
+          <div class="group">
+            <input type="text" class="form-control" id="prenom" formControlName="prenom" required>
+            <span class="highlight"></span>
+            <label>Prénom</label>
+          </div>
+
+          <div class="group">
+            <input type="text" class="form-control" id="nom" formControlName="nom" required>
+            <span class="highlight"></span>
+            <label>Nom</label>
+          </div>
+
+          <div class="group">
+            <input type="text" class="form-control" id="telephone" formControlName="telephone"  required>
+            <span class="highlight"></span>
+            <label>Téléphone</label>
+          </div>
+
+          <div class="group">
+            <input type="text" class="form-control" id="email" formControlName="email"  required>
+            <span class="highlight"></span>
+            <label>Email</label>
+          </div>
+
+          <div class="group">
+            <input type="text" class="form-control" id="password" formControlName="password"  required>
+            <span class="highlight"></span>
+            <label>Mot de passe</label>
+          </div>
+
+          <div class="group">
+            <input type="text" class="form-control" id="passwordconfirm" required>
+            <span class="highlight"></span>
+            <label>Email</label>
+          </div>
+
+          <div class="group">
+            <input type="text" class="form-control" id="villeRattachement" formControlName="villeRattachement"  required>
+            <span class="highlight"></span>
+            <label>Ville de rattachement</label>
+          </div>
+          <div class="row">
+            <div class="col-6" style="padding-top: 40px">
+              <button style="width: 110px" type="submit" class="btn-togetout center" (click)="onSubmitForm()">Modifier</button>
+            </div>
+            <div class="col-6" style="padding-top: 40px">
+              <button style="width: 110px" routerLink="/" class="btn-togetout center">Annuler</button>
+            </div>
+          </div>
+          <br>
+        </form>
+      </div>
     </div>
   </div>
-
-  <!-- edit form column -->
-  <div class="col-md-9 personal-info">
-    <div class="alert alert-info alert-dismissable">
-      <a class="panel-close close" data-dismiss="alert">×</a>
-      <i class="fa fa-coffee"></i>
-      This is an <strong>.alert</strong>. Use this to show important messages to the user.
-    </div>
-    <h3>Personal info</h3>
-
-    <form [formGroup]="editForm" (ngSubmit)="onSubmitForm()">
-      <div class="group">
-        <input type="text" class="form-control" id="username" formControlName="username" required>
-        <span class="highlight"></span>
-        <label>Pseudonyme</label>
-      </div>
-
-      <div class="group">
-        <input type="text" class="form-control" id="prenom" formControlName="prenom" required>
-        <span class="highlight"></span>
-        <label>Prénom</label>
-      </div>
-
-      <div class="group">
-        <input type="text" class="form-control" id="nom" formControlName="nom" required>
-        <span class="highlight"></span>
-        <label>Nom</label>
-      </div>
-
-      <div class="group">
-        <input type="text" class="form-control" id="telephone" formControlName="telephone"  required>
-        <span class="highlight"></span>
-        <label>Télèphone</label>
-      </div>
-
-      <div class="group">
-        <input type="text" class="form-control" id="email" formControlName="email"  required>
-        <span class="highlight"></span>
-        <label>Email</label>
-      </div>
-
-      <div class="group">
-        <input type="text" class="form-control" id="password" formControlName="password"  required>
-        <span class="highlight"></span>
-        <label>Password</label>
-      </div>
-
-
-      <div class="group">
-        <input type="text" class="form-control" id="passwordconfirm" required>
-        <span class="highlight"></span>
-        <label>Email</label>
-      </div>
-
-
-      <div class="group">
-        <input type="text" class="form-control" id="villeRattachement" formControlName="villeRattachement"  required>
-        <span class="highlight"></span>
-        <label>Email</label>
-      </div>
-
-      <!-- <div class="form-group">
-        <label class="col-md-3 control-label">Username:</label>
-        <div class="col-md-8">
-          <input class="form-control" type="text" value="janeuser">
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-md-3 control-label">Password:</label>
-        <div class="col-md-8">
-          <input class="form-control" type="password" value="11111122333">
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-md-3 control-label">Confirm password:</label>
-        <div class="col-md-8">
-          <input class="form-control" type="password" value="11111122333">
-        </div>
-      </div> -->
-
-      <div class="form-group">
-        <label class="col-md-3 control-label"></label>
-        <div class="col-md-8">
-          <input type="button" class="btn btn-primary" value="Save Changes">
-          <span></span>
-          <input type="reset" class="btn btn-default" value="Cancel">
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
+</main>

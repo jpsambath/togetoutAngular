@@ -4,6 +4,9 @@ import {Participant} from "./model/participant";
 import {catchError} from "rxjs/operators";
 import {Observable, of} from "rxjs";
 import * as jwt_decode from "jwt-decode";
+import {Router} from "@angular/router";
+import {MessageService} from "./message.service";
+import {Message} from "ng-chat";
 
 
 @Injectable({
@@ -12,20 +15,19 @@ import * as jwt_decode from "jwt-decode";
 export class AuthService {
 
   authenticated = false;
+  token;
+  user;
 
-  reponse;
-  reponseDecodee;
+  resultat;
 
-  reponseErreur;
-  reponseSucces;
 
   header = new HttpHeaders({
     'Content-Type':  'application/json'
   });
 
-  utilisateurCourant;
 
-  constructor(private httpClient: HttpClient) {
+
+  constructor(private messageService:MessageService,private httpClient: HttpClient, private router: Router) {
 
   }
 
@@ -35,13 +37,6 @@ export class AuthService {
 
   setAuthenticated(value: boolean) {
     this.authenticated = value;
-  }
-  getReponse() {
-    return this.reponse;
-  }
-
-  setReponse(value) {
-    this.reponse = value;
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
@@ -69,19 +64,18 @@ export class AuthService {
   public register(participant: Participant){
     return new Promise((resolve, reject) => {
       /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
-      this.httpClient.post('http://localhost/togetout/public/api/register', participant, { "headers" :this.header}).pipe(
+      this.httpClient.post('http://10.12.200.10/togetout/public/api/register', participant, { "headers" :this.header}).pipe(
         catchError(this.handleError('register', participant))
       ).subscribe((data)=>{
 
-        console.log(data);
-        this.reponse = data;
+        this.resultat = data;
 
-        console.log(this.reponse['statut']);
-
-        if (this.reponse['statut'] == 'ok') {
-          resolve(this.reponse);
+        if (this.resultat['statut'] == 'ok') {
+          this.messageService.messageSucces = this.resultat['messageOk'];
+          resolve("register ok");
         } else {
-          reject(this.reponse);
+          this.messageService.messageErreur = this.resultat['messageErreur'];
+          reject("register ko");
         }
       });
     })
@@ -91,51 +85,71 @@ export class AuthService {
     return new Promise((resolve, reject) => {
 
       /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
-      this.httpClient.post('http://localhost/togetout/public/api/login_check', participant, { "headers" :this.header}).pipe(
+      this.httpClient.post('http://10.12.200.10/togetout/public/api/login_check', participant, { "headers" :this.header}).pipe(
         catchError(this.handleError('login', participant))
       ).subscribe((data)=>{
 
-        console.log(data);
-        this.reponse = data;
-        console.log(this.reponse['token']);
+        this.resultat = data;
+        this.token = this.resultat['token'];
 
-        if (this.reponse['token'] != null) {
-          this.reponseDecodee = this.getDecodeAccessToken(this.reponse['token']);
+        if (this.token != null) {
 
-          this.reponseSucces = "Bonjour " + this.reponseDecodee.username + "! Vous êtes maintenant connecté";
-          resolve(this.reponse);
+          localStorage.setItem("token", this.token);
+          this.getUserInfo().then(()=>{
+              this.messageService.messageSucces = "Bonjour " + this.user.username + "! Vous êtes maintenant connecté";
+
+              resolve("login ok");
+          },
+            ()=>{
+            this.messageService.messageErreur = "Zut! Quelque chose d'inapproprié est survenu. Recommencez!"
+              reject("login ko");
+            });
+
+
         } else {
-          this.reponseErreur = "Zut! Quelque chose d'inapproprié est survenu. Recommencez!"
-          reject(this.reponse);
+          this.messageService.messageErreur = "Zut! Quelque chose d'inapproprié est survenu. Recommencez!"
+          reject("login ko");
         }
       });
     })
   }
 
+  public logout(){
+    this.authenticated = false;
+    this.token = "";
+    localStorage.removeItem("token");
+    this.messageService.messageSucces = "Vous avez été déconnecté! A bientôt!";
+    this.router.navigate(["/login"]);
+  }
+
+
+
   public getUserInfo(){
     return new Promise((resolve, reject) => {
       this.header = new HttpHeaders({
         'Content-Type':  'application/json',
-        //'Access-Control-Allow-Origin' : '*',
-        'Authorization': 'Bearer ' + this.reponse['token']
+        'Authorization': 'Bearer ' + this.token
       });
 
-      /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
-      this.httpClient.post('http://localhost/togetout/public/api/getUserInfo', "", { "headers" :this.header}).pipe(
-        catchError(this.handleError('getUserInfo', this.reponse['token']))
+      this.httpClient.post('http://10.12.200.10/togetout/public/api/getUserInfo', "", { "headers" :this.header}).pipe(
+        catchError(this.handleError('getUserInfo', this.token))
       ).subscribe((data)=>{
 
-        this.utilisateurCourant = data['participant']['0'];
+        this.user = data['participant'][0];
 
-        console.log(this.utilisateurCourant);
+        console.log(this.user);
 
-        if (this.utilisateurCourant != null) {
-          resolve(this.reponse);
+        if (this.user != null) {
+          resolve("getUserInfo ok");
         } else {
-          reject(this.reponse);
+          reject("getUserInfo ko");
         }
       });
-    })
+    }).then(()=>{
+      return true;
+    },()=>{
+      return false;
+    });
   }
 
   public editProfile(participant: Participant){
@@ -147,19 +161,20 @@ export class AuthService {
       };
 
       /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
-      this.httpClient.post('http://10.12.200.7/togetout/public/api/test/responseJSON', participant, httpOptions).pipe(
+      this.httpClient.post('http://10.12.200.10/togetout/public/api/test/responseJSON', participant, httpOptions).pipe(
         catchError(this.handleError('editProfile', participant))
       ).subscribe((data)=>{
         console.log(data);
-        this.reponse = data['statut'];
-        console.log('reponse dans register lui même');
-        console.log(this.reponse);
+        this.resultat = data;
+
       });
 
-      if (this.reponse == 'ok') {
-        resolve(this.reponse);
+      if (this.resultat['statut'] == 'ok') {
+        this.messageService.messageSucces = "Profil modifié avec succès";
+        resolve("editProfile ok");
       } else {
-        reject(this.reponse);
+        this.messageService.messageErreur = "Profil non modifié";
+        reject("editProfile ko");
       }
     })
   }
