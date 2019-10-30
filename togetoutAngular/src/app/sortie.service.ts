@@ -7,6 +7,7 @@ import {Observable, of} from "rxjs";
 import {Sortie} from "./model/sortie";
 import {MessageService} from "./message.service";
 import {Router} from "@angular/router";
+import * as MesConstantes from './model/global'
 
 @Injectable({
   providedIn: 'root'
@@ -52,7 +53,7 @@ export class SortieService {
       });
 
       /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
-      this.httpClient.post('http://10.12.200.10/togetout/public/api/inscriptionSortie/'+id, "ParticiperSortie", { "headers" :this.header}).pipe(
+      this.httpClient.post(MesConstantes.api+'inscriptionSortie/'+id, "ParticiperSortie", { "headers" :this.header}).pipe(
         catchError(this.handleError('ParticiperSortie', this.authService.token))
       ).subscribe((data)=>{
 
@@ -79,7 +80,7 @@ export class SortieService {
       });
 
       /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
-      this.httpClient.post('http://10.12.200.10/togetout/public/api/desistementSortie/'+id, "DesistementSortie", { "headers" :this.header}).pipe(
+      this.httpClient.post(MesConstantes.api+'desistementSortie/'+id, "DesistementSortie", { "headers" :this.header}).pipe(
         catchError(this.handleError('DesistementSortie', this.authService.token))
       ).subscribe((data)=>{
 
@@ -107,7 +108,7 @@ export class SortieService {
       });
 
       /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
-      this.httpClient.post('http://10.12.200.10/togetout/public/api/getSortieInfo', "getSortieInfo", { "headers" :this.header}).pipe(
+      this.httpClient.post(MesConstantes.api+'getSortieInfo', "getSortieInfo", { "headers" :this.header}).pipe(
         catchError(this.handleError('getUserInfo', this.authService.token))
       ).subscribe((data)=>{
 
@@ -143,7 +144,7 @@ export class SortieService {
       });
 
       /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
-      this.httpClient.post('http://10.12.200.10/togetout/public/api/creerSortie', sortie, { "headers" :this.header}).pipe(
+      this.httpClient.post(MesConstantes.api+'creerSortie', sortie, { "headers" :this.header}).pipe(
         catchError(this.handleError('creerSortie', sortie))
       ).subscribe((data)=>{
 
