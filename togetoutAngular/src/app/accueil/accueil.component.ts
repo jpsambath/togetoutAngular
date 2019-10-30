@@ -29,10 +29,17 @@ export class AccueilComponent implements OnInit {
     this.sortieService.getSortieInfo().then(
       () => {
         console.log("Récupération Sorties Réussie");
+
+
         this.listeSortiesInscrits = this.sortieService.sortiesInscrits ;
         this.listeSortiesOrganisateurs = this.sortieService.sortiesOrganisateurs ;
         this.listeSortiesSemaineActuelle = this.sortieService.sortiesSemaineActuelle ;
         this.listeSortiesSemaineSuivante = this.sortieService.sortiesSemaineProchaine ;
+
+        console.log(this.listeSortiesInscrits);
+        console.log(this.listeSortiesOrganisateurs);
+        console.log(this.sortieService.sortiesSemaineActuelle);
+        console.log(this.listeSortiesSemaineSuivante);
 
       }
       ,

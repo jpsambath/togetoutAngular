@@ -113,7 +113,7 @@ export class SortieService {
 
         this.sortiesInscrits = data['sortiesInscrits'];
         this.sortiesOrganisateurs = data['sortiesOrganisateurs'];
-        this.sortiesSemaineActuelle = data['sortiesSemaineActuel'];
+        this.sortiesSemaineActuelle = data['sortiesSemaineActuelle'];
         this.sortiesSemaineProchaine = data['sortiesSemaineProchaine'];
         console.log(data['statut']);
 
