@@ -34,7 +34,9 @@ export class SortieFormComponent implements OnInit {
     this.sortieForm = this.formBuilder.group({
       nom : ['', Validators.required],
       date : ['', Validators.required],
+      heure : '',
       dateLimite : '',
+      heureLimite :'',
       nbInscriptionMax : 0,
       duree : 0,
       infosSortie : '',
@@ -58,12 +60,14 @@ export class SortieFormComponent implements OnInit {
     else {
       etat = new Etat('Ouverte', null) ;
     }
+    let dateSortie = new Date(formValue['date'] + ' ' + formValue['heure']) ;
+    let dateLimite = new Date(formValue['dateLimite'] + ' ' + formValue['heureLimite']) ;
     const nouvelleSortie = new Sortie(
       formValue['nom'],
       null,
-      formValue['date'],
+      dateSortie,
       formValue['duree'],
-      formValue['dateLimite'],
+      dateLimite,
       formValue['nbInscriptionMax'],
       formValue['infosSortie'],
       null,

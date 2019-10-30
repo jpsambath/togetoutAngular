@@ -14,14 +14,20 @@
         <label>Nom de la sortie</label>
       </div>
       <div class="group">
-        <input type="datetime-local" class="form-control" id="date" formControlName="date">
+        <input type="date" class="form-control" id="date" formControlName="date">
         <span class="highlight"></span>
-        <label>Date de la sortie</label>
+        <label>Date de la sortie</label>-->
+        <input type="time" class="form-control" id="heure" formControlName="heure">
+        <span class="highlight"></span>
+        <label>Heure de la sortie</label>
       </div>
       <div class="group">
-        <input type="datetime-local" class="form-control" id="dateLimite" formControlName="dateLimite">
+        <input type="date" class="form-control" id="dateLimite" formControlName="dateLimite">
         <span class="highlight"></span>
-        <label>Date limite d'inscription</label>
+        <label>Date limite d'inscription</label>-->
+        <input type="time" class="form-control" id="heureLimite" formControlName="heureLimite">
+        <span class="highlight"></span>
+        <label>Date heure d'inscription</label>
       </div>
       <div class="group">
         <input type="number" min="0" class="form-control" id="nbInscriptionMax" formControlName="nbInscriptionMax">
@@ -29,9 +35,9 @@
         <label>Nombre maximum de participants</label>
       </div>
       <div class="group">
-        <input type="number" min="0" class="form-control" id="duree" formControlName="duree">
+        <input type="time" min="0" class="form-control" id="duree" formControlName="duree">
         <span class="highlight"></span>
-        <label>Durée (en minutes)</label>
+        <label>Durée HH:MM</label>
       </div>
       <div class="group">
         <textarea placeholder="Description et infos" class="form-control" id="infosSortie" formControlName="infosSortie" style="height: 95px"></textarea>
@@ -47,7 +53,7 @@
           <div class="row">
             <div class="col-10">
               <select name="ville" id="ville" formControlName="ville" class="form-control">
-                <option *ngFor="let ville of this.villeService.villes" value={{ ville.id }}>{{ ville.libelle }}</option>
+                <option *ngFor="let ville of this.villeService.villes" value={{ ville.id }}>{{ ville.nom }}</option>
               </select>
             </div>
             <div class="col-2 justify-content-center">
@@ -62,7 +68,7 @@
           <div class="row">
             <div class="col-10">
           <select name="lieu" id="lieu" formControlName="lieu" class="form-control">
-            <option *ngFor="let lieu of this.lieuService.lieux" value={{ lieu.id }}>{{ lieu.libelle }}</option>
+            <option *ngFor="let lieu of this.lieuService.lieux" value={{ lieu.id }}>{{ lieu.nom }}</option>
           </select>
             </div>
             <div class="col-2 justify-content-center">
