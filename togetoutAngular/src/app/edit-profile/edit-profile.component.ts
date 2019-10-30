@@ -12,9 +12,9 @@ import {MessageService} from "../message.service";
 })
 export class EditProfileComponent implements OnInit {
 
- /* editForm : FormGroup;
+  editForm : FormGroup;
   username: string;
-  prenom: string ;*/
+  prenom: string ;
 
   constructor(private messageService:MessageService, private formBuilder: FormBuilder,private router : Router,private authService : AuthService) { }
 

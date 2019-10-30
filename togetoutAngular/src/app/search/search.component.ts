@@ -23,7 +23,7 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.searchForm = this.formBuilder.group({
-      ville : this.villeService.getVilles(),
+      ville : '',
       recherche : '',
       heure : '',
       dateLimite : '',
