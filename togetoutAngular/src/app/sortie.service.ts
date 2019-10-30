@@ -116,7 +116,11 @@ export class SortieService {
         this.sortiesOrganisateurs = data['sortiesOrganisateurs'];
         this.sortiesSemaineActuelle = data['sortiesSemaineActuelle'];
         this.sortiesSemaineProchaine = data['sortiesSemaineProchaine'];
-        console.log(data['statut']);
+
+
+
+
+        console.log(data);
 
         if (data['statut'] == "ok") {
           resolve("On a les infos sorties");

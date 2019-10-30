@@ -18,7 +18,7 @@
     <div class="form-inline my-2 my-lg-0">
       <div *ngIf="authService.authenticated; else notAuthenticated">
 
-        <a routerLink="/editprofile"><button class="btn btn-togetout mx-2">Modifier Mon Profil</button></a>
+        <a routerLink="/editProfile"><button class="btn btn-togetout mx-2">Modifier Mon Profil</button></a>
         <a (click)="authService.logout()"><button class="btn btn-togetout mx-2">Déconnexion</button></a>
       </div>
       <ng-template #notAuthenticated>
