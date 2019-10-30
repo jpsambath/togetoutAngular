@@ -22,13 +22,19 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.villeService.getVilles().then();
+
     this.searchForm = this.formBuilder.group({
       ville : '',
       recherche : '',
       dateDebut : '',
+      heureDebut: '',
       dateFin : '',
-      heureLimite : '',
-
+      heureFin : '',
+      cbxOrganisateur: false,
+      cbxInscrit: false,
+      cbxNonInscrit: false,
+      cbxPassees:false
     });
 
   }
