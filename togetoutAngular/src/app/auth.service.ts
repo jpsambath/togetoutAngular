@@ -10,16 +10,21 @@ import {Message} from "ng-chat";
 import * as MesConstantes from './model/global'
 
 
+
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  authenticated = false;
+
+  authenticated = true;
   token;
   user;
 
   resultat;
+  profilAffiche: Participant;
 
 
   header = new HttpHeaders({
@@ -31,6 +36,7 @@ export class AuthService {
   constructor(private messageService:MessageService,private httpClient: HttpClient, private router: Router) {
 
   }
+
 
   getAuthenticated(): boolean {
     return this.authenticated;
@@ -61,7 +67,13 @@ export class AuthService {
     }
   }
 
+  getProfilAffiche(): Participant {
+    return this.profilAffiche;
+  }
 
+  setProfilAffiche(value: Participant) {
+    this.profilAffiche = value;
+  }
   public register(participant: Participant){
     return new Promise((resolve, reject) => {
       /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
