@@ -13,8 +13,6 @@ export class Participant {
     public email?: string,
     public password?:string,
     public plainPassword?: string,
-    public sorties?: Sortie[],
-    public sortieCreer?: Sortie[],
     public site?: Site,
     public administrateur?: boolean,
     public actif?: boolean,

@@ -40,11 +40,11 @@ export class LoginFormComponent implements OnInit {
         formValue['login'],
         formValue['plainPassword'],
         null,
-        [],
-        [],
         null,
         false,
-        true
+        true,
+        null,
+        null
       );
     }
     else {
@@ -57,11 +57,11 @@ export class LoginFormComponent implements OnInit {
         null,
         formValue['plainPassword'],
         null,
-        [],
-        [],
         null,
         false,
-        true
+        true,
+        null,
+        null
       );
     }
 
