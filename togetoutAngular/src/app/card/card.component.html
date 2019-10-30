@@ -42,6 +42,15 @@
               <div class="value"></div>
             </a>
           </div>
+
+          <div *ngIf="organisateur">
+            <a (click)="editSortie()"><div class="title">Editer</div>
+              <i class="fas fa-edit"></i>
+              <div class="value"></div>
+            </a>
+          </div>
+
+
           <div *ngIf="!inscrit">
             <a (click)="participerSortie()"><div class="title">Participer</div>
               <i class="fas fa-user-plus"></i>
@@ -49,10 +58,11 @@
           </div>
 
           <div *ngIf="inscrit">
-            <a (click)="desinscrireSortie()"><div class="title">Désinscrire</div>
-              <i class="fas fa-trash"></i>
-              <div class="value"></div></a>
-          </div>
+          <a (click)="desinscrireSortie()"><div class="title">Désinscrire</div>
+            <i class="fas fa-trash"></i>
+            <div class="value"></div></a>
+        </div>
+
 
 
         </div>
