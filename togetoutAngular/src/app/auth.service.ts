@@ -97,10 +97,11 @@ export class AuthService {
           localStorage.setItem("token", this.token);
           this.getUserInfo().then(()=>{
               this.messageService.messageSucces = "Bonjour " + this.user.username + "! Vous êtes maintenant connecté";
+
               resolve("login ok");
           },
             ()=>{
-              this.messageService.messageErreur = "Zut! Quelque chose d'inapproprié est survenu. Recommencez!"
+            this.messageService.messageErreur = "Zut! Quelque chose d'inapproprié est survenu. Recommencez!"
               reject("login ko");
             });
 
@@ -134,7 +135,7 @@ export class AuthService {
         catchError(this.handleError('getUserInfo', this.token))
       ).subscribe((data)=>{
 
-        this.user = data['participant']['0'];
+        this.user = data['participant'][0];
 
         console.log(this.user);
 
@@ -144,7 +145,11 @@ export class AuthService {
           reject("getUserInfo ko");
         }
       });
-    })
+    }).then(()=>{
+      return true;
+    },()=>{
+      return false;
+    });
   }
 
   public editProfile(participant: Participant){

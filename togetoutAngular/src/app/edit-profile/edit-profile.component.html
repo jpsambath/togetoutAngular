@@ -1,7 +1,7 @@
 <main class="page-content">
   <div class="container-fluid">
-    <span class="alert alert-success text-center" *ngIf="this.messageService.messageSucces">{{ this.messageService.messageSucces }}</span>
-    <span class="alert alert-warning text-center" *ngIf="this.messageService.messageErreur">{{ this.messageService.messageErreur }}</span>
+    <p class="alert alert-success text-center" *ngIf="this.messageService.messageSucces">{{ this.messageService.messageSucces }}</p>
+    <p class="alert alert-warning text-center" *ngIf="this.messageService.messageErreur">{{ this.messageService.messageErreur }}</p>
 
     <h2>Edit Profile</h2>
     <hr>
@@ -18,46 +18,42 @@
 
       <!-- edit form column -->
       <div class="col-md-9 personal-info">
-        <div class="alert alert-info alert-dismissable">
-          <a class="panel-close close" data-dismiss="alert">×</a>
-          <i class="fa fa-coffee"></i>
-          This is an <strong>.alert</strong>. Use this to show important messages to the user.
-        </div>
-        <h3>Personal info</h3>
+
+        <h3>Informations Profil</h3>
 
         <form [formGroup]="editForm" (ngSubmit)="onSubmitForm()">
           <div class="group">
-            <input type="text" class="form-control" id="username" formControlName="username" required>
+            <input type="text" class="form-control" id="username" formControlName="username" value='{{authService.user.username}}' required>
             <span class="highlight"></span>
             <label>Pseudonyme</label>
           </div>
 
           <div class="group">
-            <input type="text" class="form-control" id="prenom" formControlName="prenom" required>
+            <input type="text" class="form-control" id="prenom" formControlName="prenom" value='{{authService.user.prenom}}' required>
             <span class="highlight"></span>
             <label>Prénom</label>
           </div>
 
           <div class="group">
-            <input type="text" class="form-control" id="nom" formControlName="nom" required>
+            <input type="text" class="form-control" id="nom" formControlName="nom" value='{{authService.user.nom}}' required>
             <span class="highlight"></span>
             <label>Nom</label>
           </div>
 
           <div class="group">
-            <input type="text" class="form-control" id="telephone" formControlName="telephone"  required>
+            <input type="text" class="form-control" id="telephone" formControlName="telephone" value='{{authService.user.telephone}}' required>
             <span class="highlight"></span>
             <label>Télèphone</label>
           </div>
 
           <div class="group">
-            <input type="text" class="form-control" id="email" formControlName="email"  required>
+            <input type="text" class="form-control" id="email" formControlName="email" value='{{authService.user.email}}' required>
             <span class="highlight"></span>
             <label>Email</label>
           </div>
 
           <div class="group">
-            <input type="text" class="form-control" id="password" formControlName="password"  required>
+            <input type="text" class="form-control" id="password" formControlName="password" required>
             <span class="highlight"></span>
             <label>Password</label>
           </div>
@@ -71,7 +67,7 @@
 
 
           <div class="group">
-            <input type="text" class="form-control" id="villeRattachement" formControlName="villeRattachement"  required>
+            <input type="text" class="form-control" id="villeRattachement" formControlName="villeRattachement" value='{{authService.user.username}}' required>
             <span class="highlight"></span>
             <label>Email</label>
           </div>

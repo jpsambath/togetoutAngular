@@ -15,25 +15,8 @@ export class AppComponent implements OnInit{
   constructor(private authService:AuthService, private router:Router) { }
 
   ngOnInit() {
-    /*let token;
-    if(localStorage.getItem("token")){
-      token = localStorage.getItem("token");
-      console.log('Voici le token récupéré par localStorage');
-      console.log(token);
+
     }
 
-    if(token != null){
-      console.log("On a réussi à récupérer le token et les infos, vous êtes connectés ! BGGGG !!!!!");
-      this.authService.token = token;
-      this.authService.authenticated=true;
-      this.authService.getUserInfo();
-      this.router.navigate(['/']);
-    }
-    else{
-      this.authService.reponseErreur = "Votre session a expiré. Merci de vous reconnecter!";
-      this.router.navigate(['/login'])
-    }*/
-
-  }
 
 }

@@ -4,48 +4,64 @@
       <a routerLink="['profil', 1]">
         <div class="user-card">
           <div class="level center">
-            Mathilde Pouette
+            {{ sortie.organisateur.username }}
           </div>
           <div class="points center">
-            26 ans
+            {{ sortie.organisateur.site.nom }}
           </div>
           <img src="/assets/img/profil.jpg" width="80px" class="rounded-circle profil"/>
         </div>
       </a>
 
       <div class="more-info">
-        <h5>{{titre}}</h5>
+        <h5>{{ sortie.nom }}</h5>
+
         <div class="coords">
-          <span>Sortie prévue le</span>
-          <span>17 Janvier 2019</span>
+          <span>Prévue le</span>
+          <span>{{ sortie.dateHeureDebut | date:'dd/MM/yy - HH:mm' }}</span>
         </div>
         <div class="coords">
           <span>Ville</span>
-          <span>Nantes</span>
+          <span>{{ sortie.lieu.ville.nom }}</span>
         </div>
         <div class="coords">
           <span>Lieu</span>
-          <span>Place Bouffay</span>
+          <span>{{ sortie.lieu.nom }}</span>
         </div>
         <div class="stats">
 
           <div>
             <div class="title">Inscrits</div>
             <i class="fa fa-group"></i>
-            <div class="value">10/20</div>
+            <div class="value">{{sortie.participants.length}}/{{sortie.nbInscriptionMax}}</div>
           </div>
+
           <div>
-            <div class="title">Détails</div>
-            <i class="fas fa-eye"></i>
-            <div class="value"></div>
+            <a (click)="detailSortie()"><div class="title">Détails</div>
+              <i class="fas fa-eye"></i>
+              <div class="value"></div>
+            </a>
           </div>
+          <div *ngIf="!inscrit">
+            <a (click)="participerSortie()"><div class="title">Participer</div>
+              <i class="fas fa-user-plus"></i>
+              <div class="value"></div></a>
+          </div>
+
+          <div *ngIf="inscrit">
+            <a (click)="desinscrireSortie()"><div class="title">Désinscrire</div>
+              <i class="fas fa-trash"></i>
+              <div class="value"></div></a>
+          </div>
+
+
 
         </div>
       </div>
     </div>
     <div class="general">
-      <h5>{{titre}}</h5>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a volutpat mauris, at molestie lacus. Nam vestibulum sodales odio ut pulvinar.</p>
+    <h5>{{ sortie.nom }}</h5>
+      <p>{{ sortie.infosSortie }}</p>
 
     </div>
   </div>

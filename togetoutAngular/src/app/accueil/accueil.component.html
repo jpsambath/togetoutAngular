@@ -1,56 +1,31 @@
 <main class="page-content">
   <div class="container-fluid">
-    <span class="alert alert-success text-center" *ngIf="this.messageService.messageSucces">{{ this.messageService.messageSucces }}</span>
-    <span class="alert alert-warning text-center" *ngIf="this.messageService.messageErreur">{{ this.messageService.messageErreur }}</span>
+    <p class="alert alert-success text-center" *ngIf="this.messageService.messageSucces">{{ this.messageService.messageSucces }}</p>
+    <p class="alert alert-warning text-center" *ngIf="this.messageService.messageErreur">{{ this.messageService.messageErreur }}</p>
     <h2>Vos sorties</h2>
     <h3>Vous êtes inscrit à ces sorties</h3>
-   <!-- sortiesInscrits;
-    sortiesOrganisateurs;
-    sortiesSemaineActuelle;
-    sortiesSemaineProchaine; -->
-    <div class="row">
-        <!--<app-card *ngFor="let sortie of sortiesInscrits"></app-card>-->
 
+    <div class="row sortiesInscrites">
+        <app-card *ngFor="let sortie of listeSortiesInscrits" [sortie]=sortie></app-card>
     </div>
 
     <h3>Vous êtes organisateur de ces sorties</h3>
 
-    <div class="row">
-      <app-card titre="Volley Ball"></app-card>
-      <app-card titre="Barbecue dominical"></app-card>
-      <app-card titre="Cours de danse"></app-card>
-      <app-card titre="Cours de danse"></app-card>
-      <app-card titre="Volley Ball"></app-card>
-      <app-card titre="Barbecue dominical"></app-card>
-      <app-card titre="Cours de danse"></app-card>
-      <app-card titre="Cours de danse"></app-card>
-      <app-card titre="Volley Ball"></app-card>
-      <app-card titre="Barbecue dominical"></app-card>
-      <app-card titre="Cours de danse"></app-card>
-      <app-card titre="Cours de danse"></app-card>
-      <app-card titre="Volley Ball"></app-card>
-      <app-card titre="Barbecue dominical"></app-card>
-      <app-card titre="Cours de danse"></app-card>
-      <app-card titre="Cours de danse"></app-card>
+    <div class="row sortiesOrganisees">
+      <app-card *ngFor="let sortie of listeSortiesOrganisateurs" [sortie]="sortie"></app-card>
     </div>
 
     <h2>Les sorties à venir</h2>
     <h3>Cette semaine</h3>
     <hr>
-    <div class="row">
-      <app-card titre="Volley Ball"></app-card>
-      <app-card titre="Barbecue dominical"></app-card>
-      <app-card titre="Cours de danse"></app-card>
-      <app-card titre="Cours de danse"></app-card>
+    <div class="row sortiesEnHuit">
+      <app-card *ngFor="let sortie of listeSortiesSemaineActuelle"  [sortie]="sortie"></app-card>
     </div>
 
     <h3>La semaine prochaine</h3>
     <hr>
-    <div class="row">
-      <app-card titre="Volley Ball"></app-card>
-      <app-card titre="Barbecue dominical"></app-card>
-      <app-card titre="Cours de danse"></app-card>
-      <app-card titre="Cours de danse"></app-card>
+    <div class="row sortiesEnQuinze">
+      <app-card *ngFor="let sortie of listeSortiesSemaineProchaine"  [sortie]="sortie"></app-card>
     </div>
   </div>
 </main>

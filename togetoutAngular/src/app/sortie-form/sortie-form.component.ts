@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Etat} from "../model/etat";
 import {Sortie} from "../model/sortie";
@@ -50,13 +50,13 @@ export class SortieFormComponent implements OnInit {
       nbInscriptionMax : 0,
       duree : 0,
       infosSortie : '',
-      site : null,
+      site : new FormControl({value: '', disabled: true}),
       ville : '',
       lieu : '',
-      rue : '',
-      codePostal : '',
-      latitude : '',
-      longitude : ''
+      rue : new FormControl({value: '', disabled: true}),
+      codePostal : new FormControl({value: '', disabled: true}),
+      latitude : new FormControl({value: '', disabled: true}),
+      longitude : new FormControl({value: '', disabled: true})
     });
 
   }
@@ -73,6 +73,14 @@ export class SortieFormComponent implements OnInit {
     let dateSortie = new Date(formValue['date'] + ' ' + formValue['heure']) ;
     let dateLimite = new Date(formValue['dateLimite'] + ' ' + formValue['heureLimite']) ;
 
+    let lieuChoisi:Lieu;
+
+    for(let lieu of this.lieuService.lieuxSelectionne){
+      if(lieu.id == formValue['lieu']){
+        lieuChoisi = lieu;
+      }
+    }
+
     const nouvelleSortie = new Sortie(
       formValue['nom'],
       null,
@@ -81,10 +89,10 @@ export class SortieFormComponent implements OnInit {
       formValue['dateLimite'] + ' ' + formValue['heureLimite'],
       formValue['nbInscriptionMax'],
       formValue['infosSortie'],
-      new Lieu("paris centre", "", 4, 4, new Ville("Paris", 44000, 1), 1),
+      lieuChoisi,
       etat,
       null,
-      [this.authService.user.id]
+      []
     );
     console.log("*---------------JSON POUR LOIC---------------------");
     console.log(JSON.stringify(nouvelleSortie));

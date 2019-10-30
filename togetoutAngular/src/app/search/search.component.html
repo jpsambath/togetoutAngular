@@ -1,15 +1,18 @@
+<main class="page-content">
+  <div class="container-fluid">
+    <p class="alert alert-success text-center" *ngIf="this.messageService.messageSucces">{{ this.messageService.messageSucces }}</p>
+    <p class="alert alert-warning text-center" *ngIf="this.messageService.messageErreur">{{ this.messageService.messageErreur }}</p>
+
 <h3>Filtrer les sorties</h3>
 
 <form [formGroup]="searchForm" (ngSubmit)="onSubmitForm()">
   <div class="input-group group">
     <div class="input-group-prepend">
-      <span class="input-group-text">Lieu</span>
+      <span class="input-group-text">Ville</span>
     </div>
-    <select class="custom-select form-control" id="inputGroupSelect01">
-      <option selected>Choose...</option>
-      <option value="1">Nantes</option>
-      <option value="2">Paris</option>
-      <option value="3">Hongkong</option>
+    <select name="ville" id="ville" formControlName="ville" class="form-control">
+      <option value="" disabled selected hidden>Choisissez votre ville</option>
+      <option *ngFor="let ville of this.villeService.villes" value='{{ ville.id }}'>{{ ville.nom }}</option>
     </select>
   </div>
 
@@ -17,43 +20,29 @@
     <div class="input-group-prepend">
       <span class="input-group-text">Recherche</span>
     </div>
-  <input type="text" class="form-control" placeholder="Recherche">
+  <input type="text" formControlName="recherche" class="form-control" placeholder="Recherche">
   </div>
 
 
   <div class="input-group group">
-    <p>Entre</p>
+    <span class="input-group-text">Entre</span>
     <div class="input-group-prepend">
       <span class="input-group-text">Date Début</span>
     </div>
-    <input type="text" class="form-control" placeholder="Recherche">
+    <input type="text" formControlName="dateDebut" class="form-control" placeholder="Date de Début">
 
-    <p>et</p>
+    <span class="input-group-text">Et</span>
     <div class="input-group-prepend">
       <span class="input-group-text">Date Fin</span>
     </div>
-    <input type="text" class="form-control" placeholder="Recherche">
+    <input type="text" formControlName="dateFin" class="form-control" placeholder="Date de Fin">
   </div>
-<!--
-  <p>Inline checkboxes</p>
-  <div class="checkbox checkbox-inline">
-    <input type="checkbox" class="styled" id="inlineCheckbox1" value="option1">
-    <label for="inlineCheckbox1"> Inline One </label>
-  </div>
-  <div class="checkbox checkbox-success checkbox-inline">
-    <input type="checkbox" class="styled" id="inlineCheckbox2" value="option1" checked>
-    <label for="inlineCheckbox2"> Inline Two </label>
-  </div>
-  <div class="checkbox checkbox-inline">
-    <input type="checkbox" class="styled" id="inlineCheckbox3" value="option1">
-    <label for="inlineCheckbox3"> Inline Three </label>
-  </div>
-  <br/><br/>-->
 
-  <!-- Default unchecked -->
+  <div class="input-group group">
   <div class="custom-control custom-checkbox mb-3">
     <input type="checkbox" class="togetout-checkbox custom-control-input" id="sortieOrganisateur">
     <label class="custom-control-label" for="sortieOrganisateur">Default unchecked</label>
+  </div>
   </div>
   <!-- Default unchecked -->
   <div class="custom-control custom-checkbox mb-3">
@@ -174,3 +163,5 @@
   <!-- Table body -->
 </table>
 <!-- Table  -->
+  </div>
+</main>

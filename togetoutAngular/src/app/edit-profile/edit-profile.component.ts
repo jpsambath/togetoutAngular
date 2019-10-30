@@ -12,11 +12,24 @@ import {MessageService} from "../message.service";
 })
 export class EditProfileComponent implements OnInit {
 
-  editForm : FormGroup;
+ /* editForm : FormGroup;
+  username: string;
+  prenom: string ;*/
 
   constructor(private messageService:MessageService, private formBuilder: FormBuilder,private router : Router,private authService : AuthService) { }
 
   ngOnInit() {
+    this.authService.getUserInfo().then(
+      () => {
+        console.log("Récupération Sorties Réussie");
+
+      }
+      ,
+      () => {
+        console.log("Récupération Sorties Ratée");
+      });
+
+
     this.editForm = this.formBuilder.group({
       username : ['', Validators.required],
       prenom : ['', Validators.required],

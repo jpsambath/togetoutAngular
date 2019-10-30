@@ -11,14 +11,14 @@ export class Sortie {
     public nom?: string,
     public organisateur?: Participant,
     public dateHeureDebut?: string,
-    public duree?: String,
+    public duree?: string,
     public dateLimiteInscription?: string,
     public nbInscriptionMax?: number,
     public infosSortie?: string,
     public lieu?: Lieu,
     public etat?: Etat,
-    site?: Site,
-    participants?: Participant[],
+    public site?: Site,
+    public participants?: Participant[],
     public id?: number
 
   ) {  }

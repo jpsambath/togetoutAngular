@@ -6,6 +6,7 @@ import { AuthService} from "./auth.service";
 import {Observable, of} from "rxjs";
 import {Sortie} from "./model/sortie";
 import {MessageService} from "./message.service";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +22,9 @@ export class SortieService {
 
   resultat;
 
+  sortieAffichee: Sortie ;
 
-  constructor(private messageService:MessageService, private httpClient: HttpClient, private authService:AuthService) {
+  constructor(private messageService:MessageService, private httpClient: HttpClient, private authService:AuthService, private router:Router) {
     this.header = new HttpHeaders({
         'Content-Type':  'application/json'
       });
@@ -41,6 +43,61 @@ export class SortieService {
     console.log(message);
   }
 
+  public participerSortie(id:number){
+    return new Promise((resolve, reject) => {
+      this.header = new HttpHeaders({
+        'Content-Type':  'application/json',
+        //'Access-Control-Allow-Origin' : '*',
+        'Authorization': 'Bearer ' + this.authService.token
+      });
+
+      /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
+      this.httpClient.post('http://localhost/togetout/public/api/inscriptionSortie/'+id, "ParticiperSortie", { "headers" :this.header}).pipe(
+        catchError(this.handleError('ParticiperSortie', this.authService.token))
+      ).subscribe((data)=>{
+
+        console.log(data['statut']);
+
+        if (data['statut'] == "ok") {
+          this.messageService.messageSucces = "Vous êtes inscrit à cette sortie!";
+          this.router.onSameUrlNavigation = 'reload';
+          this.router.navigate(['/']);
+        } else {
+          this.messageService.messageErreur = "Vous n'êtes pas inscrit à cette sortie! Contactez un administrateur";
+          reject("Inscription Sortie Ratée");
+        }
+      });
+    })
+  }
+
+  public desinscrireSortie(id:number){
+    return new Promise((resolve, reject) => {
+      this.header = new HttpHeaders({
+        'Content-Type':  'application/json',
+        //'Access-Control-Allow-Origin' : '*',
+        'Authorization': 'Bearer ' + this.authService.token
+      });
+
+      /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
+      this.httpClient.post('http://localhost/togetout/public/api/desistementSortie/'+id, "DesistementSortie", { "headers" :this.header}).pipe(
+        catchError(this.handleError('DesistementSortie', this.authService.token))
+      ).subscribe((data)=>{
+
+        console.log(data['statut']);
+
+        if (data['statut'] == "ok") {
+          this.messageService.messageSucces = "Vous êtes désinscrit de cette sortie!";
+          this.router.onSameUrlNavigation = 'reload';
+          this.router.navigate(['/']);
+        } else {
+          this.messageService.messageErreur = "Vous n'êtes pas désinscrit de cette sortie! Il va falloir y aller...";
+          reject("Inscription Sortie Ratée");
+        }
+      });
+    })
+  }
+
+
   public getSortieInfo(){
     return new Promise((resolve, reject) => {
       this.header = new HttpHeaders({
@@ -58,6 +115,7 @@ export class SortieService {
         this.sortiesOrganisateurs = data['sortiesOrganisateurs'];
         this.sortiesSemaineActuelle = data['sortiesSemaineActuel'];
         this.sortiesSemaineProchaine = data['sortiesSemaineProchaine'];
+        console.log(data['statut']);
 
         if (data['statut'] == "ok") {
           resolve("On a les infos sorties");
@@ -66,6 +124,14 @@ export class SortieService {
         }
       });
     })
+  }
+
+  public setSortieAffichee(sortie: Sortie) {
+    this.sortieAffichee = sortie ;
+  }
+
+  public getSortieAffichee() {
+    return this.sortieAffichee ;
   }
 
   public creerSortie(sortie: Sortie){
