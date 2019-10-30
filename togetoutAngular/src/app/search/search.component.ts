@@ -25,18 +25,10 @@ export class SearchComponent implements OnInit {
     this.searchForm = this.formBuilder.group({
       ville : '',
       recherche : '',
-      heure : '',
-      dateLimite : '',
-      heureLimite : 0,
-      nbInscriptionMax : 0,
-      duree : 0,
-      infosSortie : '',
-      site : new FormControl({value: '', disabled: true}),
-      lieu : '',
-      rue : new FormControl({value: '', disabled: true}),
-      codePostal : new FormControl({value: '', disabled: true}),
-      latitude : new FormControl({value: '', disabled: true}),
-      longitude : new FormControl({value: '', disabled: true})
+      dateDebut : '',
+      dateFin : '',
+      heureLimite : '',
+
     });
 
   }

@@ -81,10 +81,12 @@
                 <th>Prénom</th>
               </tr>
             </thead>
-            <tr *ngFor="let participant of sortie.participants">
-              <td>{{ participant.username }}</td>
-              <td>{{ participant.nom }}</td>
-              <td>{{ participant.prenom }}</td>
+            <tr *ngFor="let participant of sortie.participants; index as i">
+
+              <td (click)="afficherProfil(participant)">{{ participant.username }}</td>
+              <td (click)="afficherProfil(participant)">{{ participant.nom }}</td>
+              <td (click)="afficherProfil(participant)">{{ participant.prenom }}</td>
+
             </tr>
           </table>
         </form>
