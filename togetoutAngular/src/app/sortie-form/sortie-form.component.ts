@@ -91,8 +91,7 @@ export class SortieFormComponent implements OnInit {
       formValue['infosSortie'],
       lieuChoisi,
       etat,
-      null,
-      []
+      null
     );
     console.log("*---------------JSON POUR LOIC---------------------");
     console.log(JSON.stringify(nouvelleSortie));
