@@ -81,11 +81,13 @@
                 <th>Prénom</th>
               </tr>
             </thead>
-            <a routerLink=""><tr *ngFor="let participant of sortie.participants">
+            <tr *ngFor="let participant of sortie.participants; index as i">
+              <a (click)="afficherProfil(participant)">
               <td>{{ participant.username }}</td>
               <td>{{ participant.nom }}</td>
               <td>{{ participant.prenom }}</td>
-            </tr></a>
+              </a>
+            </tr>
           </table>
         </form>
       </div>

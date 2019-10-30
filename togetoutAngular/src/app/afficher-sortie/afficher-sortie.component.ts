@@ -7,6 +7,7 @@ import {LieuFormComponent} from "../lieu-form/lieu-form.component";
 import {MessageService} from "../message.service";
 import {Sortie} from "../model/sortie";
 import {DatePipe, formatDate} from "@angular/common";
+import {Participant} from "../model/participant";
 
 @Component({
   selector: 'app-afficher-sortie',
@@ -40,5 +41,10 @@ export class AfficherSortieComponent implements OnInit {
       latitude : this.sortie.lieu.latitude,
       longitude : this.sortie.lieu.longitude
     });
+  }
+
+  public afficherProfil(participant: Participant) {
+    //this.authService.setProfilAffiche(this.sortie) ;
+    this.router.navigate(["/editSortie"]) ;
   }
 }
