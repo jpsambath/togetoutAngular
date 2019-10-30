@@ -7,61 +7,58 @@
 
 <form [formGroup]="searchForm" (ngSubmit)="onSubmitForm()">
   <div class="input-group group">
-    <div class="input-group-prepend">
-      <span class="input-group-text">Ville</span>
-    </div>
     <select name="ville" id="ville" formControlName="ville" class="form-control">
       <option value="" disabled selected hidden>Choisissez votre ville</option>
       <option *ngFor="let ville of this.villeService.villes" value='{{ ville.id }}'>{{ ville.nom }}</option>
     </select>
   </div>
 
-  <div class="input-group group">
-    <div class="input-group-prepend">
-      <span class="input-group-text">Recherche</span>
-    </div>
-  <input type="text" formControlName="recherche" class="form-control" placeholder="Recherche">
+  <div class="group">
+  <input type="text" formControlName="recherche" class="form-control" placeholder="">
+    <span class="highlight"></span>
+    <label>Recherche</label>
   </div>
 
 
   <div class="input-group group">
-
     <div class="input-group-prepend">
       <span class="input-group-text">Entre</span>
     </div>
-    <input type="text" formControlName="dateDebut" class="form-control mr-2" placeholder="Date de Début">
+    <input type="date" formControlName="dateDebut" class="form-control" placeholder="Date de Début">
+    <input type="time" formControlName="heureDebut" class="form-control mr-5" placeholder="Heure de Début">
 
 
-    <div class="input-group-prepend ml-2">
+    <div class="input-group-prepend ml-5">
       <span class="input-group-text">Et</span>
     </div>
-    <input type="text" formControlName="dateFin" class="form-control" placeholder="Date de Fin">
+    <input type="datetime-local" formControlName="dateFin" class="form-control" placeholder="Date de Fin">
+    <input type="time" formControlName="heureFin" class="form-control mr-2" placeholder="Heure de Fin">
   </div>
 
   <div class="input-group group">
-    <div class="custom-control custom-checkbox mb-3">
-      <input type="checkbox" class="togetout-checkbox custom-control-input" id="sortieOrganisateur">
+    <div class="custom-control custom-checkbox">
+      <input type="checkbox" formControlName="cbxOrganisateur" class="custom-control-input togetout-checkbox" id="sortieOrganisateur">
       <label class="custom-control-label" for="sortieOrganisateur">Sorties dont je suis l'organisateur</label>
     </div>
 
-    <div class="custom-control custom-checkbox mb-3">
-      <input type="checkbox" class="custom-control-input" id="sortieInscrit" checked>
+    <div class="custom-control custom-checkbox">
+      <input type="checkbox" formControlName="cbxInscrit" class="custom-control-input togetout-checkbox" id="sortieInscrit" checked>
       <label class="custom-control-label" for="sortieInscrit">Sorties auxquelles je suis inscrit</label>
     </div>
 
-    <div class="custom-control custom-checkbox mb-3">
-      <input type="checkbox" class="custom-control-input" id="sortiePasInscrit">
+    <div class="custom-control custom-checkbox">
+      <input type="checkbox" formControlName="cbxNonInscrit" class="custom-control-input togetout-checkbox" id="sortiePasInscrit">
       <label class="custom-control-label" for="sortiePasInscrit">Sorties auxquelles je ne suis pas inscrit</label>
     </div>
 
-    <div class="custom-control custom-checkbox mb-3">
-      <input type="checkbox" class="custom-control-input" id="sortiePassees">
+    <div class="custom-control custom-checkbox">
+      <input type="checkbox" formControlName="cbxPassees" class="custom-control-input togetout-checkbox" id="sortiePassees">
       <label class="custom-control-label" for="sortiePassees">Sorties passées</label>
     </div>
   </div>
 
   <div class="input-group group float-right">
-  <button type="submit" class="btn btn-togetout offset-10" [disabled]="searchForm.invalid">Filtrer les sorties</button>
+  <button type="submit" class="btn btn-togetout offset-11" [disabled]="searchForm.invalid">Filtrer les sorties</button>
   </div>
 
 </form>
