@@ -19,16 +19,6 @@ export class EditProfileComponent implements OnInit {
   constructor(private messageService:MessageService, private formBuilder: FormBuilder,private router : Router,private authService : AuthService) { }
 
   ngOnInit() {
-    this.authService.getUserInfo().then(
-      () => {
-        console.log("Récupération Sorties Réussie");
-
-      }
-      ,
-      () => {
-        console.log("Récupération Sorties Ratée");
-      });
-
 
     this.editForm = this.formBuilder.group({
       username : ['', Validators.required],

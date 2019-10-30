@@ -19,16 +19,17 @@
         <div class="col-6">
           <div class="group">
             <select name="ville" id="ville" formControlName="ville" class="form-control" required>
-              <option selected disabled>--Dans quelle ville ?--</option>
+              <option value="" disabled selected hidden>Choisissez une ville</option>
+              <option *ngFor="let ville of this.villeService.villes" value='{{ ville.id }}'>{{ ville.nom }}</option>
             </select>
           </div>
           <div class="group">
-            <input type="text" class="form-control" id="latitude" formControlName="latitude"  required>
+            <input type="number" class="form-control" id="latitude" formControlName="latitude"  required>
             <span class="highlight"></span>
             <label>Latitude</label>
           </div>
           <div class="group">
-            <input type="text" class="form-control" id="longitude" formControlName="longitude"  required>
+            <input type="number" class="form-control" id="longitude" formControlName="longitude"  required>
             <span class="highlight"></span>
             <label>Longitude</label>
           </div>

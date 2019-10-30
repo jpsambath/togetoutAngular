@@ -102,7 +102,7 @@ export class SortieFormComponent implements OnInit {
       }
       ,
       () => {
-        console.log("Inscription Ratée");
+        console.log("Sortie Ratée");
       });
 
 

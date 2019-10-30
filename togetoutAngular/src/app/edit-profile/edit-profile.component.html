@@ -12,7 +12,7 @@
     <div class="row"  style="align-items: center; text-align:center">
       <!-- left column -->
       <div class="offset-lg-1 col-lg-4 col-md-12 col-sm-12 col-12 border rounded p-3 mb-3">
-          <div class="rowr">
+          <div class="row">
             <div class="col-12">
               <img src="/assets/img/profil.jpg" class="avatar img-circle" alt="avatar">
             </div>
@@ -28,11 +28,6 @@
 
       <!-- edit form column -->
       <div class="offset-lg-1 col-lg-5 col-md-12 col-sm-12 col-12 border rounded p-3 mb-3">
-        <div class="alert alert-info alert-dismissable">
-          <a class="panel-close close" data-dismiss="alert">×</a>
-          <i class="fa fa-coffee"></i>
-          This is an <strong>.alert</strong>. Use this to show important messages to the user.
-        </div>
         <h3>Informations Personnelles : </h3>
         <form [formGroup]="editForm" (ngSubmit)="onSubmitForm()">
           <div class="group">
