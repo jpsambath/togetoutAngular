@@ -161,4 +161,30 @@ export class SortieService {
     })
   }
 
+  public updateSortie(sortie: Sortie){
+    return new Promise((resolve, reject) => {
+      this.header = new HttpHeaders({
+        'Content-Type':  'application/json',
+        //'Access-Control-Allow-Origin' : '*',
+        'Authorization': 'Bearer ' + this.authService.token
+      });
+
+      /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
+      this.httpClient.post('http://10.12.200.10/togetout/public/api/getSortie/'+sortie.id, sortie, { "headers" :this.header}).pipe(
+        catchError(this.handleError('creerSortie', sortie))
+      ).subscribe((data)=>{
+
+        this.resultat = data;
+
+        if (this.resultat['statut'] == 'ok') {
+          this.messageService.messageSucces = "Sortie modifiée avec succès";
+          resolve("creerSortie ok");
+        } else {
+          this.messageService.messageErreur = "Sortie non modifiée";
+          reject("creerSortie ko");
+        }
+      });
+    })
+  }
+
 }
