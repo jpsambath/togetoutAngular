@@ -4,6 +4,7 @@ import {catchError} from "rxjs/operators";
 import { AuthService} from "./auth.service";
 import {Observable, of} from "rxjs";
 import {MessageService} from "./message.service";
+import * as MesConstantes from './model/global'
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +38,7 @@ export class VilleService {
       });
 
       /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
-      this.httpClient.post('http://localhost/togetout/public/api/getVilles', "getVilles", { "headers" :this.header}).pipe(
+      this.httpClient.post(MesConstantes.api+'getVilles', "getVilles", { "headers" :this.header}).pipe(
         catchError(this.handleError('getVille', this.authService.token))
       ).subscribe((data)=>{
 

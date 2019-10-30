@@ -12,6 +12,7 @@
 export class CardComponent implements OnInit {
   @Input() sortie: Sortie;
   inscrit:Boolean;
+  organisateur:Boolean;
   constructor(private sortieService:SortieService, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
@@ -24,6 +25,17 @@ export class CardComponent implements OnInit {
       }
     }
 
+    this.organisateur=false;
+      if(this.authService.user.id == this.sortie.organisateur.id){
+        this.organisateur=true;
+      }
+
+
+  }
+
+  editSortie(){
+    this.sortieService.setSortieAffichee(this.sortie) ;
+    this.router.navigate(["/editSortie"]) ;
   }
 
   detailSortie(){

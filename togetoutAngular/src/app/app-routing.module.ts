@@ -20,11 +20,11 @@ const routes: Routes = [
   {path: 'inscription', canActivate: [DecoGuardService], component: InscriptionFormComponent},
   {path: 'login', canActivate: [DecoGuardService], component: LoginFormComponent},
   {path: 'creer', canActivate: [AuthGuardService], component: SortieFormComponent},
-  {path: 'viewprofile', canActivate: [AuthGuardService], component: ViewProfileComponent},
+  {path: 'viewProfile', canActivate: [AuthGuardService], component: ViewProfileComponent},
   {path: 'search', canActivate: [AuthGuardService], component : SearchComponent},
-  {path: 'editprofile', canActivate: [AuthGuardService], component : EditProfileComponent},
-  {path: 'editsortie', canActivate: [AuthGuardService], component : EditSortieComponent},
-  {path: 'anuleesortie', canActivate: [AuthGuardService], component : AnnulerSortieComponent},
+  {path: 'editProfile', canActivate: [AuthGuardService], component : EditProfileComponent},
+  {path: 'editSortie', canActivate: [AuthGuardService], component : EditSortieComponent},
+  {path: 'annulerSortie', canActivate: [AuthGuardService], component : AnnulerSortieComponent},
   {path: 'detailSortie', canActivate: [AuthGuardService], component : AfficherSortieComponent},
   {path: '**', canActivate: [AuthGuardService], redirectTo: ''}
 
