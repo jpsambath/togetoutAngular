@@ -19,7 +19,7 @@ import * as MesConstantes from './model/global'
 export class AuthService {
 
 
-  authenticated = true;
+  authenticated = false;
   token;
   user;
 
