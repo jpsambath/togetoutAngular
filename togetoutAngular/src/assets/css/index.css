@@ -1000,3 +1000,10 @@ label.custom-control-label {
 .details {
   background-color: lightgray ;
 }
+
+tr:hover{
+  background: radial-gradient(ellipse at top, #16c7ff, transparent),
+  radial-gradient(ellipse at bottom, #fff, transparent);
+  cursor:pointer;
+
+}

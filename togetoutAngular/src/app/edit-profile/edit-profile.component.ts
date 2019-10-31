@@ -67,7 +67,6 @@ export class EditProfileComponent implements OnInit {
       ,
       () => {
         console.log("ici redirection vers editProfile = echec");
-        this.router.navigate(['/edit-profile']);
       });
   }
 
