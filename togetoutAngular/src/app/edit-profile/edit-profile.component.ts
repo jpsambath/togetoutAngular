@@ -81,7 +81,7 @@ export class EditProfileComponent implements OnInit {
 
   onFileChanged(event) {
     const file = event.target.files[0]
-    new File(file, '/src/assets/img/text.txt', {type: "text/json;charset=utf-8"});
+
 
   }
 
