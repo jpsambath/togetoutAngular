@@ -87,11 +87,11 @@ export class EditSortieComponent implements OnInit {
 
     console.log('Nouvelle sortie créée par le formulaire : ')
     console.log(nouvelleSortie);
-
+    this.sortieService.setSortieAffichee(this.sortie) ;
     this.sortieService.editSortie(nouvelleSortie).then(
       () => {
         console.log("ici redirection vers l'accueil = succès");
-        this.router.navigate(['']);
+        this.router.navigate(['/']);
       }
       ,
       () => {

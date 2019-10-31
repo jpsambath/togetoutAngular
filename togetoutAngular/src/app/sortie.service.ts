@@ -175,7 +175,7 @@ export class SortieService {
       });
 
       /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
-      this.httpClient.post(MesConstantes.api+'getSortie'+sortie.id, sortie, { "headers" :this.header}).pipe(
+      this.httpClient.post(MesConstantes.api+'getSortie/'+this.sortieAffichee.id, sortie, { "headers" :this.header}).pipe(
         catchError(this.handleError('creerSortie', sortie))
       ).subscribe((data)=>{
 
