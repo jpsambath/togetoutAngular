@@ -37,14 +37,14 @@
           </div>
 
           <div>
-            <a (click)="detailSortie()"><div class="title">Détails</div>
+            <a (click)="detailSortie()" class="togetout-card-link"><div class="title">Détails</div>
               <i class="fas fa-eye"></i>
               <div class="value"></div>
             </a>
           </div>
 
           <div *ngIf="organisateur">
-            <a (click)="editSortie()"><div class="title">Editer</div>
+            <a (click)="editSortie()" class="togetout-card-link"><div class="title">Editer</div>
               <i class="fas fa-edit"></i>
               <div class="value"></div>
             </a>
@@ -52,13 +52,13 @@
 
 
           <div *ngIf="!inscrit">
-            <a (click)="participerSortie()"><div class="title">Participer</div>
+            <a (click)="participerSortie()" class="togetout-card-link"><div class="title">Participer</div>
               <i class="fas fa-user-plus"></i>
               <div class="value"></div></a>
           </div>
 
           <div *ngIf="inscrit">
-          <a (click)="desinscrireSortie()"><div class="title">Désinscrire</div>
+          <a (click)="desinscrireSortie()" class="togetout-card-link"><div class="title">Désinscrire</div>
             <i class="fas fa-trash"></i>
             <div class="value"></div></a>
         </div>

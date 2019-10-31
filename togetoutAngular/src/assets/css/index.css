@@ -828,6 +828,15 @@ body {
   color: #ffffff ;
 }
 
+.sortiesInscrites .card .additional .more-info .stats .togetout-card-link {
+  color: #ffffff ;
+}
+
+.sortiesInscrites .card .additional .more-info .stats .togetout-card-link:hover {
+  color: rgb(195, 250, 255);
+  cursor: pointer;
+}
+
 .sortiesOrganisees .card .user-card {
   background-color: rgb(195, 250, 255);
 }
@@ -843,6 +852,15 @@ body {
 .sortiesOrganisees .card .additional .user-card .level,
 .sortiesOrganisees .card .additional .user-card .points {
   color: #1e1e1e;
+}
+
+.sortiesOrganisees .card .additional .more-info .stats .togetout-card-link {
+  color: #1e1e1e;
+}
+
+.sortiesOrganisees .card .additional .more-info .stats .togetout-card-link:hover {
+  color: #ff8f7f;
+  cursor: pointer;
 }
 
 .sortiesEnHuit .card .user-card {
@@ -862,6 +880,16 @@ body {
   color: #1e1e1e;
 }
 
+.sortiesEnHuit .card .additional .more-info .stats .togetout-card-link {
+  color: #1e1e1e;
+}
+
+.sortiesEnHuit .card .additional .more-info .stats .togetout-card-link:hover {
+  color: #ff8f7f;
+  cursor: pointer;
+}
+
+
 .sortiesEnQuinze .card .user-card {
   background-color: #ff8f7f;
 }
@@ -877,6 +905,15 @@ body {
 .sortiesEnQuinze .card .additional .user-card .level,
 .sortiesEnQuinze .card .additional .user-card .points {
   color: #1e1e1e;
+}
+
+.sortiesEnQuinze .card .additional .more-info .stats .togetout-card-link {
+  color: #1e1e1e;
+}
+
+.sortiesEnQuinze .card .additional .more-info .stats .togetout-card-link:hover {
+  color: rgb(195, 250, 255);
+  cursor: pointer;
 }
 
 #add-ville-CSS {

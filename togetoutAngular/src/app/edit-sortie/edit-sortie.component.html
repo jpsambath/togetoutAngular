@@ -108,7 +108,7 @@
           <div class="row">
             <div class="col-2"></div>
             <div class="col-2">
-              <button type="button" (click)="onSubmitForm('enregistrer')" class="btn btn-togetout" id="enregistrer">Enregistrer</button>
+              <button *ngIf="sortie.etat.id<3" type="button" (click)="onSubmitForm('enregistrer')" class="btn btn-togetout" id="enregistrer">Enregistrer</button>
             </div><div class="col-2">
             <button *ngIf="sortie.etat.id==1" type="button" (click)="onSubmitForm('publier')" class="btn btn-togetout" id="publier">Publier la sortie</button>
           </div><div class="col-2">

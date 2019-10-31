@@ -163,7 +163,7 @@ export class SortieService {
     })
   }
 
-  public updateSortie(sortie: Sortie){
+  public editSortie(sortie: Sortie){
     return new Promise((resolve, reject) => {
       this.header = new HttpHeaders({
         'Content-Type':  'application/json',

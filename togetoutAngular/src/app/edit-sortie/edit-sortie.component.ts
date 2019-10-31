@@ -10,6 +10,7 @@ import {MessageService} from "../message.service";
 import {DatePipe} from '@angular/common';
 import {VilleService} from "../ville.service";
 import {LieuService} from "../lieu.service";
+import {Lieu} from "../model/lieu";
 
 @Component({
   selector: 'app-edit-sortie',
@@ -54,11 +55,19 @@ export class EditSortieComponent implements OnInit {
   onSubmitForm(buttonID: string) {
     const formValue = this.SortieForm.value;
     let etat ;
-    if(buttonID === 'enregistrer') {
-      etat = new Etat('Créée', null) ;
+    if (buttonID === 'publier'){
+      etat = new Etat('Ouverte', 2) ;
     }
-    else if (buttonID === 'publier'){
-      etat = new Etat('Ouverte', null) ;
+
+    let lieuChoisi:Lieu = null ;
+
+    for(let lieu of this.lieuService.lieuxSelectionne){
+      if(lieu.id == formValue['lieu']){
+        lieuChoisi = lieu;
+      }
+    }
+    if(lieuChoisi == null) {
+      lieuChoisi = this.sortie.lieu ;
     }
     const nouvelleSortie = new Sortie(
       formValue['nom'],
@@ -68,26 +77,25 @@ export class EditSortieComponent implements OnInit {
       formValue['dateLimite'],
       formValue['nbInscriptionMax'],
       formValue['infosSortie'],
-      null,
+      lieuChoisi,
       etat,
       null,
-      [],
+      this.sortie.participants,
       null
     );
 
     console.log('Nouvelle sortie créée par le formulaire : ')
     console.log(nouvelleSortie);
-/*
-    this.SortieService.editSortie(nouvelleSortie).then(
+
+    this.sortieService.editSortie(nouvelleSortie).then(
       () => {
         console.log("ici redirection vers l'accueil = succès");
-        this.SortieService.setAuthenticated(true);
         this.router.navigate(['']);
       }
       ,
       () => {
         console.log("ici redirection vers editsortie = echec");
-      });*/
+      });
   }
 
   changeLieu(){
