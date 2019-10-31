@@ -8,69 +8,94 @@
     <p class="text-center">Modifiez une activité pour vous et vos amis</p>
 
     <div class="row verticalalign">
-      <div class="col-2">
-      </div>
-      <div class="col-8 border rounded p-3 mb-3">
+      <div class="offset-lg-2 col-lg-8 offset-md-1 col-md-10 col-sm-12 col-12 border rounded p-3 mb-3">
         <form [formGroup]="SortieForm">
           <div class="row">
-            <div class="col-6">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
               <div class="group">
-                <input type="text" class="form-control details" id="nom" formControlName="nom">
+                <input type="text" class="form-control" id="nom" formControlName="nom">
                 <span class="highlight"></span>
                 <label>Nom de la sortie</label>
               </div>
               <div class="group">
-                <input type="text" class="form-control details" id="date" formControlName="date">
+                <input type="text" class="form-control" id="date" formControlName="date">
                 <span class="highlight"></span>
                 <label>Date de la sortie</label>
               </div>
               <div class="group">
-                <input type="text" class="form-control details" id="dateLimite" formControlName="dateLimite">
+                <input type="text" class="form-control" id="dateLimite" formControlName="dateLimite">
                 <span class="highlight"></span>
                 <label>Date limite d'inscription</label>
               </div>
               <div class="group">
-                <input type="number" min="0" class="form-control details" id="nbInscriptionMax" formControlName="nbInscriptionMax">
+                <input type="number" min="0" class="form-control" id="nbInscriptionMax" formControlName="nbInscriptionMax">
                 <span class="highlight"></span>
                 <label>Nombre maximum de participants</label>
               </div>
               <div class="group">
-                <input type="text" class="form-control details" id="duree" formControlName="duree">
+                <input type="text" class="form-control" id="duree" formControlName="duree">
                 <span class="highlight"></span>
                 <label>Durée (en minutes)</label>
               </div>
               <div class="group">
-                <textarea placeholder="Description et infos" class="form-control details" id="infosSortie" formControlName="infosSortie" style="height: 95px"></textarea>
+                <textarea placeholder="Description et infos" class="form-control" id="infosSortie" formControlName="infosSortie" style="height: 95px"></textarea>
               </div>
             </div>
-            <div class="col-6">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
               <div class="group">
-                <input type="text" class="form-control details" id="site" formControlName="site">
+                <input type="text" class="form-control" id="site" formControlName="site">
                 <span class="highlight"></span>
                 <label>Ville organisatrice</label>
               </div>
               <div class="group">
-                <input type="text" class="form-control details" id="lieu" formControlName="lieu">
-                <span class="highlight"></span>
-                <label>Ville organisatrice</label>
+                <div class="row">
+                  <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                    <select name="ville" id="ville" formControlName="ville" class="form-control" (change)="changeLieu()">
+                      <option value="" disabled>Choisissez votre ville</option>
+                      <option *ngFor="let ville of villes" value='{{ ville.id }}' [attr.selected]="ville.id==sortie.lieu.ville.id">{{ ville.nom }}</option>
+                    </select>
+                  </div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-2 justify-content-center">
+                    <button type="button" class="btn btn-togetout" id="ville-CSS" (click)="villeFormAppend('rowVille')" id="addVilleBouton"><i class="fas fa-plus rounded"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="villeAffichee">
+                <ng-container *ngComponentOutlet="ville" (ajoutEvent)="refresh($event)"></ng-container>
               </div>
               <div class="group">
-                <input type="text" class="form-control details" id="rue" formControlName="rue">
+                <div class="row">
+                  <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                    <select name="lieu" id="lieu" formControlName="lieu" class="form-control">
+                      <option value="" disabled>Choisissez votre lieu</option>
+                      <option *ngFor="let lieu of lieux" value='{{ lieu.id }}'>{{ lieu.nom }}</option>
+                    </select>
+                  </div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-2 justify-content-center">
+                    <button type="button" class="btn btn-togetout" id="lieu-CSS" (click)="lieuFormAppend('rowLieu')" id="addLieuBouton"><i class="fas fa-plus rounded"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="lieuAffiche">
+                <ng-container *ngComponentOutlet="lieu"></ng-container>
+              </div>
+              <div class="group">
+                <input type="text" class="form-control" id="rue" formControlName="rue">
                 <span class="highlight"></span>
                 <label>Rue</label>
               </div>
               <div class="group">
-                <input type="text" class="form-control details" id="codePostal" formControlName="codePostal">
+                <input type="number" class="form-control" id="codePostal" formControlName="codePostal">
                 <span class="highlight"></span>
                 <label>Code postal</label>
               </div>
               <div class="group">
-                <input type="text" class="form-control details" id="latitude" formControlName="latitude">
+                <input type="text" class="form-control" id="latitude" formControlName="latitude">
                 <span class="highlight"></span>
                 <label>Latitude</label>
               </div>
               <div class="group">
-                <input type="text" class="form-control details" id="longitude" formControlName="longitude">
+                <input type="text" class="form-control" id="longitude" formControlName="longitude">
                 <span class="highlight"></span>
                 <label>Longitude</label>
               </div>
@@ -78,21 +103,35 @@
           </div>
           <br>
 
-          <div class="row">
-            <div class="col-2"></div>
-            <div class="col-2">
-              <button type="button" (click)="onSubmitForm('enregistrer')" class="btn btn-togetout" id="enregistrer">Enregistrer</button>
-            </div><div class="col-2">
-            <button type="button" (click)="onSubmitForm('publier')" class="btn btn-togetout" id="publier">Publier la sortie</button>
-          </div><div class="col-2">
-            <button type="button" (click)="onSubmitForm('supprimer')" class="btn btn-togetout" id="supprimer">Supprimer la sortie</button>
-          </div><div class="col-2">
-            <button type="button" routerLink="/" class="btn btn-togetout">Annuler</button>
+          <div class="row" *ngIf="sortie.etat.id==1">
+            <div class="col-lg-3 col-md-3 col-sm-12 col-12" style="padding-top: 20px">
+              <button style="width: 150px" type="button" (click)="onSubmitForm('enregistrer')" class="btn btn-togetout" id="enregistrer">Enregistrer</button>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-12" style="padding-top: 20px">
+              <button style="width: 150px" type="button" (click)="onSubmitForm('publier')" class="btn btn-togetout" id="publier">Publier la sortie</button>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-12" style="padding-top: 20px">
+              <button style="width: 150px" type="button" (click)="onSubmitForm('supprimer')" class="btn btn-togetout" id="supprimer">Supprimer la sortie</button>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-12" style="padding-top: 20px">
+              <button style="width: 150px" type="button" routerLink="/" class="btn btn-togetout">Annuler</button>
+            </div>
           </div>
-            <div class="col-2"></div>
+
+          <div class="row" *ngIf="sortie.etat.id!=1">
+            <div class="offset-lg-2 col-lg-2 col-md-3 col-sm-12 col-12" style="padding-top: 20px">
+              <button style="width: 150px" type="button" (click)="onSubmitForm('enregistrer')" class="btn btn-togetout" id="enregistrer">Enregistrer</button>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-12 col-12" style="padding-top: 20px">
+              <button style="width: 150px" type="button" (click)="onSubmitForm('supprimer')" class="btn btn-togetout" id="supprimer">Supprimer la sortie</button>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-12 col-12" style="padding-top: 20px">
+              <button style="width: 150px" type="button" routerLink="/" class="btn btn-togetout">Annuler</button>
+            </div>
           </div>
 
           <br>
+          <hr>
           <h2>Participants</h2>
           <table id="listeParticipant" class="table">
             <thead class="thead-dark">

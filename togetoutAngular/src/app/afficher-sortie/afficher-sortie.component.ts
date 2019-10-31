@@ -31,7 +31,7 @@ export class AfficherSortieComponent implements OnInit {
       nom : [this.sortie.nom, Validators.required],
       date : [this.datepipe.transform(this.sortie.dateHeureDebut, 'dd/MM/yyyy - HH:mm'), Validators.required],
       dateLimite : this.datepipe.transform(this.sortie.dateLimiteInscription, 'dd/MM/yyyy - HH:mm'),
-      nbInscriptionMax : this.sortie.nbInscriptionMax,
+      nbInscriptionMax : "" + this.sortie.participants.length + " participant(s) sur " + this.sortie.nbInscriptionMax + "participants maximum",
       duree : this.datepipe.transform(this.sortie.dateLimiteInscription, 'HH:mm'),
       infosSortie : this.sortie.infosSortie,
       site : this.sortie.site.nom,

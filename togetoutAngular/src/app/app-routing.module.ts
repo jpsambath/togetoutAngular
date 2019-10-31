@@ -13,7 +13,6 @@ import {AuthGuardService} from "./auth-guard.service";
 import {DecoGuardService} from "./deco-guard.service";
 import {AfficherSortieComponent} from "./afficher-sortie/afficher-sortie.component";
 import {AfficherProfilComponent} from "./afficher-profil/afficher-profil.component";
-//import {AfficherSortieComponent} from "./afficher-sortie/afficher-sortie.component";
 
 
 const routes: Routes = [
