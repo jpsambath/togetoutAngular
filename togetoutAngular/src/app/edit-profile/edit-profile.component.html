@@ -18,9 +18,9 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-12 parent-div ">
-              <button class="btn-upload">Changer de photo de profil</button>
-              <input type="file" name="upfile">
+            <div class="parent-div text-center justify-content-center col-12">
+              <button class="btn-upload btn-togetout">Changer de photo de profil</button>
+              <input type="file" name="upfile" (change)="onFileChanged($event)">
             </div>
           </div>
         <br>

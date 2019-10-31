@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import { AuthService } from "../auth.service";
 import {MessageService} from "../message.service";
 
+
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.component.html',
@@ -67,7 +68,6 @@ export class EditProfileComponent implements OnInit {
       ,
       () => {
         console.log("ici redirection vers editProfile = echec");
-        //this.router.navigate(['/edit-profile']);
       });
   }
 
@@ -78,5 +78,12 @@ export class EditProfileComponent implements OnInit {
   clearMessageErreur(){
     this.messageService.messageErreur = '' ;
   }
+
+  onFileChanged(event) {
+    const file = event.target.files[0]
+    new File(file, '/src/assets/img/text.txt', {type: "text/json;charset=utf-8"});
+
+  }
+
 
 }

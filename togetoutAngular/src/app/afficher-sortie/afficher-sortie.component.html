@@ -27,9 +27,9 @@
                 <label>Date limite d'inscription</label>
               </div>
               <div class="group">
-                <input type="number" min="0" class="form-control details" id="nbInscriptionMax" formControlName="nbInscriptionMax">
+                <input type="text" min="0" class="form-control details" id="nbInscriptionMax" formControlName="nbInscriptionMax">
                 <span class="highlight"></span>
-                <label>Nombre maximum de participants</label>
+                <label>Nombre de participants</label>
               </div>
               <div class="group">
                 <input type="text" class="form-control details" id="duree" formControlName="duree">
@@ -73,6 +73,18 @@
               </div>
             </div>
           </div>
+
+          <div class="row">
+            <div class="col-2"></div>
+            <div class="col-2">
+              <button type="button" *ngIf="user.id == sortie.organisateur.id" (click)="modifier()" class="btn btn-togetout" id="modifier">Modifier</button>
+            </div><div class="col-2">
+            <button type="button" *ngIf="user.id == sortie.organisateur.id" (click)="annuler()" class="btn btn-togetout" id="annuler">Annuler la sortie</button>
+          </div><div class="col-2">
+          </div>
+            <div class="col-2"></div>
+          </div>
+
           <br>
           <h2>Participants</h2>
           <table id="listeParticipant" class="table">
