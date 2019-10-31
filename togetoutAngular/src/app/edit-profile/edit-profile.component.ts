@@ -48,8 +48,8 @@ export class EditProfileComponent implements OnInit {
       this.authService.user.role,
       formValue['telephone'],
       formValue['email'],
-      formValue['password'],
       null,
+      "",
       this.authService.user.site,
       this.authService.user.administrateur,
       this.authService.user.actif,
@@ -57,7 +57,7 @@ export class EditProfileComponent implements OnInit {
       this.authService.user.avatar
     );
 
-    console.log(participant)
+    console.log(JSON.stringify(participant));
 
     this.authService.editProfile(participant).then(
       () => {
@@ -81,7 +81,7 @@ export class EditProfileComponent implements OnInit {
 
   onFileChanged(event) {
     const file = event.target.files[0]
-    new File(file, '/src/assets/img/text.txt', {type: "text/json;charset=utf-8"});
+
 
   }
 

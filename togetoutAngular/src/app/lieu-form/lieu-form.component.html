@@ -1,40 +1,47 @@
 <div class="row verticalalign">
-  <div class="col-12 border rounded p-3 mb-3">
+  <div class="offset-lg-1 col-lg-10 offset-md-1 col-md-10 col-sm-12 col-12 border rounded p-3 mb-3">
     <form [formGroup]="lieuForm" (ngSubmit)="onSubmitForm()">
       <br>
       <div class="row">
-        <div class="col-6">
+        <div class="offset-lg-1 col-lg-10 offset-md-1 col-md-10 offset-sm-1 col-sm-10 offset-1 col-10">
           <div class="group">
             <input type="text" class="form-control" id="nom" formControlName="nom"  required>
             <span class="highlight"></span>
             <label>Nom du lieu</label>
           </div>
+        </div>
+        <div class="offset-lg-1 col-lg-10 offset-md-1 col-md-10 offset-sm-1 col-sm-10 offset-1 col-10">
           <div class="group">
             <input type="text" class="form-control" id="rue" formControlName="rue"  required>
             <span class="highlight"></span>
             <label>Rue</label>
           </div>
-          <button type="submit" class="btn btn-togetout" id="enregistrer">Enregistrer</button>
         </div>
-        <div class="col-6">
+        <div class="offset-lg-1 col-lg-10 offset-md-1 col-md-10 offset-sm-1 col-sm-10 offset-1 col-10">
           <div class="group">
             <select name="ville" id="ville" formControlName="ville" class="form-control" required>
               <option value="" disabled selected hidden>Choisissez une ville</option>
               <option *ngFor="let ville of this.villeService.villes" value='{{ ville.id }}'>{{ ville.nom }}</option>
             </select>
           </div>
+        </div>
+        <div class="offset-lg-1 col-lg-10 offset-md-1 col-md-10 offset-sm-1 col-sm-10 offset-1 col-10">
           <div class="group">
             <input type="number" class="form-control" id="latitude" formControlName="latitude"  required>
             <span class="highlight"></span>
             <label>Latitude</label>
           </div>
+        </div>
+        <div class="offset-lg-1 col-lg-10 offset-md-1 col-md-10 offset-sm-1 col-sm-10 offset-1 col-10">
           <div class="group">
             <input type="number" class="form-control" id="longitude" formControlName="longitude"  required>
             <span class="highlight"></span>
             <label>Longitude</label>
           </div>
         </div>
-
+        <div class="offset-lg-1 col-lg-10 offset-md-1 col-md-10 offset-sm-1 col-sm-10 offset-1 col-10">
+          <button type="submit" class="btn btn-togetout" id="enregistrer">Enregistrer</button>
+        </div>
       </div>
     </form>
   </div>
