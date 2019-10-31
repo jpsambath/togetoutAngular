@@ -180,15 +180,17 @@ export class AuthService {
         console.log(data);
         this.resultat = data;
 
+        if (this.resultat['statut'] == 'ok') {
+          this.messageService.messageSucces = "Profil modifié avec succès";
+          resolve("editProfile ok");
+        } else {
+          this.messageService.messageErreur = "Profil non modifié";
+          reject("editProfile ko");
+        }
+
       });
 
-      if (this.resultat['statut'] == 'ok') {
-        this.messageService.messageSucces = "Profil modifié avec succès";
-        resolve("editProfile ok");
-      } else {
-        this.messageService.messageErreur = "Profil non modifié";
-        reject("editProfile ko");
-      }
+
     })
   }
 }
