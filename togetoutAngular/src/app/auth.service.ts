@@ -169,7 +169,8 @@ export class AuthService {
     return new Promise((resolve, reject) => {
       const httpOptions = {
         headers: new HttpHeaders({
-          'Content-Type':  'application/json'
+          'Content-Type':  'application/json',
+          'Authorization': 'Bearer ' + this.token
         })
       };
 
@@ -187,10 +188,7 @@ export class AuthService {
           this.messageService.messageErreur = "Profil non modifié";
           reject("editProfile ko");
         }
-
       });
-
-
     })
   }
 }

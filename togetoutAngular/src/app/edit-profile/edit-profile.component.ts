@@ -56,7 +56,7 @@ export class EditProfileComponent implements OnInit {
       this.authService.user.avatar
     );
 
-    console.log(participant)
+    console.log(JSON.stringify(participant));
 
     this.authService.editProfile(participant).then(
       () => {
