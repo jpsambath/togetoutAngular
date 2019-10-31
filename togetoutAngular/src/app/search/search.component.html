@@ -14,7 +14,7 @@
   </div>
 
   <div class="group">
-  <input type="text" formControlName="recherche" class="form-control" placeholder="">
+  <input type="text" formControlName="recherche" class="form-control">
     <span class="highlight"></span>
     <label>Recherche</label>
   </div>
@@ -71,92 +71,49 @@
     <th>#</th>
     <th><i class="fas fa-leaf mr-2" aria-hidden="true"></i>Nom de la sortie</th>
     <th><i class="fas fa-leaf mr-2" aria-hidden="true"></i>Date de la sortie</th>
+    <th><i class="fas fa-leaf mr-2" aria-hidden="true"></i>Durée</th>
     <th><i class="fas fa-leaf mr-2" aria-hidden="true"></i>Clôture</th>
     <th><i class="fas fa-leaf mr-2" aria-hidden="true"></i>Inscrits/Places</th>
     <th><i class="fas fa-leaf mr-2" aria-hidden="true"></i>Etat</th>
-    <th><i class="fas fa-leaf mr-2" aria-hidden="true"></i>Inscrit</th>
     <th><i class="fas fa-leaf mr-2" aria-hidden="true"></i>Organisateur</th>
-    <th><i class="fas fa-leaf mr-2" aria-hidden="true"></i>Action</th>
+
   </tr>
   </thead>
   <!-- Table head -->
 
   <!-- Table body -->
-  <tbody>
-  <tr>
-    <th scope="row">1</th>
-    <td><i class="far fa-gem mr-2 grey-text" aria-hidden="true"></i>Mathilde fait la cuisine</td>
-    <td><i class="fas fa-download mr-2 grey-text" aria-hidden="true"></i>12/01/2019 23h59</td>
-    <td><i class="fas fa-book mr-2 grey-text" aria-hidden="true"></i>13/01/2019</td>
-    <td><i class="fas fa-graduation-cap mr-2 grey-text" aria-hidden="true"></i>6/9</td>
-    <td><i class="fas fa-gift mr-2 grey-text" aria-hidden="true"></i>Ouverte</td>
-    <td><i class="fas fa-image mr-2 grey-text" aria-hidden="true"></i>Oui</td>
-    <td><i class="fas fa-graduation-cap mr-2 grey-text" aria-hidden="true"></i>Mathilde P.</td>
-    <td>
-      <i class="fas fa-eye"></i>
-      <i class="fas fa-toggle-on"></i>
-      <i class="fas fa-toggle-off"></i>
-      <i class="fas fa-trash-alt"></i>
-      <i class="fas fa-edit"></i>
-      <i class="fas fa-upload"></i>
-    </td>
-  </tr>
-  <tr>
-    <th scope="row">2</th>
-    <td><i class="far fa-gem mr-2 grey-text" aria-hidden="true"></i>Mathilde passe l'aspirateur</td>
-    <td><i class="fas fa-download mr-2 grey-text" aria-hidden="true"></i>12/01/2019 23h59</td>
-    <td><i class="fas fa-book mr-2 grey-text" aria-hidden="true"></i>13/01/2019</td>
-    <td><i class="fas fa-graduation-cap mr-2 grey-text" aria-hidden="true"></i>6/9</td>
-    <td><i class="fas fa-gift mr-2 grey-text" aria-hidden="true"></i>Ouverte</td>
-    <td><i class="fas fa-image mr-2 grey-text" aria-hidden="true"></i>Oui</td>
-    <td><i class="fas fa-graduation-cap mr-2 grey-text" aria-hidden="true"></i>Mathilde P.</td>
-    <td>
-      <i class="fas fa-eye"></i>
-      <i class="fas fa-toggle-on"></i>
-      <i class="fas fa-toggle-off"></i>
-      <i class="fas fa-trash-alt"></i>
-      <i class="fas fa-edit"></i>
-      <i class="fas fa-upload"></i>
-    </td>
-  </tr>
-  <tr>
-    <th scope="row">2</th>
-    <td><i class="far fa-gem mr-2 grey-text" aria-hidden="true"></i>Mathilde épluche les tomates</td>
-    <td><i class="fas fa-download mr-2 grey-text" aria-hidden="true"></i>12/01/2019 23h59</td>
-    <td><i class="fas fa-book mr-2 grey-text" aria-hidden="true"></i>13/01/2019</td>
-    <td><i class="fas fa-graduation-cap mr-2 grey-text" aria-hidden="true"></i>6/9</td>
-    <td><i class="fas fa-gift mr-2 grey-text" aria-hidden="true"></i>Ouverte</td>
-    <td><i class="fas fa-image mr-2 grey-text" aria-hidden="true"></i>Oui</td>
-    <td><i class="fas fa-graduation-cap mr-2 grey-text" aria-hidden="true"></i>Mathilde P.</td>
-    <td>
-      <i class="fas fa-eye"></i>
-      <i class="fas fa-toggle-on"></i>
-      <i class="fas fa-toggle-off"></i>
-      <i class="fas fa-trash-alt"></i>
-      <i class="fas fa-edit"></i>
-      <i class="fas fa-upload"></i>
-    </td>
-  </tr>
-  <tr>
-    <th scope="row">2</th>
-    <td><i class="far fa-gem mr-2 grey-text" aria-hidden="true"></i>Mathilde étend le linge</td>
-    <td><i class="fas fa-download mr-2 grey-text" aria-hidden="true"></i>12/01/2019 23h59</td>
-    <td><i class="fas fa-book mr-2 grey-text" aria-hidden="true"></i>13/01/2019</td>
-    <td><i class="fas fa-graduation-cap mr-2 grey-text" aria-hidden="true"></i>6/9</td>
-    <td><i class="fas fa-gift mr-2 grey-text" aria-hidden="true"></i>Ouverte</td>
-    <td><i class="fas fa-image mr-2 grey-text" aria-hidden="true"></i>Oui</td>
-    <td><i class="fas fa-graduation-cap mr-2 grey-text" aria-hidden="true"></i>Mathilde P.</td>
-    <td>
-      <i class="fas fa-eye"></i>
-      <i class="fas fa-toggle-on"></i>
-      <i class="fas fa-toggle-off"></i>
-      <i class="fas fa-trash-alt"></i>
-      <i class="fas fa-edit"></i>
-      <i class="fas fa-upload"></i>
-    </td>
-  </tr>
+  <tbody *ngIf="searchSortie! else elseSortie">
+  <tr *ngFor="let sortie of searchSortie" (click)="afficherSortie(sortie)">
+    <th scope="row">{{sortie.id}}</th>
+    <td><i class="far fa-gem mr-2 grey-text" aria-hidden="true"></i>{{sortie.nom}}</td>
+    <td><i class="fas fa-download mr-2 grey-text" aria-hidden="true"></i>{{sortie.dateHeureDebut}}</td>
+    <td><i class="fas fa-download mr-2 grey-text" aria-hidden="true"></i>{{sortie.duree}}</td>
+    <td><i class="fas fa-book mr-2 grey-text" aria-hidden="true"></i>{{sortie.dateLimiteInscription}}</td>
+    <td><i class="fas fa-graduation-cap mr-2 grey-text" aria-hidden="true"></i>{{sortie.participants.length}}/{{sortie.nbInscriptionMax}}</td>
+    <td><i class="fas fa-gift mr-2 grey-text" aria-hidden="true"></i>{{sortie.etat.libelle}}</td>
+    <td><i class="fas fa-image mr-2 grey-text" aria-hidden="true"></i>{{sortie.organisateur.username}}</td>
 
+
+  </tr>
   </tbody>
+
+  <ng-template #elseSortie>
+    <tbody>
+    <tr *ngFor="let sortie of allSortie" (click)="afficherSortie(sortie)">
+      <th scope="row">{{sortie.id}}</th>
+      <td><i class="far fa-gem mr-2 grey-text" aria-hidden="true"></i>{{sortie.nom}}</td>
+      <td><i class="far fa-calendar-check mr-2 grey-text"></i> {{sortie.dateHeureDebut | date: "dd/MM/yyyy - HH:mm"}}</td>
+      <td><i class="fas fa-hourglass-half mr-2 grey-text"></i>{{sortie.duree | date: "HH:mm"}}</td>
+      <td><i class="fas fa-stopwatch mr-2 grey-text"></i>{{sortie.dateLimiteInscription | date: "dd/MM/yyyy - HH:mm"}}</td>
+      <td><i class="fas fa-graduation-cap mr-2 grey-text" aria-hidden="true"></i>{{sortie.participants.length}}/{{sortie.nbInscriptionMax}}</td>
+      <td><i class="fas fa-gift mr-2 grey-text" aria-hidden="true"></i>{{sortie.etat.libelle}}</td>
+      <td><i class="fas fa-image mr-2 grey-text" aria-hidden="true"></i>{{sortie.organisateur.username}}</td>
+
+    </tr>
+    </tbody>
+
+
+  </ng-template>
   <!-- Table body -->
 </table>
 <!-- Table  -->
