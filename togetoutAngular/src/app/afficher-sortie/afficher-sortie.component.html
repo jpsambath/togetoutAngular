@@ -1,16 +1,13 @@
 <main class="page-content">
   <div class="container-fluid">
     <br><h2 class="text-center">Afficher une sortie</h2>
-
     <p class="alert alert-success text-center" *ngIf="this.messageService.messageSucces" (click)="clearMessageSucces()">{{ this.messageService.messageSucces }}</p>
     <p class="alert alert-warning text-center" *ngIf="this.messageService.messageErreur" (click)="clearMessageErreur()">{{ this.messageService.messageErreur }}</p>
     <div class="row verticalalign">
-      <div class="col-2">
-      </div>
-      <div class="col-8 border rounded p-3 mb-3">
+      <div class="offset-lg-2 col-lg-8 offset-md-1 col-md-10 col-sm-12 col-12 border rounded p-3 mb-3">
         <form [formGroup]="afficherSortie">
           <div class="row">
-            <div class="col-6">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
               <div class="group">
                 <input type="text" class="form-control details" id="nom" formControlName="nom">
                 <span class="highlight"></span>
@@ -40,7 +37,7 @@
                 <textarea placeholder="Description et infos" class="form-control details" id="infosSortie" formControlName="infosSortie" style="height: 95px"></textarea>
               </div>
             </div>
-            <div class="col-6">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
               <div class="group">
                 <input type="text" class="form-control details" id="site" formControlName="site">
                 <span class="highlight"></span>
@@ -74,15 +71,13 @@
             </div>
           </div>
 
-          <div class="row">
-            <div class="col-2"></div>
-            <div class="col-2">
-              <button type="button" *ngIf="user.id == sortie.organisateur.id" (click)="modifier()" class="btn btn-togetout" id="modifier">Modifier</button>
-            </div><div class="col-2">
-            <button type="button" *ngIf="user.id == sortie.organisateur.id" (click)="annuler()" class="btn btn-togetout" id="annuler">Annuler la sortie</button>
-          </div><div class="col-2">
-          </div>
-            <div class="col-2"></div>
+          <div class="row" *ngIf="user.id == sortie.organisateur.id">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12" style="padding-top: 20px">
+              <button style="width: 130px" type="button" (click)="modifier()" class="btn btn-togetout" id="modifier">Modifier</button>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12" style="padding-top: 20px">
+              <button style="width: 130px" type="button" (click)="annuler()" class="btn btn-togetout" id="annuler">Annuler la sortie</button>
+            </div>
           </div>
 
           <br>
@@ -96,11 +91,9 @@
               </tr>
             </thead>
             <tr *ngFor="let participant of sortie.participants; index as i">
-
               <td (click)="afficherProfil(participant)">{{ participant.username }}</td>
               <td (click)="afficherProfil(participant)">{{ participant.nom }}</td>
               <td (click)="afficherProfil(participant)">{{ participant.prenom }}</td>
-
             </tr>
           </table>
         </form>
