@@ -82,11 +82,13 @@ export class EditSortieComponent implements OnInit {
       etat,
       null,
       this.sortie.participants,
-      null
+      this.sortie.id
     );
 
-    console.log('Nouvelle sortie créée par le formulaire : ')
+    console.log('Nouvelle sortie créée par le formulaire : ') ;
     console.log(nouvelleSortie);
+    console.log("\nEn JSON :") ;
+    console.log(JSON.stringify(this.sortie)) ;
     this.sortieService.setSortieAffichee(this.sortie) ;
     this.sortieService.editSortie(nouvelleSortie).then(
       () => {
