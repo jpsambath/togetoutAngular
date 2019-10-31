@@ -4,7 +4,6 @@ import {Participant} from "../model/participant";
 import { Router } from "@angular/router";
 import { AuthService } from "../auth.service";
 import {MessageService} from "../message.service";
-import { saveAs } from 'file-saver';
 
 
 @Component({
