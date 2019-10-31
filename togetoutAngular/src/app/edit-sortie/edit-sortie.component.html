@@ -111,7 +111,7 @@
               <button style="width: 150px" type="button" (click)="onSubmitForm('publier')" class="btn btn-togetout" id="publier">Publier la sortie</button>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-12 col-12" style="padding-top: 20px">
-              <button style="width: 150px" type="button" (click)="onSubmitForm('supprimer')" class="btn btn-togetout" id="supprimer">Supprimer la sortie</button>
+              <button style="width: 150px" type="button" (click)="supprimer()" class="btn btn-togetout" id="supprimer">Supprimer la sortie</button>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-12 col-12" style="padding-top: 20px">
               <button style="width: 150px" type="button" routerLink="/" class="btn btn-togetout">Annuler</button>
@@ -120,10 +120,10 @@
 
           <div class="row" *ngIf="sortie.etat.id!=1">
             <div class="offset-lg-2 col-lg-2 col-md-3 col-sm-12 col-12" style="padding-top: 20px">
-              <button style="width: 150px" type="button" (click)="onSubmitForm('enregistrer')" class="btn btn-togetout" id="enregistrer">Enregistrer</button>
+              <button style="width: 150px" type="button" (click)="onSubmitForm('enregistrer')" class="btn btn-togetout" id="enregistrer2">Enregistrer</button>
             </div>
             <div class="col-lg-2 col-md-3 col-sm-12 col-12" style="padding-top: 20px">
-              <button style="width: 150px" type="button" (click)="onSubmitForm('supprimer')" class="btn btn-togetout" id="supprimer">Supprimer la sortie</button>
+              <button style="width: 150px" type="button" (click)="supprimer()" class="btn btn-togetout" id="supprimer2">Supprimer la sortie</button>
             </div>
             <div class="col-lg-2 col-md-3 col-sm-12 col-12" style="padding-top: 20px">
               <button style="width: 150px" type="button" routerLink="/" class="btn btn-togetout">Annuler</button>

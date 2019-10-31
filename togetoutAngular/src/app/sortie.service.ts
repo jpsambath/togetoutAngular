@@ -21,6 +21,9 @@ export class SortieService {
   sortiesSemaineActuelle;
   sortiesSemaineProchaine;
 
+  allSortie;
+  searchSortie;
+
   resultat;
 
   sortieAffichee: Sortie ;
@@ -163,7 +166,7 @@ export class SortieService {
     })
   }
 
-  public updateSortie(sortie: Sortie){
+  public editSortie(sortie: Sortie){
     return new Promise((resolve, reject) => {
       this.header = new HttpHeaders({
         'Content-Type':  'application/json',
@@ -172,7 +175,7 @@ export class SortieService {
       });
 
       /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
-      this.httpClient.post('http://10.12.200.10/togetout/public/api/getSortie/'+sortie.id, sortie, { "headers" :this.header}).pipe(
+      this.httpClient.post(MesConstantes.api+'getSortie'+sortie.id, sortie, { "headers" :this.header}).pipe(
         catchError(this.handleError('creerSortie', sortie))
       ).subscribe((data)=>{
 
@@ -188,5 +191,63 @@ export class SortieService {
       });
     })
   }
+
+
+  public search(criteres:string){
+    return new Promise((resolve, reject) => {
+      this.header = new HttpHeaders({
+        'Content-Type':  'application/json',
+        //'Access-Control-Allow-Origin' : '*',
+        'Authorization': 'Bearer ' + this.authService.token
+      });
+
+      /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
+      this.httpClient.post(MesConstantes.api+'getSearchSorties', criteres, { "headers" :this.header}).pipe(
+        catchError(this.handleError('search', criteres))
+      ).subscribe((data)=>{
+
+        this.resultat = data;
+        this.searchSortie = data['searchSortie'];
+
+        if (this.resultat['statut'] == 'ok') {
+          this.messageService.messageSucces = "Voici les sorties trouvées correspondant à vos critères.";
+          resolve("search ok");
+        } else {
+          this.messageService.messageErreur = "Aucune sortie trouvée correspondant aux critères.";
+          reject("search ko");
+        }
+      });
+    })
+  }
+
+  public getAllSortie(){
+    return new Promise((resolve, reject) => {
+      this.header = new HttpHeaders({
+        'Content-Type':  'application/json',
+        //'Access-Control-Allow-Origin' : '*',
+        'Authorization': 'Bearer ' + this.authService.token
+      });
+
+      /* Stocker Observable dans attribut du service pour écoute par d'autres composants */
+      this.httpClient.post(MesConstantes.api+'getAllSortie', "getAllSortie", { "headers" :this.header}).pipe(
+        catchError(this.handleError('getAllSortie', this.authService.token))
+      ).subscribe((data)=>{
+
+        this.resultat = data;
+        this.allSortie = data['allSortie'];
+        console.log(this.allSortie);
+
+        if (this.resultat['statut'] == 'ok') {
+          this.messageService.messageSucces = "Toutes les sorties sont présentes par défaut.";
+          resolve("search ok");
+        } else {
+          this.messageService.messageErreur = "Aucune sortie trouvée.";
+          reject("search ko");
+        }
+      });
+    })
+  }
+
+
 
 }

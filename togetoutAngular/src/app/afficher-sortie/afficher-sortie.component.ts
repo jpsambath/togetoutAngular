@@ -21,17 +21,19 @@ export class AfficherSortieComponent implements OnInit {
   ville = VilleFormComponent ;
   lieu = LieuFormComponent ;
   sortie: Sortie ;
+  user: Participant
   constructor(private messageService:MessageService, private formBuilder: FormBuilder, private authService: AuthService, private router : Router, public viewContainerRef: ViewContainerRef,private sortieService : SortieService, public datepipe: DatePipe) { }
 
   ngOnInit() {
     console.log("Initialisation de la page de détails.")
     this.sortie = this.sortieService.getSortieAffichee() ;
+    this.user = this.authService.user ;
     console.log(this.sortie) ;
     this.afficherSortie = this.formBuilder.group({
       nom : [this.sortie.nom, Validators.required],
       date : [this.datepipe.transform(this.sortie.dateHeureDebut, 'dd/MM/yyyy - HH:mm'), Validators.required],
       dateLimite : this.datepipe.transform(this.sortie.dateLimiteInscription, 'dd/MM/yyyy - HH:mm'),
-      nbInscriptionMax : "" + this.sortie.participants.length + " participant(s) sur " + this.sortie.nbInscriptionMax + "participants maximum",
+      nbInscriptionMax : "" + this.sortie.participants.length + " participant(s) sur " + this.sortie.nbInscriptionMax + " participants maximum",
       duree : this.datepipe.transform(this.sortie.dateLimiteInscription, 'HH:mm'),
       infosSortie : this.sortie.infosSortie,
       site : this.sortie.site.nom,
@@ -50,6 +52,15 @@ export class AfficherSortieComponent implements OnInit {
       this.router.navigate(["/editProfile"]) ;
     else
       this.router.navigate(["/afficheProfil"]) ;
+  }
+
+  public modifier() {
+    this.sortieService.setSortieAffichee(this.sortie) ;
+    this.router.navigate(['/editSortie'])
+  }
+
+  public annuler() {
+
   }
 
   clearMessageSucces(){
