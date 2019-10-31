@@ -8,12 +8,10 @@
     <p class="text-center">Modifiez une activité pour vous et vos amis</p>
 
     <div class="row verticalalign">
-      <div class="col-2">
-      </div>
-      <div class="col-8 border rounded p-3 mb-3">
+      <div class="offset-lg-2 col-lg-8 offset-md-1 col-md-10 col-sm-12 col-12 border rounded p-3 mb-3">
         <form [formGroup]="SortieForm">
           <div class="row">
-            <div class="col-6">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
               <div class="group">
                 <input type="text" class="form-control" id="nom" formControlName="nom">
                 <span class="highlight"></span>
@@ -43,7 +41,7 @@
                 <textarea placeholder="Description et infos" class="form-control" id="infosSortie" formControlName="infosSortie" style="height: 95px"></textarea>
               </div>
             </div>
-            <div class="col-6">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
               <div class="group">
                 <input type="text" class="form-control" id="site" formControlName="site">
                 <span class="highlight"></span>
@@ -105,21 +103,35 @@
           </div>
           <br>
 
-          <div class="row">
-            <div class="col-2"></div>
-            <div class="col-2">
-              <button *ngIf="sortie.etat.id<3" type="button" (click)="onSubmitForm('enregistrer')" class="btn btn-togetout" id="enregistrer">Enregistrer</button>
-            </div><div class="col-2">
-            <button *ngIf="sortie.etat.id==1" type="button" (click)="onSubmitForm('publier')" class="btn btn-togetout" id="publier">Publier la sortie</button>
-          </div><div class="col-2">
-            <button type="button" (click)="onSubmitForm('supprimer')" class="btn btn-togetout" id="supprimer">Supprimer la sortie</button>
-          </div><div class="col-2">
-            <button type="button" routerLink="/" class="btn btn-togetout">Annuler</button>
+          <div class="row" *ngIf="sortie.etat.id==1">
+            <div class="col-lg-3 col-md-3 col-sm-12 col-12" style="padding-top: 20px">
+              <button style="width: 150px" type="button" (click)="onSubmitForm('enregistrer')" class="btn btn-togetout" id="enregistrer">Enregistrer</button>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-12" style="padding-top: 20px">
+              <button style="width: 150px" type="button" (click)="onSubmitForm('publier')" class="btn btn-togetout" id="publier">Publier la sortie</button>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-12" style="padding-top: 20px">
+              <button style="width: 150px" type="button" (click)="onSubmitForm('supprimer')" class="btn btn-togetout" id="supprimer">Supprimer la sortie</button>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-12" style="padding-top: 20px">
+              <button style="width: 150px" type="button" routerLink="/" class="btn btn-togetout">Annuler</button>
+            </div>
           </div>
-            <div class="col-2"></div>
+
+          <div class="row" *ngIf="sortie.etat.id!=1">
+            <div class="offset-lg-2 col-lg-2 col-md-3 col-sm-12 col-12" style="padding-top: 20px">
+              <button style="width: 150px" type="button" (click)="onSubmitForm('enregistrer')" class="btn btn-togetout" id="enregistrer">Enregistrer</button>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-12 col-12" style="padding-top: 20px">
+              <button style="width: 150px" type="button" (click)="onSubmitForm('supprimer')" class="btn btn-togetout" id="supprimer">Supprimer la sortie</button>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-12 col-12" style="padding-top: 20px">
+              <button style="width: 150px" type="button" routerLink="/" class="btn btn-togetout">Annuler</button>
+            </div>
           </div>
 
           <br>
+          <hr>
           <h2>Participants</h2>
           <table id="listeParticipant" class="table">
             <thead class="thead-dark">
