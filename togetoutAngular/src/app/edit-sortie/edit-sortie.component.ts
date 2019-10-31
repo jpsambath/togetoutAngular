@@ -8,6 +8,8 @@ import {LieuFormComponent} from "../lieu-form/lieu-form.component";
 import { SortieService } from "../sortie.service";
 import {MessageService} from "../message.service";
 import {DatePipe} from '@angular/common';
+import {VilleService} from "../ville.service";
+import {LieuService} from "../lieu.service";
 
 @Component({
   selector: 'app-edit-sortie',
@@ -18,15 +20,19 @@ export class EditSortieComponent implements OnInit {
   SortieForm : FormGroup;
   ville = VilleFormComponent ;
   lieu = LieuFormComponent ;
+  villes = this.villeService.villes ;
+  lieux = this.lieuService.lieuxSelectionne ;
   private villeAffichee = false ;
   private villeNonAffichee = !this.villeAffichee ;
   private lieuAffiche= false ;
   private lieuNonAffiche= !this.lieuAffiche ;
   sortie: Sortie ;
 
-  constructor(private messageService: MessageService, private formBuilder: FormBuilder, private router: Router, public viewContainerRef: ViewContainerRef,private sortieService: SortieService, public datepipe: DatePipe) { }
+  constructor(private messageService: MessageService, private formBuilder: FormBuilder, private router: Router, public viewContainerRef: ViewContainerRef,private sortieService: SortieService, public datepipe: DatePipe, private villeService: VilleService, private lieuService: LieuService) { }
 
   ngOnInit() {
+    this.lieuService.getLieux().then();
+    this.villeService.getVilles().then();
     this.sortie = this.sortieService.getSortieAffichee() ;
     this.SortieForm = this.formBuilder.group({
       nom : [this.sortie.nom, Validators.required],
@@ -36,8 +42,8 @@ export class EditSortieComponent implements OnInit {
       duree : this.datepipe.transform(this.sortie.dateLimiteInscription, 'HH:mm'),
       infosSortie : this.sortie.infosSortie,
       site : this.sortie.site.nom,
-      ville : this.sortie.lieu.ville.nom,
-      lieu : this.sortie.lieu.nom,
+      ville : this.sortie.lieu.ville,
+      lieu : this.sortie.lieu,
       rue : this.sortie.lieu.rue,
       codePostal : this.sortie.lieu.ville.codePostal,
       latitude : this.sortie.lieu.latitude,
@@ -81,8 +87,26 @@ export class EditSortieComponent implements OnInit {
       ,
       () => {
         console.log("ici redirection vers editsortie = echec");
-        this.router.navigate(['/edit-sortie']);
       });*/
+  }
+
+  changeLieu(){
+    let villeSelectionnee = (document.getElementById("ville")) as HTMLSelectElement;
+    let idVilleSelectionne = (villeSelectionnee.options[villeSelectionnee.selectedIndex]).value;
+
+    this.lieuService.lieuxSelectionne = [];
+
+    this.lieuService.lieux.forEach((lieu) =>{
+      if(lieu["ville"]["id"] == idVilleSelectionne)
+        this.lieuService.lieuxSelectionne.push(lieu);
+    })
+    /*console.log("----------------- Lieu Selectionne -------------------");
+    console.log(this.lieuService.lieuxSelectionne);*/
+    /*
+        console.log("Quelle ville est sélectionnée?");
+        console.log((villeSelectionnee.options[villeSelectionnee.selectedIndex]).value);
+        console.log((villeSelectionnee.options[villeSelectionnee.selectedIndex]).textContent);
+    */
   }
 
   villeFormAppend(divId : string) {
@@ -101,6 +125,16 @@ export class EditSortieComponent implements OnInit {
 
   clearMessageErreur(){
     this.messageService.messageErreur = '' ;
+  }
+
+  refresh($event) {
+    console.log("On recharge !")
+    this.villeService.getVilles().then();
+    this.villes = [] ;
+    this.villes = this.villeService.villes ;
+    this.lieuService.getLieux().then();
+    this.lieux = [] ;
+    this.lieux = this.lieuService.lieuxSelectionne ;
   }
 
 }
