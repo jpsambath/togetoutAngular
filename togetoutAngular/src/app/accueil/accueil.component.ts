@@ -50,12 +50,12 @@ export class AccueilComponent implements OnInit {
 
   }
 
-  ngOnDestroy(){
-
+  clearMessageSucces(){
+    this.messageService.messageSucces = '' ;
   }
 
-  ngAfterContentInit(){
-
+  clearMessageErreur(){
+    this.messageService.messageErreur = '' ;
   }
 
 }

@@ -26,12 +26,14 @@ export class SortieFormComponent implements OnInit {
   sortieForm : FormGroup;
   ville = VilleFormComponent ;
   lieu = LieuFormComponent ;
-  dateDuJour = Date.now() ;
+  villes = this.villeService.villes ;
+  lieux = this.lieuService.lieuxSelectionne ;
   user ;
-  private villeAffichee = false ;
-  private villeNonAffichee = !this.villeAffichee ;
-  private lieuAffiche= false ;
-  private lieuNonAffiche= !this.lieuAffiche ;
+  villeAffichee = false ;
+  villeNonAffichee = !this.villeAffichee ;
+  lieuAffiche= false ;
+  lieuNonAffiche= !this.lieuAffiche ;
+
 
   constructor(private messageService:MessageService, private formBuilder: FormBuilder, private router : Router, public viewContainerRef: ViewContainerRef, private lieuService:LieuService, private villeService:VilleService, private sortieService:SortieService, private authService: AuthService) { }
 
@@ -139,5 +141,25 @@ export class SortieFormComponent implements OnInit {
     this.lieuAffiche = !this.lieuAffiche ;
     this.lieuNonAffiche = !this.lieuNonAffiche ;
   }
+
+  clearMessageSucces(){
+    this.messageService.messageSucces = '' ;
+  }
+
+  clearMessageErreur(){
+    this.messageService.messageErreur = '' ;
+  }
+
+  refresh($event) {
+    console.log("On recharge !")
+    this.villeService.getVilles().then();
+    this.villes = [] ;
+    this.villes = this.villeService.villes ;
+    this.lieuService.getLieux().then();
+    this.lieux = [] ;
+    this.lieux = this.lieuService.lieuxSelectionne ;
+  }
+
+
 
 }

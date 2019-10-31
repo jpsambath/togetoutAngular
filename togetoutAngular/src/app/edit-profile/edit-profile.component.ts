@@ -13,9 +13,6 @@ import {MessageService} from "../message.service";
 export class EditProfileComponent implements OnInit {
 
   editForm : FormGroup;
-  username: string;
-  prenom: string;
-  password: string;
 
   constructor(private messageService:MessageService, private formBuilder: FormBuilder,private router : Router,private authService : AuthService) { }
 
@@ -73,4 +70,13 @@ export class EditProfileComponent implements OnInit {
         this.router.navigate(['/edit-profile']);
       });
   }
+
+  clearMessageSucces(){
+    this.messageService.messageSucces = '' ;
+  }
+
+  clearMessageErreur(){
+    this.messageService.messageErreur = '' ;
+  }
+
 }

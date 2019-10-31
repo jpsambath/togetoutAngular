@@ -1,8 +1,9 @@
-import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {Component, OnInit, ViewContainerRef, Output, EventEmitter} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Ville} from "../model/ville";
 import {VilleService} from "../ville.service";
+import {MessageService} from "../message.service";
 
 @Component({
   selector: 'app-ville-form',
@@ -12,8 +13,9 @@ import {VilleService} from "../ville.service";
 export class VilleFormComponent implements OnInit {
 
   villeForm : FormGroup ;
+  @Output() ajoutEvent = new EventEmitter<string>();
 
-  constructor(private formBuilder: FormBuilder/*,private participantService: participantService*/, private router : Router, public viewContainerRef: ViewContainerRef, private villeService: VilleService) { }
+  constructor(private formBuilder: FormBuilder/*,private participantService: participantService*/, private router : Router, public viewContainerRef: ViewContainerRef, private villeService: VilleService, private messageService: MessageService) { }
 
   ngOnInit() {
     this.villeForm = this.formBuilder.group({
@@ -37,6 +39,7 @@ export class VilleFormComponent implements OnInit {
     this.villeService.creerVille(nouvelleVille).then(
       () => {
         console.log("Ville Créée avec Succès");
+        this.ajoutEvent.emit("On a cliqué !");
       }
       ,
       () => {
@@ -47,6 +50,14 @@ export class VilleFormComponent implements OnInit {
 
     console.log('Nouvelle ville créée par le formulaire : ')
     console.log(nouvelleVille);
+  }
+
+  clearMessageSucces(){
+    this.messageService.messageSucces = '' ;
+  }
+
+  clearMessageErreur(){
+    this.messageService.messageErreur = '' ;
   }
 
 }

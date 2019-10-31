@@ -3,8 +3,8 @@
     <br><h3 class="text-center">Créer une sortie</h3>
     <p class="text-center">Créez une activité pour vous et vos amis</p>
 
-    <p class="alert alert-success text-center" *ngIf="this.messageService.messageSucces">{{ this.messageService.messageSucces }}</p>
-    <p class="alert alert-warning text-center" *ngIf="this.messageService.messageErreur">{{ this.messageService.messageErreur }}</p>
+    <p class="alert alert-success text-center" *ngIf="this.messageService.messageSucces" (click)="clearMessageSucces()">{{ this.messageService.messageSucces }}</p>
+    <p class="alert alert-warning text-center" *ngIf="this.messageService.messageErreur" (click)="clearMessageErreur()">{{ this.messageService.messageErreur }}</p>
     <div class="row verticalalign">
       <div class="offset-lg-2 col-lg-8 offset-md-1 col-md-10 col-sm-12 col-12 border rounded p-3 mb-3">
         <form [formGroup]="sortieForm">
@@ -60,7 +60,7 @@
                   <div class="col-lg-9 col-md-9 col-sm-9 col-9">
                     <select name="ville" id="ville" formControlName="ville" class="form-control" (change)="changeLieu()">
                       <option value="" disabled selected hidden>Choisissez votre ville</option>
-                      <option *ngFor="let ville of this.villeService.villes" value='{{ ville.id }}'>{{ ville.nom }}</option>
+                      <option *ngFor="let ville of villes" value='{{ ville.id }}'>{{ ville.nom }}</option>
                     </select>
                   </div>
                   <div class="col-lg-2 col-md-2 col-sm-2 col-2 justify-content-center">
@@ -69,18 +69,18 @@
                 </div>
               </div>
               <div *ngIf="villeAffichee">
-                <ng-container *ngComponentOutlet="ville"></ng-container>
+                <ng-container *ngComponentOutlet="ville" (ajoutEvent)="refresh($event)"></ng-container>
               </div>
               <div class="group">
                 <div class="row">
                   <div class="col-lg-9 col-md-9 col-sm-9 col-9">
                 <select name="lieu" id="lieu" formControlName="lieu" class="form-control">
                   <option value="" disabled selected hidden>Choisissez votre lieu</option>
-                  <option *ngFor="let lieu of this.lieuService.lieuxSelectionne" value='{{ lieu.id }}'>{{ lieu.nom }}</option>
+                  <option *ngFor="let lieu of lieux" value='{{ lieu.id }}'>{{ lieu.nom }}</option>
                 </select>
                   </div>
                   <div class="col-lg-2 col-md-2 col-sm-2 col-2 justify-content-center">
-                    <button tpe="button" class="btn btn-togetout" id="lieu-CSS" (click)="lieuFormAppend('rowLieu')" id="addLieuBouton"><i class="fas fa-plus rounded"></i></button>
+                    <button type="button" class="btn btn-togetout" id="lieu-CSS" (click)="lieuFormAppend('rowLieu')" id="addLieuBouton"><i class="fas fa-plus rounded"></i></button>
                   </div>
                 </div>
               </div>
