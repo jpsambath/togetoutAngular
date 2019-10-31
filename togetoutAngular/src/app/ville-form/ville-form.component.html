@@ -1,23 +1,23 @@
 <div class="row verticalalign">
-  <div class="col-12 border rounded p-3 mb-3">
+  <div class="offset-lg-1 col-lg-10 offset-md-1 col-md-10 col-sm-12 col-12 border rounded p-3 mb-3">
     <form [formGroup]="villeForm" (ngSubmit)="onSubmitForm()">
       <br>
       <div class="row">
-        <div class="col-5">
+        <div class="offset-lg-1 col-lg-5 offset-md-1 col-md-10 offset-sm-1 col-sm-10 offset-1 col-10">
           <div class="group">
             <input type="text" class="form-control" id="nom" formControlName="nom"  required>
             <span class="highlight"></span>
             <label>Nom de la ville</label>
           </div>
         </div>
-        <div class="col-4">
+        <div class="offset-lg-1 col-lg-5 offset-md-1 col-md-10 offset-sm-1 col-sm-10 offset-1 col-10">
           <div class="group">
             <input type="number" class="form-control" id="codePostal" formControlName="codePostal" required>
             <span class="highlight"></span>
             <label>Code postal</label>
           </div>
         </div>
-        <div class="col-3">
+        <div class="offset-lg-1 col-lg-10 offset-md-1 col-md-10 offset-sm-1 col-sm-10 offset-1 col-10">
           <button type="submit" class="btn btn-togetout" id="enregistrer">Enregistrer</button>
         </div>
       </div>
