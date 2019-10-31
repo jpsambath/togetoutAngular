@@ -5,7 +5,7 @@
 
 <h3>Filtrer les sorties</h3>
 
-<form [formGroup]="searchForm" (ngSubmit)="onSubmitForm()">
+<form [formGroup]="searchForm" (ngSubmit)="onSubmitForm()" name="form" id="form">
   <div class="input-group group">
     <select name="ville" id="ville" formControlName="ville" class="form-control">
       <option value="" disabled selected hidden>Choisissez votre ville</option>

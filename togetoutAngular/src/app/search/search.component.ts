@@ -60,7 +60,7 @@ export class SearchComponent implements OnInit {
 
     console.log(JSON.stringify(formValue));
 
-    this.sortieService.search(formValue).then(
+    this.sortieService.search(JSON.stringify(formValue)).then(
       () => {
         console.log("Recherche Réussie");
         this.searchSortie= this.sortieService.searchSortie;
