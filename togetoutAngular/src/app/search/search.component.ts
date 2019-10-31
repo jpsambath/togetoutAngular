@@ -58,7 +58,7 @@ export class SearchComponent implements OnInit {
   onSubmitForm(){
     const formValue = this.searchForm.value;
 
-    console.log(formValue);
+    console.log(JSON.stringify(formValue));
 
     this.sortieService.search(formValue).then(
       () => {

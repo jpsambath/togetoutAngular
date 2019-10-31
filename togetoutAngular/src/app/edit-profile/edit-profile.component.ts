@@ -4,6 +4,8 @@ import {Participant} from "../model/participant";
 import { Router } from "@angular/router";
 import { AuthService } from "../auth.service";
 import {MessageService} from "../message.service";
+import { saveAs } from 'file-saver';
+
 
 @Component({
   selector: 'app-edit-profile',
@@ -77,5 +79,12 @@ export class EditProfileComponent implements OnInit {
   clearMessageErreur(){
     this.messageService.messageErreur = '' ;
   }
+
+  onFileChanged(event) {
+    const file = event.target.files[0]
+    new File(file, '/src/assets/img/text.txt', {type: "text/json;charset=utf-8"});
+
+  }
+
 
 }
