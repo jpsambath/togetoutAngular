@@ -113,13 +113,14 @@ export class EditSortieComponent implements OnInit {
       if(lieu["ville"]["id"] == idVilleSelectionne)
         this.lieuService.lieuxSelectionne.push(lieu);
     })
+
     /*console.log("----------------- Lieu Selectionne -------------------");
-    console.log(this.lieuService.lieuxSelectionne);*/
-    /*
-        console.log("Quelle ville est sélectionnée?");
-        console.log((villeSelectionnee.options[villeSelectionnee.selectedIndex]).value);
-        console.log((villeSelectionnee.options[villeSelectionnee.selectedIndex]).textContent);
-    */
+    console.log(this.lieuService.lieuxSelectionne);
+    console.log("Quelle ville est sélectionnée?");
+    console.log((villeSelectionnee.options[villeSelectionnee.selectedIndex]).value);
+    console.log((villeSelectionnee.options[villeSelectionnee.selectedIndex]).textContent);*/
+    this.lieux = [] ;
+    this.lieux = this.lieuService.lieuxSelectionne ;
   }
 
   villeFormAppend(divId : string) {
