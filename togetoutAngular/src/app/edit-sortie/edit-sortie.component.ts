@@ -54,6 +54,7 @@ export class EditSortieComponent implements OnInit {
 
   onSubmitForm(buttonID: string) {
     const formValue = this.SortieForm.value;
+
     let etat ;
     if (buttonID === 'publier'){
       etat = new Etat('Ouverte', 2) ;
@@ -96,6 +97,10 @@ export class EditSortieComponent implements OnInit {
       () => {
         console.log("ici redirection vers editsortie = echec");
       });
+  }
+
+  supprimer() {
+
   }
 
   changeLieu(){
